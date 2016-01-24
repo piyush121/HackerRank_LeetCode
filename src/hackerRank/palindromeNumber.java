@@ -11,7 +11,8 @@ public class palindromeNumber {
        while(p>r)
        {
     	   if((x/p)%10 == (x/r)%10)
-    	   { p=p/10;
+    	   {
+    		   p=p/10;
     	   	r=r*10;
     	   }
     	  else
