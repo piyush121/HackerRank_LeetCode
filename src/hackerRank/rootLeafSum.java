@@ -31,6 +31,6 @@ public class rootLeafSum {
 		mytree.add(node4);
 		mytree.add(node5);
 		mytree.add(node6);
-		System.out.println(sum(mytree.root,1,0));
+		System.out.println(sum(mytree.root,12,0));
 	}
 }
