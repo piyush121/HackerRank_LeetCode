@@ -1,5 +1,6 @@
 package hackerRank;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,31 +12,33 @@ public class LIC {
 	/** Class  LongestIncreasingSubsequence **/
 	
 	    /** function lis **/
-	    public static Integer[] lis(int[] A)
+	    public static int[] lis(int[] x)
 	    {        
-	    	int[] m = new int[A.length];
-	        //Arrays.fill(m, 1);//not important here
-	        for (int x = A.length - 2; x >= 0; x--) {
-	          for (int y = A.length - 1; y > x; y--) {
-	            if (A[x] < A[y] && m[x] <= m[y]) {
-	              m[x]++;//or use m[x] = m[y] + 1;
+	    	int n = x.length;
+	        int[] len = new int[n];
+	        Arrays.fill(len, 1);
+	        int[] pred = new int[n];
+	        Arrays.fill(pred, -1);
+	        for (int i = 1; i < n; i++) {
+	          for (int j = 0; j < i; j++) {
+	            if (x[j] < x[i] && len[i] < len[j] + 1) {
+	              len[i] = len[j] + 1;
+	              pred[i] = j;
 	            }
 	          }
 	        }
-	        int max = m[0];
-	        for (int i = 1; i < m.length; i++) {
-	          if (max < m[i]) {
-	            max = m[i];
+	        int bi = 0;
+	        for (int i = 1; i < n; i++) {
+	          if (len[bi] < len[i]) {
+	            bi = i;
 	          }
 	        }
-	        List<Integer> result = new ArrayList<Integer>();
-	        for (int i = 0; i < m.length; i++) {
-	          if (m[i] == max) {
-	            result.add(A[i]);
-	            max--;
-	          }
+	        int cnt = len[bi];
+	        int[] res = new int[cnt];
+	        for (int i = bi; i != -1; i = pred[i]) {
+	          res[--cnt] = x[i];
 	        }
-	        return result.toArray(new Integer[0]);
+	        return res;
 	    	  }
 	 
 	    /** Main Function **/
@@ -52,12 +55,12 @@ public class LIC {
 	            arr[i] = scan.nextInt();
 	 
 	        
-	        Integer[] result = lis(arr);       
+	        int[] result = lis(arr);       
 	 
 	        /** print result **/ 
 	 
 	        System.out.print("\nLongest Increasing Subsequence : ");
-	            System.out.print(n-result.length-1);
+	            System.out.print(n-result.length+1);
 	       
 	    }
 	}
