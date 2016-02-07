@@ -1,5 +1,6 @@
 package hackerRank;
 enum Suits{Spade,diamond,heart,club};
+enum Ranks{one,two,three,four,manymore};
 class Card
 {
 	Suits suit;
