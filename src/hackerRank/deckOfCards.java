@@ -1,8 +1,7 @@
 package hackerRank;
-
+enum Suits{Spade,diamond,heart,club};
 class Card
 {
-	enum Suits{Spade,diamond,heart,club};
 	Suits suit;
 	int Rank;
 	Card(Suits s,int rank)
@@ -13,9 +12,17 @@ class Card
 }
 
 public class deckOfCards {
+	
 	Card[] card;
 	
-	
+	public deckOfCards() {
+		// TODO Auto-generated constructor stub
+			this.card=new Card[52];
+			for(int i=0;i<52;i++)
+				{
+					this.card[i]=new Card(Suits.club,i%13);
+				}
+	}
 	
 
 }
