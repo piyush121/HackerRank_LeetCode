@@ -1,5 +1,8 @@
 package hackerRank;
 
+import java.util.HashSet;
+import java.util.Iterator;
+
 public class ColumnName {
 	
 	public static int colIndex(String col)
@@ -16,6 +19,8 @@ public class ColumnName {
 	public static void main(String[] args) {
 		
 		System.out.println(colIndex("AAA"));
+		HashSet<String> myhash=new HashSet<>();
+		
 		
 	}
 
