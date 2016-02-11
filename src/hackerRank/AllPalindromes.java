@@ -1,5 +1,11 @@
 package hackerRank;
 
+import java.sql.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
+
 public class AllPalindromes {
 	
 	public static boolean checkPalindrome(String str)
@@ -21,6 +27,8 @@ public class AllPalindromes {
 	
 	public static void main(String[] args) {
 	printAllPalindrome("abbaalla");
+
+		
 	}
 
 }
