@@ -7,7 +7,7 @@ import javafx.util.Pair;
 
 public class PairJump {
 	static LinkedList<HashMap<Integer,Integer>> pairs = new LinkedList<HashMap<Integer, Integer>>();
-
+	
 	public static String pairCheck(int a,int b, int c , int d)
 	{	 
 		Integer key=0;
