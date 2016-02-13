@@ -6,33 +6,22 @@ public class PostOrderIterative {
 	
 	public static void postOrder(treeNode root)
 	{
-		Stack <treeNode> mystack=new Stack<>();
-		mystack.push(root);
-		while(root!=null)
+		Stack <treeNode> st1=new Stack<>();
+		Stack <Integer> st2=new Stack<>();
+
+		st1.push(root);
+		while(!st1.isEmpty())
 		{
-			mystack.push(root);
-			root=root.left;
-		}
-		
-		while(!mystack.isEmpty())
-		{
-			treeNode node=mystack.peek();
-			
+			treeNode node=st1.pop();
+			if(node.left!=null)
+				st1.push(node.left);
 			if(node.right!=null)
-			{
-				mystack.push(node.right);
-				node=node.right;
-
-				while(node.left!=null)
-					{
-						mystack.push(node.left);
-						node=node.left;
-					}
-			}
-			else
-				System.out.println(mystack.pop().data);
-
+				st1.push(node.right);
+			st2.push(node.data);
 		}
+		while(!st2.isEmpty())
+
+		System.out.println(st2.pop());
 		
 	}
 	

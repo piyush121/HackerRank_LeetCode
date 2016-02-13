@@ -21,8 +21,7 @@ public class PreOrderIterative {
 			
 			if(mynode.left!=null)
 				mystack.push(mynode.left);
-	
-							
+								
 		}
 		
 		
