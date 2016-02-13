@@ -5,7 +5,9 @@ import java.util.Stack;
 public class RootToLeaf {
 	
 	public static void printPath(treeNode root,Stack<treeNode> st)
-	{
+	{	
+		if(root==null)
+			return;
 		st.push(root);
 		if(root.left == null && root.right==null)
 		{
@@ -14,16 +16,12 @@ public class RootToLeaf {
 			System.out.println();
 			
 		}
-		
-		if(root.left!=null)
+		else
 			{
 				printPath(root.left,st);
-			}
-		if(root.right!=null)
-		{
-			printPath(root.right,st);
+				printPath(root.right,st);
 				
-		}
+		    }
 		st.pop();
 		
 		
