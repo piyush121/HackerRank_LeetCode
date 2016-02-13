@@ -8,26 +8,31 @@ public class PreOrderIterative {
 	{
 		Stack <treeNode> mystack=new Stack<>();
 		mystack.push(root);
+		treeNode node=mystack.peek();
 
-		while(root.left!=null)
+		while(node!=null)
 		{
-			treeNode node=mystack.peek();
 
 			System.out.println(node.data);
 			mystack.push(node.left);
+			node=node.left;
 						
 		}
 		
 		while(!mystack.isEmpty())
 		{
-			treeNode node=mystack.pop();
-			if(node.right!=null)
-				node=node.right;
-			while(node.left!=null)
-			{
-				System.out.println(node.data);
-				mystack.push(node.left);
-			}
+			treeNode mynode=mystack.pop();
+			if(mynode.right!=null)
+				{
+					mynode=mynode.right;
+					if(mynode.left!=null)
+					while(mynode!=null)
+					{
+						System.out.println(mynode.data);
+						mystack.push(mynode.left);
+						mynode=mynode.left;
+					}
+				}
 		}
 		
 		
