@@ -2,32 +2,41 @@ package hackerRank;
 
 import java.util.Stack;
 
-public class PreOrderIterative {
+public class PostOrderIterative {
 	
-	public static void preOrder(treeNode root)
+	public static void postOrder(treeNode root)
 	{
 		Stack <treeNode> mystack=new Stack<>();
 		mystack.push(root);
-		
-
+		while(root!=null)
+		{
+			mystack.push(root);
+			root=root.left;
+		}
 		
 		while(!mystack.isEmpty())
 		{
-			treeNode mynode=mystack.pop();
-			System.out.println(mynode.data);
-
-			if(mynode.right!=null)
-				mystack.push(mynode.right);
+			treeNode node=mystack.peek();
 			
-			if(mynode.left!=null)
-				mystack.push(mynode.left);
-	
-							
+			if(node.right!=null)
+			{
+				mystack.push(node.right);
+				node=node.right;
+
+				while(node.left!=null)
+					{
+						mystack.push(node.left);
+						node=node.left;
+					}
+			}
+			else
+				System.out.println(mystack.pop().data);
+
 		}
 		
-		
 	}
-	public static void main(String[] args) {
+	
+public static void main(String[] args) {
 		
 		treeNode node1=new treeNode(4,null,null);
 		treeNode node2=new treeNode(5,null,null);
@@ -43,8 +52,8 @@ public class PreOrderIterative {
 		mytree.add(node4);
 		mytree.add(node5);
 		mytree.add(node6);
-		System.out.println("Pre Order Traversal...");
-		preOrder(mytree.root);
+		System.out.println("Post Order Traversal...");
+		postOrder(mytree.root);
 	}
 
 }
