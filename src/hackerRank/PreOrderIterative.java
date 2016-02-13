@@ -10,11 +10,12 @@ public class PreOrderIterative {
 		mystack.push(root);
 		treeNode node=mystack.peek();
 
-		while(node.left!=null)
+		while(node!=null)
 		{
 
 			System.out.println(node.data);
-			mystack.push(node.left);
+			if(node.left!=null)
+				mystack.push(node.left);
 			node=node.left;
 						
 		}
@@ -24,22 +25,19 @@ public class PreOrderIterative {
 			treeNode mynode=mystack.pop();
 			if(mynode.right!=null)
 				{
-					mynode=mynode.right;
-					if(mynode.left!=null)
+				System.out.println(mynode.right.data);
+				mystack.push(mynode.right);
+				mynode=mynode.right;
+				if(mynode.left!=null)
 					while(mynode.left!=null)
 					{
-						System.out.println(mynode.data);
+						System.out.println(mynode.left.data);
 						mystack.push(mynode.left);
 						mynode=mynode.left;
 					}
-					else
-						System.out.println(mynode.data);
+								
 				}
-			else
-				System.out.println(mynode.data);
-			
-
-				
+							
 		}
 		
 		
