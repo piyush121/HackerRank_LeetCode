@@ -1,9 +1,7 @@
 package hackerRank;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 
 public class PathSum_II {
    static  List<List<Integer>> res=new ArrayList<>();
@@ -53,8 +51,7 @@ public class PathSum_II {
 	    		mytree.add(node4);
 	    		mytree.add(node5);
 	    		mytree.add(node6);
-	    		Stack<treeNode> stack=new Stack<>();
-	    		res=new ArrayList<List<Integer>>();
+
 	    		pathSum(mytree.root, 9);
 	    		System.out.println(res);
 	    		}
