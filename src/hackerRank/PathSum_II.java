@@ -1,19 +1,18 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
 public class PathSum_II {
-   static  List<List<Integer>> list=new ArrayList<>();
-   static int count=0;
-
+   static  List<List<Integer>> res=new ArrayList<>();
 	
 	 public static List<List<Integer>> pathSum(treeNode root, int sum) {
 		 ArrayList<Integer> mylist=new ArrayList<>();
-
+		 
 		 recurPathSum(root,sum,mylist);
-	        return list;
+	        return res;
 	        
 	    }
 	        public static void recurPathSum(treeNode root, int sum, ArrayList<Integer> list1) {
@@ -27,8 +26,7 @@ public class PathSum_II {
 	        		
 	        		if(sum==root.data)
 	        			{
-	        				list.add(list1);
-	        				System.out.println(list1);
+	        				res.add(new ArrayList<Integer>(list1));
 	        				 
 	        			}
 	        		}
@@ -38,7 +36,6 @@ public class PathSum_II {
 		        		recurPathSum(root.right,sum-root.data,list1);
 	        		}
         		list1.remove(list1.size()-1);
-	        	
 
 	}
 	        public static void main(String[] args) {
@@ -57,8 +54,9 @@ public class PathSum_II {
 	    		mytree.add(node5);
 	    		mytree.add(node6);
 	    		Stack<treeNode> stack=new Stack<>();
+	    		res=new ArrayList<List<Integer>>();
 	    		pathSum(mytree.root, 9);
-	    		System.out.println(list);
+	    		System.out.println(res);
 	    		}
 
 }
