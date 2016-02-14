@@ -4,6 +4,7 @@ import java.util.Stack;
 
 public class RootToLeaf {
 	
+	
 	public static void printPath(treeNode root,Stack<treeNode> st)
 	{	
 		if(root==null)
