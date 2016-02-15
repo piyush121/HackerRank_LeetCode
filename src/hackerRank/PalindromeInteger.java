@@ -15,7 +15,7 @@ public class PalindromeInteger {
 			int right=num%10;
 			if(left!=right)
 				return false;
-			num=num-(div*left);
+			num=num%div;
 			num=num/10;
 			div/=100;
 
