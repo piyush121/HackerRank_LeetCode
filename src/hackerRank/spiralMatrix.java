@@ -33,8 +33,8 @@ public class spiralMatrix {
 	}
 	public static void main(String[] args){
 		
-		int[][] array={{1,2,3,4},{5,6,7,8}};
-		printMatrix(array,2,4);
+		int[][] array={{1,2,3},{4,5,6},{7,8,9},{10,11,12}};
+		printMatrix(array,4,3); //send input correctly.
 	}
 
 }
