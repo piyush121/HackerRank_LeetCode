@@ -4,25 +4,14 @@ public class CheckBST {
 	static boolean left;
 	static boolean right;
 	
-	public static boolean isBST(treeNode root)
+	public static boolean isBST(treeNode root,int min,int max)
 	{
 		if(root==null)
 			return true;
-		if(root.left!=null)
-		{
-			if(root.data>=root.left.data )
-				left= isBST(root.left);
-			else
+		if(root.data<min || root.data>max )
 				return false;
-		}
-		if(root.right!=null)
-			{
-			if(root.data<root.right.data )
-				right= isBST(root.right);
-			else
-				return false;
-			}
-		return left && right;
+		
+		return isBST(root.left,min,root.data)&&isBST(root.right,root.data,max);
 	}
 
 	 public static void main(String[] args) {
@@ -42,7 +31,7 @@ public class CheckBST {
 	 		mytree.add(node6);
 	 		//mytree.root.right=new treeNode(2,null,null);
 
-	 		System.out.println(isBST(mytree.root));
+	 		System.out.println(isBST(mytree.root,Integer.MIN_VALUE,Integer.MAX_VALUE));
 	 		}
 
 }
