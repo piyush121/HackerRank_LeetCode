@@ -26,9 +26,9 @@ public class ZigZagTraversal {
 		while(!st2.isEmpty())
 		{
 			treeNode node=st2.pop();
-			if(node.left!=null)
-				st1.push(node.right);
 			if(node.right!=null)
+				st1.push(node.right);
+			if(node.left!=null)
 				st1.push(node.left);
 	 		System.out.print(" "+node.data);
 
@@ -37,6 +37,46 @@ public class ZigZagTraversal {
  		if(!st1.isEmpty())
  			zigZag(st1.pop());
  		
+	}
+	
+	public static void zigZagEfficient(treeNode root) //O(n)
+	{	
+		 Stack<treeNode> st1=new Stack<>();
+		 Stack<treeNode> st2=new Stack<>();
+		boolean leftToRight=true;
+		st1.push(root);
+		while(!st1.isEmpty())
+		{	
+			treeNode node=st1.pop();
+ 			System.out.print(node.data+" ");
+
+			if(leftToRight)
+			{
+				if(node.left!=null)
+					st2.push(node.left);
+				if(node.right!=null)
+					st2.push(node.right);
+			}
+			else
+			{
+				if(node.right!=null)
+					st2.push(node.right);
+				if(node.left!=null)
+					st2.push(node.left);
+			}
+			if(st1.isEmpty())
+			{
+				Stack<treeNode> temp=st1;
+				st1=st2;
+				st2=temp;
+		 		System.out.println("");
+		 		leftToRight=!leftToRight;
+
+			}
+			
+			
+		}
+		
 	}
 
 	 public static void main(String[] args) {
@@ -55,6 +95,6 @@ public class ZigZagTraversal {
  		mytree.add(node5);
  		mytree.add(node6);
 
- 		zigZag(mytree.root);
+ 		zigZagEfficient(mytree.root);
  		}
 }
