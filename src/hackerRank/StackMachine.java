@@ -20,13 +20,19 @@ public class StackMachine {  // Codility test
 	                        {
 	                            int x=stack.pop();
 	                            int y=stack.pop();
-	                            stack.push(x+y);
+	                            if(x+y<4096)
+	                            	stack.push(x+y);
+	                            else
+	                            	return -1;
 	                        }
 	                    else if( S.charAt(i) == '*')
 	                        {
 	                            int x=stack.pop();
 	                            int y=stack.pop();
-	                            stack.push(x*y);
+	                            if(x*y<4096)
+	                            	stack.push(x*y);
+	                            else
+	                            	return -1;
 	                        }
 	                }
 	             else
@@ -34,7 +40,7 @@ public class StackMachine {  // Codility test
 	                
 	        }
 	        
-	        if(stack.size()==1)
+	        if(stack.size()>0)
 	            return stack.pop();
 	        else
 	        return -1;
