@@ -3,7 +3,7 @@ package hackerRank;
 import java.util.Stack;
 
 
-public class StackMachine {
+public class StackMachine {  // Codility test
 	
 	 public static int solution(String S) {
 	        // write your code in Java SE 8
@@ -13,23 +13,25 @@ public class StackMachine {
 	        {
 	            if(S.charAt(i) != '+' && S.charAt(i) != '*')
 	                stack.push((S.charAt(i) -'0'));
-	            else
+	            
+	            else if(stack.size()>1)
 	                {
-	                    if(stack.size()>1 && S.charAt(i) == '+')
+	                    if( S.charAt(i) == '+')
 	                        {
 	                            int x=stack.pop();
 	                            int y=stack.pop();
 	                            stack.push(x+y);
 	                        }
-	                    else if(stack.size()>1 && S.charAt(i) == '*')
+	                    else if( S.charAt(i) == '*')
 	                        {
 	                            int x=stack.pop();
 	                            int y=stack.pop();
 	                            stack.push(x*y);
 	                        }
-	                    else
-	                        return -1;
 	                }
+	             else
+	                return -1;
+	                
 	        }
 	        
 	        if(stack.size()==1)
@@ -40,7 +42,7 @@ public class StackMachine {
 	 public static void main(String[] args) {
 			System.out.println(solution("13+62*7+*"));
 			System.out.println(solution("11++"));
-			System.out.println(solution("89+"));
+			System.out.println(solution("8"));
 	}
 
 }
