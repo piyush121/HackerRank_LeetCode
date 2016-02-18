@@ -94,6 +94,7 @@ public class ZigZagTraversal {
  		mytree.add(node4);
  		mytree.add(node5);
  		mytree.add(node6);
+ 		zigZag(mytree.root);
 
  		zigZagEfficient(mytree.root);
  		}
