@@ -12,8 +12,8 @@ public class NumToWord { //Really a tedious problem.
 		int count=0;
 		while(num>0)
 		{	
-			
-			str=numToWord(num%1000)+" "+bigs[count]+" "+str;
+			if(num%1000>0)
+				str=numToWord(num%1000)+" "+bigs[count]+" "+str;
 			num/=1000;
 			count++;
 		}
@@ -47,7 +47,7 @@ public class NumToWord { //Really a tedious problem.
 				str+=" "+teens[num/div ];
 				break;
 			}
-			else
+			else if(div>=1 && div <=9)
 				{
 					str+=" "+ones[num/div];
 					num-=div*(num/div);
@@ -63,7 +63,7 @@ public class NumToWord { //Really a tedious problem.
 	
 	public static void main(String[] args) {
 		NumToWord obj=new NumToWord();
-		System.out.println(obj.realWord(123123));	
+		System.out.println(obj.realWord(1000000));	
 
 }
 }
