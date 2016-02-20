@@ -8,22 +8,25 @@ public class ZigZag {
 		for(int i=0;i<rows;i++)
 		{	int j=i;
 			while(j<str.length())
-			{	if(j!=0 || j!=rows-1)
+			{	
+			if(j%(rows-1)==0)
 					{
-						System.out.println(str.charAt(j));
+						System.out.print(str.charAt(j));
 						j+=2*(rows-1);
 					}
 			else
 			{
 				if(dir)	
 				{
-					System.out.println(str.charAt(j));
-					j+=2*(rows-1 -(j+1)%4);
+					System.out.print(str.charAt(j));
+					j+=2*(rows-1 -(j)%4);
+					dir=!dir;
 				}
 				else
 				{
-					System.out.println(str.charAt(j));
-					j+=2*((j+1)%4);
+					System.out.print(str.charAt(j));
+					j+=2*((j)%4);
+					dir=!dir;
 				}				
 					
 			}
@@ -35,7 +38,7 @@ public class ZigZag {
 	}
 	
 	public static void main(String[] args) {
-		print("paypalshiring",4);
+		print("paypalishiring",4);
 	}
 
 }
