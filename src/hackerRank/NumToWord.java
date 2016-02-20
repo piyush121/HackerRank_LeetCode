@@ -2,8 +2,8 @@ package hackerRank;
 
 public class NumToWord { //Really a tedious problem.
 	String[] ones={"","one","two","three","four","five","six","seven","eight","nine"};
-	String[] teens={"ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
-	String[] tens={"","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"};
+	String[] teens={"eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
+	String[] tens={"ten","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"};
 	String[] bigs={"","thousand","million"};
 	
 	public String realWord(int num)
@@ -24,38 +24,31 @@ public class NumToWord { //Really a tedious problem.
 	public String numToWord(int num)
 	{
 		String str="";
-		int div=1;
-		while(num/div>=10)
-			div*=10;
-		while(div>=1)
-		{
-			if(div==100)
+		
+		while(num>0){
+			if(num/100>=1)
 				{
-					str+=ones[num/div]+" hundred";
-					num-=div*(num/div);
+					str+=ones[num/100]+" hundred";
+					num%=100;
 				}
 
-			else if(div==10 && num/div>1)
+			else if(num/10>1 && num/10<=9)
 			{
-				str+=" "+tens[num/div-1];
-				num-=div*(num/div);
+				str+=" "+tens[num/10];
+				num%=10;
 			}
-			else if(div==10 && num/div==1)
+			else if(num/10==1)
 			{
-				num-=div*(num/div);
-				div/=10;
-				str+=" "+teens[num/div ];
-				break;
+				num%=10;
+				str+=" "+teens[num-1];
+				return str;
 			}
-			else if(div>=1 && div <=9)
+			else if(num>=1 && num<=9)
 				{
-					str+=" "+ones[num/div];
-					num-=div*(num/div);
-
+					str+=" "+ones[num];
+					return str;
 				}
-
-			div/=10;
-			
+	
 		}
 		return str;
 		
@@ -63,7 +56,7 @@ public class NumToWord { //Really a tedious problem.
 	
 	public static void main(String[] args) {
 		NumToWord obj=new NumToWord();
-		System.out.println(obj.realWord(1000000));	
+		System.out.println(obj.realWord(11));	
 
 }
 }
