@@ -56,7 +56,7 @@ public class NumToWord { //Really a tedious problem.
 	
 	public static void main(String[] args) {
 		NumToWord obj=new NumToWord();
-		System.out.println(obj.realWord(11));	
+		System.out.println(obj.realWord(11111));	
 
 }
 }
