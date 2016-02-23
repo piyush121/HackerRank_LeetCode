@@ -41,11 +41,10 @@ public class LongestPlindromicSubstring {
 				subString=s1.substring(left+1, right);
 			}
 		
-		
 	}
 	public static void main(String[] args) {
 		
-		System.out.println(LPS("ccd"));
+		System.out.println(LPS("abbgb"));
 	}
 
 }
