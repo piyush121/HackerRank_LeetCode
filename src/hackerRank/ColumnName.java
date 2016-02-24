@@ -3,6 +3,10 @@ package hackerRank;
 import java.util.HashSet;
 import java.util.Iterator;
 
+/**
+ * @author Piyush Chaudhary
+ *
+ */
 public class ColumnName {
 	
 	public static int colIndex(String col)

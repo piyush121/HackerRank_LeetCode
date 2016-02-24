@@ -12,7 +12,7 @@ public class OddFrequency {
 			if(!dataFreq.containsKey(A[i]))
 				dataFreq.put(A[i], true);
 			else
-				dataFreq.put(A[i], !dataFreq.get(A[i]));
+				dataFreq.put(A[i], !dataFreq.get(A[i])); //Flip the boolean value.
 			
 		}
 		
