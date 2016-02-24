@@ -1,5 +1,6 @@
 package hackerRank;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LongestIncreasingSubsequence {
@@ -26,6 +27,8 @@ public class LongestIncreasingSubsequence {
 
 	public static void main(String[] args) {
 		System.out.println(LISDP(new int[] { 3, 1, 2, 6, 4, 9,7,10 }));
+		
+	
 	}
 
 }
