@@ -18,7 +18,6 @@ public class ReverseLinkedListRecursively {
 		l1.next=new ListNode(7);
 		l1.next.next=new ListNode(9);
 		ListNode ptr=l1.next.next;
-		
 		reverse(l1);
 		
 		while(ptr!=null)
