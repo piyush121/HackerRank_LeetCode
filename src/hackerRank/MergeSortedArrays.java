@@ -24,24 +24,21 @@ public class MergeSortedArrays {
 			}
 			k++;		//Increment main pointer
 		}
-		if(i!=A.length)	//onr of the pointers must be at less than the array's length.
-		{
-			while(i<A.length)
+		
+			while(i<A.length) //one of the pointers must be at less than the array's length.
 				{
 				merged[k]=A[i];
 				k++;
 				i++;
 				}
-		}
-		else
-		{
+		
 			while(j<B.length)
 				{
 					merged[k]=B[j];
 					k++;
 					j++;
 				}
-		}
+		
 		
 		return merged;
 	}
