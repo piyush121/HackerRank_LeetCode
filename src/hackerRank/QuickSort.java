@@ -22,7 +22,7 @@ public class QuickSort {
 			if(arr[j]<arr[low])
 			{
 				i++;
-				arr[j]=arr[i]^arr[j]^(arr[i]=arr[j]);
+				arr[j]=arr[i]^arr[j]^(arr[i]=arr[j]); // swapping in a new way.
 			}
 		}
 		
