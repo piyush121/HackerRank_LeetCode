@@ -2,7 +2,7 @@ package hackerRank;
 
 public class RevLL {
 	
-	public static void reverse(ListNode node){ // amazing recursive approach.
+	public static void reverse(ListNode node){ // amazing recursive approach. O(n) space O(n) time
 		if(node.next==null)
 			return;
 		
@@ -12,7 +12,7 @@ public class RevLL {
 		node.next=null;
 		
 	}
-	public static void reverseitr(ListNode node) // iterative approach
+	public static void reverseitr(ListNode node) // iterative approach. O(1) space O(n) time.
 	{
 		ListNode prev=null;
 		ListNode curr=node;

@@ -28,7 +28,7 @@ public class TwoSum {
 	}
 	
 	public static void main(String[] args) {
-		int[] arr={4,4,4,4};
+		int[] arr={4,5,3,4};
 		System.out.println(twoSum(arr, 8));
 	}
 
