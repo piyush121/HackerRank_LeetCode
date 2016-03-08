@@ -22,10 +22,10 @@ public class UniqueChars {
 	{
 		BitSet set = new BitSet(256);
 		for (int i = 0; i < str.toCharArray().length; i++) {
-			if (set.get(str.charAt(i) - 'a') == true)
+			if (set.get(str.charAt(i)) == true)
 				return false;
 			else
-				set.set(str.charAt(i) - 'a', true);
+				set.set(str.charAt(i), true);
 
 		}
 		return true;
