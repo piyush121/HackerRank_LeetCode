@@ -7,6 +7,9 @@ public class AnyBaseToDecimal {
 		int power = 0;
 		int num = 0;
 		for (int i = str.length() - 1; i >= 0; i--) {
+
+			if ((str.charAt(i) <= '9' && str.charAt(i) >= '0') && str.charAt(i)> base || str.charAt(i) - 55 > base) // boundary conditions
+				return -1;
 			if (str.charAt(i) <= '9' && str.charAt(i) >= '0') // digits case
 			{
 				num += Math.pow(base, power) * (str.charAt(i) - '0');
