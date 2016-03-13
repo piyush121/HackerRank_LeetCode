@@ -1,24 +1,23 @@
 package hackerRank;
 
 public class BinaryTreetoDoublyLL {
-	static treeNode last=null;
-	static treeNode head=null;
-	public static void binaryToLL(treeNode root){
-		if(root==null)
+	static treeNode last = null; // previous node while traversing tree in an
+									// in-order fashion.
+	static treeNode head = null; // head pointer in LL.
+
+	public static void binaryToLL(treeNode root) { // pretty hard to understand.
+		if (root == null)
 			return;
 		binaryToLL(root.left);
-		if(last==null){
-			head=root;
+		if (last == null) {
+			head = root;
+		} else {
+			last.right = root;
 		}
-		else{
-			last.right=root;
-
-		}
-		root.left=last;
-		last=root;
-	
+		root.left = last;
+		last = root;
 		binaryToLL(root.right);
-	
+
 	}
 
 }
