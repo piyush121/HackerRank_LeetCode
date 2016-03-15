@@ -42,7 +42,7 @@ public class LongestCommonPrefix {
 			}
 		str = strs[index];
 		for (int j = 0; j < min; j++) { // Basically I am matching every string
-										// in the array char by char.
+										// in the array char by char. Complexity : O(n)
 			for (int i = 0; i < strs.length; i++) {
 				if (str.charAt(j) != strs[i].charAt(j))
 					return str.substring(0, j);
