@@ -18,4 +18,14 @@ public class SwapNodeInPairs {
 		}
 		return head;
 	}
+	
+	 public ListNode swapPairsR(ListNode head) { // Elegant and recursive.
+	        
+	        if(head==null || head.next==null)
+		            return head;
+		        ListNode curr=head.next;
+		        head.next=swapPairsR(curr.next);
+		        curr.next=head;
+		        return curr;
+	    }
 }
