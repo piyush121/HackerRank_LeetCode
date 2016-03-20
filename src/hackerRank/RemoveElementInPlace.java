@@ -2,7 +2,7 @@ package hackerRank;
 
 public class RemoveElementInPlace { // LeetCode problem 27.
 
-	public int removeElement(int[] nums, int val) {
+	public int removeElement(int[] nums, int val) { // O(n) space.
 		if (nums.length == 0)
 			return 0;
 		int j = nums.length;
