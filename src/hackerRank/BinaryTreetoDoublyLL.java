@@ -23,10 +23,10 @@ public class BinaryTreetoDoublyLL {
 
 	public static treeNode binarytoCLL(treeNode node) { // A different
 														// implementation.
-		binarytoCLL(node.left);
-		binarytoCLL(node.right);
-		node = concat(node, node.left);
-		node = concat(node, node.right);
+		treeNode leftList = binarytoCLL(node.left);
+		treeNode rightList = binarytoCLL(node.right);
+		node = concat(leftList, node);
+		node = concat(node, rightList);
 
 		return node;
 
