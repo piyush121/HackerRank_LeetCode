@@ -23,9 +23,9 @@ public class CoinChange {
 	public  static int minCoinsDP(int[] coins, int sum, int[] cache) {
 		int minCount = sum;
 		for (int coin : coins) {
-			int count;
 			if (sum - coin >= 0) {
-				if (cache[sum] < 0)
+				int count;
+				if (cache[sum] < 0) //value not cached.
 					count = 1 + minCoinsDP(coins, sum - coin, cache);
 				else
 					count = cache[sum];
@@ -42,7 +42,7 @@ public class CoinChange {
 		System.out.println(minCoinsRecursive(coins, 32));
 		int[] cache = new int[33];
 		Arrays.fill(cache, -1);
-		cache[0]=0;
+		cache[0] = 0;
 		System.out.println(minCoinsDP(coins, 32, cache));
 	}
 
