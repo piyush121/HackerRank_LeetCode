@@ -12,6 +12,7 @@ public class SubStringSearch_KMP {
 			if (pattern.charAt(j) == pattern.charAt(k)) {
 				prefixArray[k] = index;
 				k++;
+				index++;	//important. so that the next match has the right length of prefix whhich is also the suffix.
 			} else {
 				if (j != 0)
 					j = prefixArray[k - 1];
@@ -25,7 +26,7 @@ public class SubStringSearch_KMP {
 		return prefixArray;
 	}
 
-	public static boolean subStringSearch(String text, String pattern) {
+	public static int subStringSearch(String text, String pattern) { //O(m + n)
 		int[] arr = prefixArray(pattern);
 		int i = 0;
 		int j = 0;
@@ -38,16 +39,16 @@ public class SubStringSearch_KMP {
 			else if (j!=0){
 				j = arr[j - 1];
 			}
-			if(j == 0)
+			else
 				i++;
 		}
-		if(j == pattern.length() )
-			return true;
-		return false;
+		if (j == pattern.length() )
+			return i - j;
+		return -1;
 	}
-	
+
 	public static void main(String[] args) {
-		System.out.println(subStringSearch("abcsdb", "cs"));
+		System.out.println(subStringSearch("baabbbbbbbaaba","bbbbbbaa"));
 	}
 
 }
