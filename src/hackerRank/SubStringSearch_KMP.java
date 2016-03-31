@@ -7,20 +7,18 @@ public class SubStringSearch_KMP {
 		int[] prefixArray = new int[len];
 
 		int j = 0;
-		int index = 1;
 		for (int k = 1; k < len;) {
 			if (pattern.charAt(j) == pattern.charAt(k)) {
-				prefixArray[k] = index;
+				prefixArray[k] = j+1;
 				k++;
-				index++;	//important. so that the next match has the right length of prefix whhich is also the suffix.
+				j++;
 			} else {
 				if (j != 0)
-					j = prefixArray[k - 1];
+					j = prefixArray[j - 1];
 				else {
 					prefixArray[k] = 0;
 					k++;
 				}
-
 			}
 		}
 		return prefixArray;
