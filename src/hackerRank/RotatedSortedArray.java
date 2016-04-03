@@ -31,36 +31,36 @@ public class RotatedSortedArray {
 	 public static int search1(int[] nums,int target) { //Concise log n solution.
 		
 		 int start = 0;
-		 int end = nums.length - 1;
+		 int len = nums.length;
+		 int end = len - 1;
 		 int mid;
 		 while(start < end) { // calculate rotated point. when start == end. we will find that point
 			 mid = (start + end)/2;
-			 if(nums[start] < nums[end])
-				 start = mid + 1;
-			 else
+			 if(nums[mid] < nums[end])
 				 end = mid;
+			 else
+				 start = mid + 1;
 		 }
 		 
-		 int minIndex =  target < nums[end] ? start : 0;
-		 int maxIndex = target < nums[end] ? nums.length - 1 : start - 1;
+		 int minIndex = target <= nums[len - 1] ? start : 0;
+		 int maxIndex = target <= nums[len - 1] ? len - 1 : start;
 		 
 		 while(minIndex <= maxIndex) { //usual binary search.
 			 int midd = (minIndex + maxIndex) / 2;
 			 if(target == nums[midd])
 				 return midd; 
 			 if(target < nums[midd])
-				 minIndex = midd + 1;
-			 else
 				 maxIndex = midd - 1;
+			 else
+				 minIndex = midd + 1;
 		 }
-		 
-		 
+		 	 
 		 return -1;
 		 
 	 }
 	 
 	 public static void main(String[] args) {
-		System.out.println(search1(new int[]{3,5,1},3));
+		System.out.println(search1(new int[]{5,1,3},1));
 	}
 
 }
