@@ -45,6 +45,7 @@ public class ArrayHopper_Jumper {
 		return hops[0];
 	}
 	
+
 	public static void main(String[] args) {
 		int[] arr = {1,1, 1,2,1,1};
 		System.out.println(jumper(arr,0 , 0));
