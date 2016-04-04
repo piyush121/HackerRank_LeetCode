@@ -9,9 +9,9 @@ public class RangeSearch {
 		int index = binarySearch(nums, target, 0, nums.length - 1);
 		if (index != -1) {
 			
-			lower = lhBound(nums, target, 0, index - 1, index); // Find lower index
+			lower = lBound(nums, target, 0, index - 1, index); // Find lower index
 																 
-			higher = lhBound(nums, target, index + 1, nums.length - 1, index); // find upper index
+			higher = hBound(nums, target, index + 1, nums.length - 1, index); // find upper index
 		}
 
 		return new int[] { lower, higher };
@@ -31,14 +31,24 @@ public class RangeSearch {
 
 	}
 
-	private static int lhBound(int[] arr, int val, int start, int end, int index) {
+	private static int lBound(int[] arr, int val, int start, int end, int index) {
 		if (start > end)
 			return index;
 		int mid = (start + end) / 2;
 		if (arr[mid] == val)
-			return lhBound(arr, val, start, mid - 1, mid);
+			return lBound(arr, val, start, mid - 1, mid);
 		else
-			return lhBound(arr, val, mid + 1, end, index);
+			return lBound(arr, val, mid + 1, end, index);
+	}
+	
+	private static int hBound(int[] arr, int val, int start, int end, int index) {
+		if (start > end)
+			return index;
+		int mid = (start + end) / 2;
+		if (arr[mid] == val)
+			return hBound(arr, val, mid + 1, end, mid);
+		else
+			return hBound(arr, val, start, mid - 1, index);
 	}
 	
 	public static void main(String[] args) {
