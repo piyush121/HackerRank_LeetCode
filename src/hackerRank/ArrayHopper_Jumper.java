@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class ArrayHopper_Jumper {
 	public static int jumper(int[] nums, int index, int hops) { //Inefficient Recursive solution.
-		
+		if(index == nums.length - 1)
+			return hops;
 		if(nums[index] + index >= nums.length) // Base case
 			return hops + 1;
 		int minHops = Integer.MAX_VALUE;
@@ -19,7 +20,7 @@ public class ArrayHopper_Jumper {
 		return minHops == Integer.MAX_VALUE ? -1 : minHops;
 	}
 	
-	public static int jumperDP(int[] nums) {
+	public static int jumperDP(int[] nums) { // O(n^2) Dynamic programming solution.
 		int len = nums.length;
 		int[] hops = new int[len];
 		Arrays.fill(hops, Integer.MAX_VALUE);
@@ -40,7 +41,7 @@ public class ArrayHopper_Jumper {
 				}
 			}		
 		}
-		System.out.println(Arrays.toString(hops));
+	//	System.out.println(Arrays.toString(hops));
 		return hops[0];
 	}
 	
