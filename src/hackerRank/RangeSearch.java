@@ -3,15 +3,15 @@ package hackerRank;
 import java.util.Arrays;
 
 public class RangeSearch {
-	public static int[] searchRange(int[] nums, int target) { // O(log n) solution.
+	public static int[] searchRange(int[] nums, int target) { // O(log n) solution. But inefficient.
 		int lower = -1;
 		int higher = -1;
-		int index = binarySearch(nums, target, 0, nums.length - 1);
+		int index = binarySearch(nums, target, 0, nums.length - 1); //log n
 		if (index != -1) {
 			
-			lower = lBound(nums, target, 0, index - 1, index); // Find lower index
+			lower = lBound(nums, target, 0, index - 1, index); // Find lower index. Log n
 																 
-			higher = hBound(nums, target, index + 1, nums.length - 1, index); // find upper index
+			higher = hBound(nums, target, index + 1, nums.length - 1, index); // find upper index. Log n.
 		}
 
 		return new int[] { lower, higher };
@@ -51,10 +51,34 @@ public class RangeSearch {
 			return hBound(arr, val, start, mid - 1, index);
 	}
 	
+	public static int[] searchRange1(int[] nums, int target) { // O(log n) solution. Efficient..
+		int higher = -1;
+		int lower = lhBound(nums, target, 0,nums.length); //log n
+		
+		if(nums[lower] != target)
+			return new int[]{-1, -1};
+		else 
+			higher = lhBound(nums, target + 1, 0, nums.length); // find upper index. Log n.
+		
+		
+		return new int[] { lower, higher - 1};
+
+	}
+	
+	private static int lhBound(int[] arr, int val, int start, int end) {
+		if (start == end)
+			return end;
+		int mid = (start + end) / 2;
+		if (arr[mid] >= val)
+			return lhBound(arr, val, start, mid);
+		else
+			return lhBound(arr, val, mid + 1, end);
+	}
+	
 	public static void main(String[] args) {
 		int[] nums = {5, 7, 7, 8, 8, 10};
 		int[] nums1 = {1,2,3,3,3,3,4,5,9};
-		System.out.println(Arrays.toString(searchRange(nums1, 3)));
+		System.out.println(Arrays.toString(searchRange1(nums1, 3)));
 	}
 
 }
