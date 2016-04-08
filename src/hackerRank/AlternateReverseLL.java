@@ -24,7 +24,7 @@ public class AlternateReverseLL {
 		return prev;
 	}
 
-	public static void alternateReverseLL(LinkNode node) {
+	public static void alternateReverseLL(LinkNode node) { //O(4n) = O(n).
 		int size = 0;
 		LinkNode ptr = node;
 		while (ptr != null) { // Find size of LL. O(n)
@@ -36,7 +36,7 @@ public class AlternateReverseLL {
 		LinkNode second = null;
 		ptr = first;
 
-		while (mid > 0) {
+		while (mid > 0) { //O(n)
 			ptr = ptr.next;
 			mid--;
 		}
@@ -44,10 +44,10 @@ public class AlternateReverseLL {
 		ptr.next = null;
 		second = temp;
 		second = reverseLL(second); // O(n)
-		mergeList(first, second);
+		mergeList(first, second); //O(n)
 	}
 
-	public static void mergeList(LinkNode first, LinkNode second) {
+	public static void mergeList(LinkNode first, LinkNode second) { //O(n)
 		if (first == null || second == null)
 			return;
 		LinkNode temp1 = first.next;
