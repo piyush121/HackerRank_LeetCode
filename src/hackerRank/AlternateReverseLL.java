@@ -28,7 +28,6 @@ public class AlternateReverseLL {
 		int size = 0;
 		LinkNode ptr = node;
 		while (ptr != null) { // Find size of LL. O(n)
-			System.out.print(ptr.data + " -> ");
 			ptr = ptr.next;
 			size++;
 		}
@@ -41,7 +40,7 @@ public class AlternateReverseLL {
 			ptr = ptr.next;
 			mid--;
 		}
-		LinkNode temp = ptr.next;
+		LinkNode temp = ptr.next; //Cutting out the list in two equal halves.
 		ptr.next = null;
 		second = temp;
 		second = reverseLL(second); // O(n)
@@ -74,8 +73,16 @@ public class AlternateReverseLL {
 		node.next.next.next = new LinkNode(4);
 		LinkNode last = new LinkNode(5);
 		node.next.next.next.next = last;
-		reverseLL(node);
-		LinkNode ptr = last;
+		System.out.println("Before : ");
+		LinkNode ptr = node;
+		while (ptr != null) {
+			System.out.print(ptr.data + " -> ");
+			ptr = ptr.next;
+		}
+		System.out.println("\nAfter : ");
+
+		alternateReverseLL(node);
+		ptr = node;
 		while (ptr != null) {
 			System.out.print(ptr.data + " -> ");
 			ptr = ptr.next;
