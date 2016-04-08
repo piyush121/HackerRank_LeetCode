@@ -2,6 +2,8 @@ package hackerRank;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
+import javax.xml.bind.DatatypeConverter;
+
 public class DoubleByteReverse {
 
    public static void main(String args[]) {
@@ -32,8 +34,8 @@ public class DoubleByteReverse {
             //System.out.println(en);
 
             Charset.forName("UTF-8").encode(st);
-            System.out.println("this"+st);
-             String finalstring =new String(st.concat(g).concat(en));
+            System.out.println(DatatypeConverter.printHexBinary(bytes1));
+             String finalstring =new String(st+g+en);
 
              System.out.println("whole string "+finalstring);
 
