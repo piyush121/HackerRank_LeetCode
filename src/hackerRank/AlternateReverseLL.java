@@ -3,21 +3,22 @@ package hackerRank;
 /**
  * @author Piyush Chaudhary
  *
- *	Given a LL, A1->A2->A3->...A(n-1)->And you need to rearrange it to A1->A(n-1)->A2->A(n-2)->...
+ *         Given a LL, A1->A2->A3->...A(n-1)->And you need to rearrange it to
+ *         A1->A(n-1)->A2->A(n-2)->...
  */
 public class AlternateReverseLL {
-	
-	public static void reverseLL(LinkNode node) { //O(n)
-		if(node == null || node.next == null)
-			return ;
+
+	public static void reverseLL(LinkNode node) { // O(n)
+		if (node == null || node.next == null)
+			return;
 		LinkNode prev = null;
 		LinkNode curr = node;
 		LinkNode next = node.next;
-		while(curr.next != null) {
+		while (curr != null) {
 			curr.next = prev;
 			prev = curr;
 			curr = next;
-			if(next != null)
+			if (next != null)
 				next = next.next;
 		}
 	}
@@ -29,14 +30,13 @@ public class AlternateReverseLL {
 		node.next.next.next = new LinkNode(4);
 		LinkNode last = new LinkNode(5);
 		node.next.next.next.next = last;
-		
+
 		reverseLL(node);
 		LinkNode ptr = last;
-		while(ptr != null) {
-			System.out.println(last.data + " -> ");
+		while (ptr != null) {
+			System.out.print(ptr.data + " -> ");
 			ptr = ptr.next;
 		}
-		
-		
+
 	}
 }
