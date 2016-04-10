@@ -30,7 +30,7 @@ public class CombinationSum {
 		 }
 	 }
 	 public static void main(String[] args) {
-		int[] arr = {2,3,6,7};
+		int[] arr = {10,1,2,7,6,1,5};
 		System.out.println(combinationSum(arr, 7));
 	}
 }
