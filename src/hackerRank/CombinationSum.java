@@ -1,5 +1,6 @@
 package hackerRank;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,24 +8,29 @@ public class CombinationSum {
 	static List<List<Integer>> result = new LinkedList<>();
 	
 	 public static List<List<Integer>> combinationSum(int[] candidates, int target) {
-		 
-		 combinationSum(candidates, target, new LinkedList<Integer>(), 0);
+		 Arrays.sort(candidates); // O(nlog n)
+		 combinationSum(candidates, target, new LinkedList<Integer>(), 0, 0);
 	     return result;
 	    }
 	 
-	 public static void combinationSum(int[] candidates, int target, List<Integer> list, int sum) {// Highly inefficient recursive solution.
+	 public static void combinationSum(int[] candidates, int target, List<Integer> list, int sum, int index) {//O(n^3). Highly inefficient recursive solution.
 		 
 		 if ( sum == target ) {
 			 result.add(new LinkedList<>(list));
 			 return;
 		 }
-		 if(sum > target) {
+		 else if(sum > target) {
 			 return;
 		 }
 		 
-		 for(int i = 0; i < candidates.length; i++) {
-			 combinationSum(candidates, target, list, sum + candidates[i]);
+		 for(int i = index; i < candidates.length; i++) {
+			 list.add(candidates[i]);
+			 combinationSum(candidates, target, list, sum + candidates[i], i);
+			 list.remove(list.size() - 1);
 		 }
 	 }
-
+	 public static void main(String[] args) {
+		int[] arr = {2,3,6,7};
+		System.out.println(combinationSum(arr, 7));
+	}
 }
