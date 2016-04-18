@@ -39,5 +39,6 @@ public class CombinationSum2 { // no repetition allowed this time.
 	public static void main(String[] args) {
 		int[] arr = { 2, 2, 2 };
 		System.out.println(combinationSum2(arr, 2));
+			
 	}
 }
