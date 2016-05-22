@@ -13,7 +13,7 @@ for i in xrange(0, 3):
 print str(set_1) + "\n" + str(set_2) + "\n" + str(set_3)
 
 merged = []
-merged = set_1.union(set_2).union(set_3)
+merged = set_1.union(set_2).union(set_3)    # remove duplicate values.
 merged = sorted(merged, reverse=True)   # Sorting in desc order.
 
 print merged
