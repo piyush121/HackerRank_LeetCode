@@ -1,5 +1,4 @@
 import random
-import collections
 
 set_1 = set()
 set_2 = set()
