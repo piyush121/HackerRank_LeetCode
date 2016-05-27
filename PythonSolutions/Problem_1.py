@@ -1,9 +1,7 @@
 import re
 
-
 def compare(x, y):
     return cmp(len(x), len(y))
-
 
 def filterWords(passage):
     allowedCharacters = set(['r', 's', 't', 'l', 'n', 'a', 'e', 'i', 'o', 'u'])
