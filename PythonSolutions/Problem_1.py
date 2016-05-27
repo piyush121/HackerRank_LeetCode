@@ -44,4 +44,5 @@ givenPassage = "Two households, both alike in dignity,In fair Verona, where we l
 
 result = filterWords(givenPassage)  # Given test case.
 print result
+print len(result)
 print "Most Common word: " + mostCommonWord(result)
