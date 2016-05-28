@@ -36,6 +36,9 @@ private static List<List<Integer>> permute(int[] arr, int start, List<List<Integ
 	else
 	{
 		for(int i = start; i < arr.length; i++) {
+			
+			if(arr[i] == arr[start])
+				continue;
 			swap(arr, i, start);
 			permute(arr, start + 1, result);
 			swap(arr, i, start);
@@ -56,7 +59,7 @@ private static void swap (int[] arr, int i, int j) {
 }
 
 public static void main(String[] args) {
-	int[] array = {1,2,3};
+	int[] array = {1,-1,1,2,-1,2,2,-1};
 	System.out.println(permuteUnique(array));
 }
 
