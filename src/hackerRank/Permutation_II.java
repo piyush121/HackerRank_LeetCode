@@ -1,4 +1,5 @@
 package hackerRank;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class Permutation_II {
 	
 public static List<List<Integer>> permuteUnique(int[] nums) {
-	
+	Arrays.sort(nums);
 	List<List<Integer>> permutations = permute(nums, 0, new LinkedList<List<Integer>>());
     return permutations;
     }
@@ -37,7 +38,7 @@ private static List<List<Integer>> permute(int[] arr, int start, List<List<Integ
 	{
 		for(int i = start; i < arr.length; i++) {
 			
-			if(arr[i] == arr[start])
+			if(i > start && arr[i] == arr[i - 1])
 				continue;
 			swap(arr, i, start);
 			permute(arr, start + 1, result);
