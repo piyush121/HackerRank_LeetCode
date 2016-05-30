@@ -1,4 +1,5 @@
 package hackerRank;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,58 +11,54 @@ import java.util.List;
  *	[1,1,2], [1,2,1], and [2,1,1].
  */
 
-
 /**
  * @author Piyush Chaudhary
  *
  */
 public class Permutation_II {
-	
-public static List<List<Integer>> permuteUnique(int[] nums) {
-	Arrays.sort(nums);
-	List<List<Integer>> permutations = permute(nums, 0, new LinkedList<List<Integer>>());
-    return permutations;
-    }
 
-private static List<List<Integer>> permute(int[] arr, int start, List<List<Integer>> result){
-	if(start >= arr.length) {
-		List<Integer> temp = new LinkedList<>();
+	public static List<List<Integer>> permuteUnique(int[] nums) {
+		Arrays.sort(nums);
+		List<List<Integer>> permutations = permute(nums, 0, new LinkedList<List<Integer>>());
+		return permutations;
+	}
 
-		for (int val: arr) {
-			temp.add(val);
+	private static List<List<Integer>> permute(int[] arr, int start, List<List<Integer>> result) {
+		if (start == arr.length) {
+			List<Integer> temp = new LinkedList<Integer>();
+
+			for (int val : arr) {
+				temp.add(val);
+			}
+			result.add(temp);
+			return result;
 		}
-		result.add(temp);
+
+		else {
+			for (int i = start; i < arr.length; i++) {
+
+				if (i > start && arr[i] == arr[i - 1])
+					continue;
+				swap(arr, i, start);
+				permute(arr, start + 1, result);
+				swap(arr, i, start);
+
+			}
+
+		}
+
 		return result;
 	}
-	
-	else
-	{
-		for(int i = start; i < arr.length; i++) {
-			
-			if(i > start && arr[i] == arr[i - 1])
-				continue;
-			swap(arr, i, start);
-			permute(arr, start + 1, result);
-			swap(arr, i, start);
-			
-		}
-		
+
+	private static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
 	}
-	
-	return result;
-}
 
-private static void swap (int[] arr, int i, int j) {
-	int temp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = temp;
-	
-	
-}
-
-public static void main(String[] args) {
-	int[] array = {1,-1,1,2,-1,2,2,-1};
-	System.out.println(permuteUnique(array));
-}
+	public static void main(String[] args) {
+		int[] array = { 0, 1, 0, 0, 9 };
+		System.out.println(permuteUnique(array));
+	}
 
 }
