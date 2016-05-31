@@ -37,7 +37,7 @@ public class Permutation_II {
 		else {
 			for (int i = start; i < arr.length; i++) {
 
-				if (i > start && arr[i] == arr[i - 1])
+				if (i > start && arr[i] == arr[i - 1] || i > start && arr[start] == arr[i])
 					continue;
 				swap(arr, i, start);
 				permute(arr, start + 1, result);
@@ -57,7 +57,7 @@ public class Permutation_II {
 	}
 
 	public static void main(String[] args) {
-		int[] array = { 0, 1, 0, 0, 9 };
+		int[] array = {-1,2,0,-1,1,0,1};
 		System.out.println(permuteUnique(array));
 	}
 
