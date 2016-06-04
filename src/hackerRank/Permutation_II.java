@@ -1,6 +1,7 @@
 package hackerRank;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,14 +36,14 @@ public class Permutation_II {
 		}
 
 		else {
+			HashSet<Integer> seen = new HashSet<>();
 			for (int i = start; i < arr.length; i++) {
 
-				if (i > start && arr[i] == arr[i - 1] || i > start && arr[start] == arr[i])
-					continue;
+				if (seen.add(arr[i])) {
 				swap(arr, i, start);
-				permute(arr, start + 1, result);
+				permute(arr.clone(), start + 1, result);
 				swap(arr, i, start);
-
+				}
 			}
 
 		}
@@ -57,7 +58,7 @@ public class Permutation_II {
 	}
 
 	public static void main(String[] args) {
-		int[] array = {-1,2,0,-1,1,0,1};
+		int[] array = { 0, 1, 0, 0, 9 };
 		System.out.println(permuteUnique(array));
 	}
 
