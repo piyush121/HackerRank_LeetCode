@@ -17,7 +17,14 @@ Could you do this in-place?
 public class Rotate_Image {
 	
 	 public void rotate(int[][] matrix) {
-	        
+		 int len = matrix.length;
+		 int result[][] = new int[len][len];
+
+	        for (int i = 0; i < len; i++)
+	        	for(int j = 0 ; j < len; j++) {
+	        		result[i][j] = matrix[j][len - i];
+	        		
+	        	}
 	    }
 	 
 	 public static void main(String[] args) {
