@@ -15,25 +15,41 @@ public class Pow {
 		 if( n == 0)
 			 return 1;
 		 else if (n > 0) {
-			 while(n > 1) {
-				num *= x;
-			 	--n;
-			 }
-			 return num;
+			 while(n > 0) {
+				 if(n != 1) {
+					x *= x;
+				 	n /= 2;
+				 }
+				 
+				 if(n == 1) {
+					 x *= num;
+					 --n;
+				 }
+					 
+				 }
+			 return x;
 		 }
 		 else {
 			 x = 1.0 / x;
+			 num = x;
 			 n = -n;
-			 while(n > 1) {
-					num *= x;
-				 	--n;
+			 while(n > 0) {
+				 if(n != 1) {
+					x *= x;
+				 	n /= 2;
 				 }
-				 return num;
+				 
+				 if(n == 1) {
+					 x *= num;
+					 --n;
+				 }
+			 }
+				 return x;
 		 }
 	        
 	    }
 	 public static void main(String[] args) {
-		System.out.println(myPow(0.00001, 2147483647));
+		System.out.println(myPow(3.89707, 2));
 	}
 
 }
