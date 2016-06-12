@@ -5,26 +5,39 @@ import java.util.List;
 
 public class SpiralMtrx {
 	
-	 public List<Integer> spiralOrder(int[][] matrix) {
+	 public static List<Integer> spiralOrder(int[][] matrix) {
 	        
 	        int colStart = 0;
 	        int colEnd = matrix[0].length - 1;
 	        int rowStart = 0;
-	        int rowEnd = matrix.length;
+	        int rowEnd = matrix.length - 1;
 	        List<Integer> result = new ArrayList<>();
-	        for(int i = colStart; i < colEnd; i++)
+	        
+	        while (colStart <= colEnd && rowStart <=rowEnd) {
+	        for(int i = colStart; i <= colEnd; i++)
 	        	result.add(matrix[rowStart][i]);
-	        
-	        for(int i = rowStart; i < rowEnd; i++)
+        	rowStart++;
+
+	        for(int i = rowStart; i <= rowEnd; i++)
 	        	result.add(matrix[i][colEnd]);
-	        
-	        for(int i = colEnd; i < colStart; i--)
+        	colEnd--;
+
+	        for(int i = colEnd; i >= colStart; i--)
 	        	result.add(matrix[rowEnd][i]);
-	        
-	        for(int i = rowEnd; i < rowEnd; i--)
+        	rowEnd--;
+
+	        for(int i = rowEnd; i >= rowStart; i--)
 	        	result.add(matrix[i][colStart]);
+	        colStart++;
+	        }
 	        
 	        return result;
 	    }
+	 
+	 public static void main(String[] args){
+			
+			int[][] array={{1,2,3},{4,5,6},{7,8,9}};
+			System.out.println(spiralOrder(array)); //send input correctly.
+		}
 
 }
