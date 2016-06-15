@@ -17,7 +17,24 @@ A = [3,2,1,0,4], return false.
  *
  */
 public class Jump_Game {
-	 public static boolean canJump(int[] nums) {
-	        
-	    }
+	public static boolean canJump(int[] nums) {
+		int curr = nums[0];
+
+		for (int i = 0; i < nums.length; i++) {
+			if (i == nums.length - 1)
+				return true;
+			--curr;
+			if (curr < nums[i])
+				curr = nums[i];
+			if (curr == 0)
+				return false;
+
+		}
+		return false;
+
+	}
+
+	public static void main(String[] args) {
+		System.out.println(canJump(new int[] { 3, 2, 1, 0, 4 }));
+	}
 }
