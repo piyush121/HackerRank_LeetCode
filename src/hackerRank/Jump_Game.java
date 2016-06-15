@@ -19,13 +19,14 @@ A = [3,2,1,0,4], return false.
 public class Jump_Game {
 	public static boolean canJump(int[] nums) {
 		int curr = nums[0];
-
-		for (int i = 0; i < nums.length; i++) {
-			if (i == nums.length - 1)
+		int len = nums.length;
+		for (int i = 0; i < len; i++) {
+			int temp = nums[i];
+			if (--curr == len - 1 || i == len - 1)
 				return true;
-			--curr;
-			if (curr < nums[i])
-				curr = nums[i];
+			//--curr;
+			if (curr < temp)
+				curr = temp;
 			if (curr == 0)
 				return false;
 
@@ -33,8 +34,19 @@ public class Jump_Game {
 		return false;
 
 	}
+	
+	public static boolean canJumpEff(int[] nums) { //More efficient greedy version.
+			int maxReach = 0;
+			int i = 0;
+			for(; i < nums.length && i <= maxReach; i++) {
+				maxReach = Math.max(maxReach, i + nums[i]);
+			}
+			
+			return  maxReach >= nums.length - 1;
+	}
+
 
 	public static void main(String[] args) {
-		System.out.println(canJump(new int[] { 3, 2, 1, 0, 4 }));
+		System.out.println(canJumpEff(new int[] {0,1}));
 	}
 }
