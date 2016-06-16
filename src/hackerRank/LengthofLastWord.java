@@ -23,7 +23,7 @@ public class LengthofLastWord {
 		int len = s.length();
 		int count = 0;
 		for (int i = len - 1; i >= 0; i--) {
-			if (s.charAt(i) == ' ' && count == 0)
+			if (s.charAt(i) == ' ' && count == 0) // Can be optimized further but I chose to be lazy this time !:p
 				continue;
 			if (s.charAt(i) == ' ')
 				break;
