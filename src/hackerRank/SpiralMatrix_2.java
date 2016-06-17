@@ -19,7 +19,7 @@ You should return the following matrix:
  *
  */
 public class SpiralMatrix_2 {
-	public static int[][] generateMatrix(int n) {
+	public static int[][] generateMatrix(int n) { // Works pretty well !
 		int[][] result = new int[n][n];
 		int colStart = 0;
 		int rowStart = 0;
@@ -48,7 +48,7 @@ public class SpiralMatrix_2 {
 			rowEnd--;
 
 			for (int j = rowEnd; j >= rowStart; j--) {
-				result[colStart][j] = count;
+				result[j][colStart] = count;
 				count++;
 			}
 			colStart++;
@@ -56,6 +56,17 @@ public class SpiralMatrix_2 {
 		}
 
 		return result;
+
+	}
+
+	public static void main(String[] args) {
+		int[][] res = generateMatrix(3);
+
+		for (int i = 0; i < res.length; i++) {
+			for (int j = 0; j < res.length; j++)
+				System.out.print(" " + res[i][j]);
+			System.out.println();
+		}
 
 	}
 
