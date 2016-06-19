@@ -24,6 +24,32 @@ return 4->5->1->2->3->NULL.
  */
 public class RotateList {
     public static ListNode rotateRight(ListNode head, int k) {
+    	
+    	int length = 0;
+    	ListNode ptr = head;
+    	while(ptr != null) {
+    		ptr = ptr.next;
+    		length++;
+    	}
+    	
+    	k = k % length;
+    	
+    	ListNode front = head;
+    	ListNode rear = head;
+    	int cnt = k;
+    	while( cnt > 0) {
+    		front = front.next;
+    		cnt--;
+    	}
+        while(front.next != null) {
+        	front = front.next;
+        	rear = rear.next;
+        }
+
+        front.next = head;
+        head = rear.next;
+        rear.next = null;
         
+        return head;    	
     }
 }
