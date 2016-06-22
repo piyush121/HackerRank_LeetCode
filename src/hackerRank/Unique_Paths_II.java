@@ -26,12 +26,12 @@ Note: m and n will be at most 100.
  *
  */
 public class Unique_Paths_II {
-	public static int uniquePathsWithObstacles(int[][] obstacleGrid) { // Works
-																		// but
-																		// inefficient.
-		int[][] DP = obstacleGrid;
-		int col = obstacleGrid[0].length;
-		int rows = obstacleGrid.length;
+	public static int uniquePathsWithObstacles1(int[][] obstacleGrid1) { // Works
+																			// but
+																			// inefficient.
+		int[][] DP = obstacleGrid1;
+		int col = obstacleGrid1[0].length;
+		int rows = obstacleGrid1.length;
 		if (DP[rows - 1][col - 1] == 1 || DP[0][0] == 1)
 			return 0;
 		DP[0][0] = -1;
@@ -63,10 +63,27 @@ public class Unique_Paths_II {
 						DP[i][j] += DP[i][j - 1];
 				}
 			}
+		return DP[rows - 1][col - 1];
+	}
 
-		for (int i = 0; i < rows; i++)
-			System.out.println(Arrays.toString(DP[i]));
-		return -DP[rows - 1][col - 1];
+	public static int uniquePathsWithObstacles(int[][] obstacleGrid) { // Optimised DP solution. O(m*n) time and O(1) space.
+		int cols = obstacleGrid[0].length;
+		int row = obstacleGrid.length;
+		obstacleGrid[0][0] ^= 1;
+
+		for (int i = 1; i < row; i++)
+			obstacleGrid[i][0] = obstacleGrid[i][0] == 1 ? 0 : obstacleGrid[i - 1][0];
+
+		for (int j = 1; j < cols; j++)
+			obstacleGrid[0][j] = obstacleGrid[0][j] == 1 ? 0 : obstacleGrid[0][j - 1];
+
+		for (int i = 1; i < row; i++)
+			for (int j = 1; j < cols; j++) {
+				obstacleGrid[i][j] = obstacleGrid[i][j] == 1 ? 0 : obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
+			}
+
+		return obstacleGrid[row - 1][cols - 1];
+
 	}
 
 	public static void main(String[] args) {
