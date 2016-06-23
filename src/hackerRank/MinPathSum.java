@@ -15,7 +15,8 @@ package hackerRank;
  */
 public class MinPathSum {
 
-	public static int minPathSum(int[][] grid) { //Simple DP solution. Not very efficient though.
+	public static int minPathSum1(int[][] grid) { // Simple DP solution. Not
+													// very efficient though.
 
 		int rows = grid.length;
 		int col = grid[0].length;
@@ -30,6 +31,21 @@ public class MinPathSum {
 			}
 
 		return grid[rows - 1][col - 1];
+	}
+
+	public static int minPathSum(int[][] grid) { // Linear space complexity and faster than previous one.
+		if (grid[0].length == 0)
+			return 0;
+		int len = grid[0].length + 1;
+		int[] DP = new int[len];
+		for (int i = 0; i < len; i++)
+			DP[i] = Integer.MAX_VALUE;
+		DP[1] = 0;
+		for (int i = 0; i < grid.length; i++)
+			for (int j = 0; j < grid[0].length; j++) {
+				DP[j + 1] = Math.min(DP[j], DP[j + 1]) + grid[i][j]; // MAgic line.
+			}
+		return DP[len - 1];
 	}
 
 	public static void main(String[] args) {
