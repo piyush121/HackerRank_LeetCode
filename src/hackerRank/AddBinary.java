@@ -40,16 +40,12 @@ public class AddBinary {
 
 			int res = carry + (aBit) + (bBit);
 			int xor = carry ^ (aBit) ^ (bBit);
-			System.out.println(res);
 			if (res >= 2) {
 				carry = 1;
 
-			} else {
+			} else 
 				carry = 0;
-				strb.append(xor);
-				break;
-			}
-
+			
 			strb.append(xor);
 			i--;
 			j--;
@@ -60,7 +56,7 @@ public class AddBinary {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(addBinary("11", "1"));
+		System.out.println(addBinary("1010", "1111"));
 
 	}
 
