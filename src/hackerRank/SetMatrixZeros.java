@@ -21,35 +21,49 @@ Could you devise a constant space solution?
  */
 public class SetMatrixZeros {
 
-	 public void setZeroes(int[][] matrix) {
-		 	if(matrix.length == 0)
-		 		return;
-	        int m = matrix.length;
-	        int n = matrix[0].length;
-	        HashSet<Integer> rows = new HashSet<>();
-	        HashSet<Integer> columns = new HashSet<>();
-	        for(int i =0 ; i < n; i++) {
-	        	for(int j =0 ; j < m; j++) {
-	        		if(matrix[i][j] == 0) {
-	        			rows.add(i);
-	        			columns.add(j);
-	        			break;
-	        		}
-	        			
-	        	}
-	        }
-	        for(int row : rows) {
-	        	for(int j = 0; j < n; j++)
-	        		matrix[row][j] = 0;
-	        }
-	        for(int col : columns) {
-	        	for(int i = 0; i < n; i++)
-	        		matrix[i][col] = 0;
-	        }
-	        
-	    }
+	public static void setZeroes(int[][] matrix) { //Works but not much efficient. As space complexity is O(m + n)
+		if (matrix.length == 0)
+			return;
+		int m = matrix.length;
+		int n = matrix[0].length;
+		HashSet<Integer> rows = new HashSet<>();
+		HashSet<Integer> columns = new HashSet<>();
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				if (matrix[i][j] == 0) {
+					rows.add(i);
+					columns.add(j);
+				}
+
+			}
+		}
+		for (int row : rows) {
+			for (int j = 0; j < n; j++)
+				matrix[row][j] = 0;
+		}
+		for (int col : columns) {
+			for (int i = 0; i < m; i++)
+				matrix[i][col] = 0;
+		}
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int[][] matrix = {{0,0,0,5},{4,3,1,4},{0,1,1,4},{1,2,1,3},{0,0,1,1}};
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) 
+				System.out.print("\t"+matrix[i][j]);
+		System.out.println();
+		}
+		System.out.println();
+	
+		setZeroes(matrix);
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) 
+				System.out.print("\t"+matrix[i][j]);
+		System.out.println();
+		}
 
 	}
 
