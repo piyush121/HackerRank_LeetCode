@@ -16,9 +16,9 @@ public class ClimbingStairs {
 	public int climbStairs(int n) { // Basically a Fibonacci series.
        int prevPrev = 1;
        int prev = 2;
-       if( n == 2)
+       if( n == 1)
     	   return prevPrev;
-       if(n == 1)
+       if(n == 2)
     	   return prev;
        int curr = 0;
        for(int i = 3; i <= n ; i ++) {
