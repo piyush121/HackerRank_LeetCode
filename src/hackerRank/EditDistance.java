@@ -17,9 +17,30 @@ c) Replace a character
  */
 public class EditDistance {
 
-	/**
-	 * @param args
-	 */
+	public int minDistance(String word1, String word2) {//Standard dynamic programming puzzle.
+        int m = word2.length();
+        int n = word1.length();
+        int[][] DP = new int[n + 1][m + 1];
+        
+        for(int j =0 ; j <= m; j++) {
+        	DP[0][j] = j;
+        }
+        for(int i =0 ; i <= m; i++) {
+        	DP[0][i] = i;
+        }
+        
+        for(int i =1 ; i <= m; i++) {
+        	for(int j =1 ; j <= m; j++) {
+        		if(word1.charAt(i) == word2.charAt(j))
+        			DP[i][j] = DP[i-1][j-1];
+        		else
+        		DP[i][j] = Math.min(Math.min(DP[i-1][j], DP[i][j-1]), DP[i-1][j-1]) + 1;
+        	}
+        }
+        
+        return DP[m][n];
+    }
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
