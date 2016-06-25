@@ -21,7 +21,9 @@ Could you devise a constant space solution?
  */
 public class SetMatrixZeros {
 
-	public static void setZeroes(int[][] matrix) { //Works but not much efficient. As space complexity is O(m + n)
+	public static void setZeroes1(int[][] matrix) { // Works but not much
+													// efficient. As space
+													// complexity is O(m + n)
 		if (matrix.length == 0)
 			return;
 		int m = matrix.length;
@@ -48,21 +50,60 @@ public class SetMatrixZeros {
 
 	}
 
+	public static void setZeroes(int[][] matrix) { // Works with O(1) space. That solution was hard :D
+		if (matrix.length == 0)
+			return;
+		int m = matrix.length;
+		int n = matrix[0].length;
+		boolean fr = false;
+		boolean fc = false;
+
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				if (matrix[i][j] == 0) {
+
+					if (i == 0)
+						fr = true;
+					if (j == 0)
+						fc = true;
+					matrix[0][j] = 0;
+					matrix[i][0] = 0;
+				}
+
+			}
+		}
+		for (int i = 1; i < m; i++) {
+			for (int j = 1; j < n; j++) {
+				if (matrix[0][j] == 0 || matrix[i][0] == 0) { // Main idea is here.
+					matrix[i][j] = 0;
+				}
+			}
+		}
+		if (fr)
+			for (int j = 0; j < n; j++) {
+				matrix[0][j] = 0;
+			}
+		if (fc)
+			for (int i = 0; i < m; i++)
+				matrix[i][0] = 0;
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[][] matrix = {{0,0,0,5},{4,3,1,4},{0,1,1,4},{1,2,1,3},{0,0,1,1}};
+		int[][] matrix = { { 0, 0, 0, 5 }, { 4, 3, 1, 4 }, { 0, 1, 1, 4 }, { 1, 2, 1, 3 }, { 0, 0, 1, 1 } };
 		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) 
-				System.out.print("\t"+matrix[i][j]);
-		System.out.println();
+			for (int j = 0; j < matrix[0].length; j++)
+				System.out.print("\t" + matrix[i][j]);
+			System.out.println();
 		}
 		System.out.println();
-	
+
 		setZeroes(matrix);
 		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) 
-				System.out.print("\t"+matrix[i][j]);
-		System.out.println();
+			for (int j = 0; j < matrix[0].length; j++)
+				System.out.print("\t" + matrix[i][j]);
+			System.out.println();
 		}
 
 	}
