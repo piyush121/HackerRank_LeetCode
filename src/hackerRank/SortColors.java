@@ -23,7 +23,7 @@ package hackerRank;
  */
 public class SortColors {
 
-	public static void sortColors(int[] nums) { // Works but not efficient.
+	public static void sortColors1(int[] nums) { // Works but not efficient.
 		int zero = 0;
 		int one = 0;
 		int two = 0;
@@ -52,9 +52,31 @@ public class SortColors {
 		}
 	}
 
+	public static void sortColors(int[] nums) {//Amazingly Fast solution. Hard to understand though.
+		int low = 0;
+		int high = nums.length - 1;
+		for (int i = 0; i <= high; i++) {
+
+			while (nums[i] == 2 && i < high) {
+				nums[i] = nums[high];
+				nums[high] = 2;
+				high--;
+			}
+
+			while (nums[i] == 0 && i > low) {
+				nums[i] = nums[low];
+				nums[low] = 0;
+				low++;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		sortColors(new int[]{1,0});
+		int[] arr = new int[] { 0 };
+		sortColors(arr);
+		for (int i = 0; i < 3; i++)
+			System.out.println(arr[i]);
 	}
 
 }
