@@ -16,14 +16,14 @@ import java.util.List;
  *
  */
 public class Combinations {
-
+static int count=0;
 	public static List<List<Integer>> combine(int n, int k) { // Took a long
 																// time to do
 																// this
 																// recursively.
 																// But this is
 																// highly
-																// inefficient
+																// inefficient because of recursion.
 																// :P
 		List<Integer> temp = new LinkedList<>();
 		List<List<Integer>> result = new LinkedList<>();
@@ -32,14 +32,15 @@ public class Combinations {
 	}
 
 	private static void combHelper(int start, int n, int k, List<Integer> temp, List<List<Integer>> result) {
-		if (temp.size() == k) {
+	//	System.out.println("Recursive call: "+ (++count));
+		if (k ==0) {
 			result.add(new LinkedList<>(temp));
 			return;
 		}
 
-		for (int i = start; i <= n; i++) {
+		for (int i = start; n - i + 1 >= k ; i++) {
 			temp.add(i);
-			combHelper(i + 1, n, k, temp, result);
+			combHelper(i + 1, n, k - 1, temp, result);
 			temp.remove(temp.size() - 1);
 
 		}
@@ -47,7 +48,7 @@ public class Combinations {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(combine(4, 1));
+		System.out.println(combine(6, 3));
 	}
 
 }
