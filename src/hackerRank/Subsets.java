@@ -18,20 +18,15 @@ import java.util.List;
  *
  */
 public class Subsets {
-	public static List<List<Integer>> subsets(int[] nums) { // Good solution but not very optimal.
+	public static List<List<Integer>> subsets(int[] nums) { // Good solution but
+															// not very optimal.
 		if (nums.length == 0)
 			return null;
 		Arrays.sort(nums);
 		List<List<Integer>> result = new ArrayList<>();
-
-		List<Integer> first = new ArrayList<Integer>();
-		first.add(nums[0]);
-		result.add(first);
-		for (int i = 1; i < nums.length; i++) {
-			List<Integer> temp = new ArrayList<>();
+		result.add(new ArrayList<>());
+		for (int i = 0; i < nums.length; i++) {
 			List<List<Integer>> answer = new ArrayList<>();
-			temp.add(nums[i]);
-			answer.add(temp);
 			for (List<Integer> list : result) {
 				List<Integer> second = new ArrayList<>(list);
 				second.add(nums[i]);
