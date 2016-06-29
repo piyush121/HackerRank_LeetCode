@@ -16,26 +16,25 @@ package hackerRank;
  */
 public class RemoveDuplicatesFromArray_II {
 
-	public static int removeDuplicates(int[] nums) {
+	public static int removeDuplicates(int[] nums) { // Best solution.
 		int count = 1;
-		int temp = 0;
+		int index = 1;
 		for (int i = 1; i < nums.length; i++) {
 			if (nums[i] == nums[i - 1])
 				count++;
-			if (count > 2) {
-				while (i < nums.length && nums[i] == nums[i - 1]) {
-					temp++;
-					i++;
-				}
+			else
+				count = 1;
+			if (count <= 2) {
+				nums[index++] = nums[i]; //Key idea here.
 			}
-			count = 1;
+
 		}
-		return nums.length - temp;
+		return index;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(removeDuplicates(new int[] { 1, 1, 1 }));
+		System.out.println(removeDuplicates(new int[] { 1, 1, 1, 2 }));
 	}
 
 }
