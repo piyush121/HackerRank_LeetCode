@@ -23,7 +23,26 @@ package hackerRank;
  */
 public class RemoveDuplicatesFromSortedList_II {
 
-	public ListNode deleteDuplicates(ListNode head) {
+	public ListNode deleteDuplicates1(ListNode head) { // Works pretty well ! nOt too hard but a bit messy.
+		 if (head == null || head.next == null)
+				return head;
+			ListNode rear = new ListNode(0);
+			ListNode dummy = rear;
+			ListNode front = head;
+			ListNode rep = null;
+			while (front != null) {
+				if (front.next != null && front.val == front.next.val) {
+					rep = front;
+				} else {
+					if (rep == null ||front.val != rep.val) {
+						rear.next = front;
+						rear = rear.next;
+					}
+				}
+				front = front.next;
+			}
+			rear.next = null;
+			return dummy.next;
         
     }
 	public static void main(String[] args) {
