@@ -23,30 +23,34 @@ package hackerRank;
  */
 public class RemoveDuplicatesFromSortedList_II {
 
-	public ListNode deleteDuplicates1(ListNode head) { // Works pretty well ! nOt too hard but a bit messy.
-		 if (head == null || head.next == null)
-				return head;
-			ListNode rear = new ListNode(0);
-			ListNode dummy = rear;
-			ListNode front = head;
-			ListNode rep = null;
-			while (front != null) {
-				if (front.next != null && front.val == front.next.val) {
-					rep = front;
-				} else {
-					if (rep == null ||front.val != rep.val) { // key idea.
-						rear.next = front;
-						rear = rear.next;
-					}
+	public ListNode deleteDuplicates1(ListNode head) { // Works pretty well !
+														// nOt too hard but a
+														// bit messy.
+		if (head == null || head.next == null)
+			return head;
+		ListNode rear = new ListNode(0);
+		ListNode dummy = rear;
+		ListNode front = head;
+		ListNode rep = null;
+		while (front != null) {
+			if (front.next != null && front.val == front.next.val) {
+				rep = front;
+			} else {
+				if (rep == null || front.val != rep.val) { // key idea.
+					rear.next = front;
+					rear = rear.next;
 				}
-				front = front.next;
 			}
-			rear.next = null;
-			return dummy.next;
-        
-    }
-	
-	public ListNode deleteDuplicates(ListNode head) { // Works pretty well and space efficient as well.
+			front = front.next;
+		}
+		rear.next = null;
+		return dummy.next;
+
+	}
+
+	public ListNode deleteDuplicates(ListNode head) { // Works pretty well and
+														// space efficient as
+														// well.
 		if (head == null || head.next == null)
 			return head;
 		ListNode rear = new ListNode(0);
@@ -57,7 +61,8 @@ public class RemoveDuplicatesFromSortedList_II {
 				front = front.next;
 			}
 			if (rear.next != front) {
-				rear.next = front.next;
+				rear.next = front.next; // it will set the last node to be
+										// null.Clever !
 			} else {
 				rear = rear.next;
 			}
@@ -65,8 +70,9 @@ public class RemoveDuplicatesFromSortedList_II {
 			front = front.next;
 		}
 		return dummy.next;
-       
-   }
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
