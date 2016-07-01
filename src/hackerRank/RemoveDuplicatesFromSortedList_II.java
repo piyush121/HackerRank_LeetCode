@@ -34,7 +34,7 @@ public class RemoveDuplicatesFromSortedList_II {
 				if (front.next != null && front.val == front.next.val) {
 					rep = front;
 				} else {
-					if (rep == null ||front.val != rep.val) {
+					if (rep == null ||front.val != rep.val) { // key idea.
 						rear.next = front;
 						rear = rear.next;
 					}
@@ -45,6 +45,28 @@ public class RemoveDuplicatesFromSortedList_II {
 			return dummy.next;
         
     }
+	
+	public ListNode deleteDuplicates(ListNode head) { // Works pretty well and space efficient as well.
+		if (head == null || head.next == null)
+			return head;
+		ListNode rear = new ListNode(0);
+		ListNode dummy = rear;
+		ListNode front = head;
+		while (front != null) {
+			while (front.next != null && front.val == front.next.val) {
+				front = front.next;
+			}
+			if (rear.next != front) {
+				rear.next = front.next;
+			} else {
+				rear = rear.next;
+			}
+
+			front = front.next;
+		}
+		return dummy.next;
+       
+   }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
