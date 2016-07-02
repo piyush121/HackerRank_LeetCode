@@ -3,6 +3,7 @@
  */
 package hackerRank;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,7 +16,10 @@ import java.util.List;
  * 
  * For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:
  * 
- * 00 - 0 01 - 1 11 - 3 10 - 2 Note: For a given n, a gray code sequence is not
+ * 00 - 0 
+ * 01 - 1 
+ * 11 - 3 
+ * 10 - 2 Note: For a given n, a gray code sequence is not
  * uniquely defined.
  * 
  * For example, [0,2,3,1] is also a valid gray code sequence according to the
@@ -25,13 +29,37 @@ import java.util.List;
  * sequence. Sorry about that.
  */
 public class GrayCode {
-	 public List<Integer> grayCode(int n) {
-	        
-	    }
-	
+	public static List<Integer> grayCode(int n) {//THis works but not very efficient.
+		int[] arr = new int[n];
+		List<Integer> result = new LinkedList<>();
+		codeHelper(result, arr, n);
+		return result;
+
+	}
+
+	private static void codeHelper(List<Integer> result, int[] arr, int n) {
+		result.add(binToNum(arr));
+		for (int i = n - 1; i >= 0; i--) {
+			arr[i] = 1;
+			codeHelper(result, arr, i);
+			arr[i] = 0;
+		}
+
+	}
+
+	private static int binToNum(int[] arr) {
+		int num = 0;
+		int len = arr.length;
+		for (int i = len - 1; i >= 0; i--) {
+			num += Math.pow(2, len - i - 1) * arr[i];
+		}
+
+		return num;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println(grayCode(2));
 	}
 
 }
