@@ -31,7 +31,7 @@ public class PartitionList {
 				p2.next = runner;
 				p2 = p2.next;
 			}
-
+			runner = runner.next;
 		}
 
 		p2.next = null;
