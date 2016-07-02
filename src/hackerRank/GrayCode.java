@@ -3,6 +3,7 @@
  */
 package hackerRank;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ import java.util.List;
  * sequence. Sorry about that.
  */
 public class GrayCode {
-	public static List<Integer> grayCode(int n) {//THis works but not very efficient.
+	public static List<Integer> grayCode1(int n) {//THis works but not very efficient.
 		int[] arr = new int[n];
 		List<Integer> result = new LinkedList<>();
 		codeHelper(result, arr, n);
@@ -55,6 +56,19 @@ public class GrayCode {
 		}
 
 		return num;
+	}
+	
+	public static List<Integer> grayCode(int n) { //Turns out ArraysList is faster than linked list in Java.
+		List<Integer> result = new ArrayList<>();
+		result.add(0);
+		
+		for(int i =0 ;i < n; i++) {
+			int num = result.size();
+			for(int j = result.size() - 1; j >=0 ; j--) {
+				result.add(num | result.get(j));
+			}
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {
