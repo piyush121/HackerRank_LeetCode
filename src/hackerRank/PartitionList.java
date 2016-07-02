@@ -14,7 +14,7 @@ package hackerRank;
  *
  */
 public class PartitionList {
-	public ListNode partition(ListNode head, int x) {
+	public ListNode partition(ListNode head, int x) { // Got this in first attempt. Could not beleive :D.
 		if (head == null || head.next == null)
 			return head;
 		ListNode dummy1 = new ListNode(0);
@@ -31,7 +31,7 @@ public class PartitionList {
 				p2.next = runner;
 				p2 = p2.next;
 			}
-
+			runner = runner.next;
 		}
 
 		p2.next = null;
