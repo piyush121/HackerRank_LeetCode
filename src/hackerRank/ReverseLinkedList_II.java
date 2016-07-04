@@ -14,12 +14,38 @@ package hackerRank;
  *
  */
 public class ReverseLinkedList_II {
-	  public ListNode reverseBetween(ListNode head, int m, int n) {
-	        
-	    }
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static ListNode reverseBetween(ListNode head, int m, int n) { // Was
+																			// a
+																			// hard
+																			// one.
+																			// Don't
+																			// know
+																			// why.
+		ListNode dummy = new ListNode(0);
+		dummy.next = head;
+		ListNode prev = dummy;
+		for (int i = 0; i < m - 1; i++)
+			prev = prev.next;
+		ListNode curr = prev.next;
 
+		for (int i = 0; i < n - 1; i++) {
+			ListNode next = curr.next;
+			curr.next = next.next;
+			next.next = prev.next;
+			prev.next = next;
+		}
+
+		return dummy.next;
+
+	}
+
+	public static void main(String[] args) {
+		ListNode list1 = new ListNode(3);
+		ListNode list2 = new ListNode(5);
+		list1.next = list2;
+		list2.next = null;
+
+		reverseBetween(list1, 1, 2);
 	}
 
 }
