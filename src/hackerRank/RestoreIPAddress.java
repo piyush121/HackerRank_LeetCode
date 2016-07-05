@@ -50,8 +50,8 @@ public class RestoreIPAddress { // Wow! that was a great learning curve ! This
 		}
 		for (int i = start; i < start + 3 && i < str.length(); i++) {
 			String st = str.substring(start, i + 1);
-			if (st.startsWith("0") && st.length() > 1 || Integer.parseInt(st) > 255)
-				continue;
+			if (st.startsWith("0") && st.length() > 1 || i - start == 2 && Integer.parseInt(st) > 255) // notice "01" can be parse as 1. Deal with that.
+				break;
 			if (count != 3)
 				st = st + ".";
 			efficientHelper(str, count + 1, i + 1, result, temp + st);

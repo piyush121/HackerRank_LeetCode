@@ -1,13 +1,13 @@
 package hackerRank;
 
 
-class treeNode
+class treeeNode
 {
 	int data;
-	treeNode left,right;
-	treeNode parent=null;
+	treeeNode left,right;
+	treeeNode parent=null;
 	
-	treeNode(int data,treeNode left,treeNode right)
+	treeeNode(int data,treeeNode left,treeeNode right)
 	{
 		this.data=data;
 		this.left=left;
@@ -16,20 +16,20 @@ class treeNode
 	
 	@Override
 	public String toString() {
-		return "treeNode [data=" + data + ", left=" + left + ", right=" + right + ", parent=" + parent + "]";
+		return "treeeNode [data=" + data + ", left=" + left + ", right=" + right + ", parent=" + parent + "]";
 	}
 }
 
 public class binaryTree {
-	treeNode root;
+	treeeNode root;
 	
-	public void add(treeNode node)
+	public void add(treeeNode node)
 	{
 		if(root==null)
 			root=node;
 		else
 		{	
-			treeNode ptr=root;
+			treeeNode ptr=root;
 			while(ptr!=null)
 			{
 				if(node.data>ptr.data)
@@ -55,27 +55,27 @@ public class binaryTree {
 		}
 			
 	}
-	public static void inOrder(treeNode root)
+	public static void inOrder(treeeNode root)
 	{
-		treeNode ptr=root;
+		treeeNode ptr=root;
 		if (root ==null)
 			return;
 		inOrder(ptr.left);
 		System.out.print(ptr.data);
 		inOrder(ptr.right);
 	}
-	public static void preOrder(treeNode root)
+	public static void preOrder(treeeNode root)
 	{
-		treeNode ptr=root;
+		treeeNode ptr=root;
 		if (root ==null)
 			return;
 		System.out.print(ptr.data);
 		preOrder(ptr.left);
 		preOrder(ptr.right);
 	}
-	public static void postOrder(treeNode root)
+	public static void postOrder(treeeNode root)
 	{
-		treeNode ptr=root;
+		treeeNode ptr=root;
 		if (root ==null)
 			return;
 		postOrder(ptr.left);
@@ -87,12 +87,12 @@ public class binaryTree {
 	
 	
 	public static void main(String[] args) {
-		treeNode node1=new treeNode(4,null,null);
-		treeNode node2=new treeNode(5,null,null);
-		treeNode node3=new treeNode(2,null,null);
-		treeNode node4=new treeNode(1,null,null);
-		treeNode node5=new treeNode(3,null,null);
-		treeNode node6=new treeNode(3,null,null);
+		treeeNode node1=new treeeNode(4,null,null);
+		treeeNode node2=new treeeNode(5,null,null);
+		treeeNode node3=new treeeNode(2,null,null);
+		treeeNode node4=new treeeNode(1,null,null);
+		treeeNode node5=new treeeNode(3,null,null);
+		treeeNode node6=new treeeNode(3,null,null);
 
 		binaryTree mytree=new binaryTree();
 		mytree.add(node1);

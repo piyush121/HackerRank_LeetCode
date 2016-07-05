@@ -4,17 +4,17 @@ import java.util.Stack;
 
 public class InOrderIterative {
 	
-	public static void InTraversal(treeNode root)
+	public static void InTraversal(treeeNode root)
 	{
 		
-		Stack <treeNode> mystack=new Stack<>();
+		Stack <treeeNode> mystack=new Stack<>();
 		mystack.push(root);
 		while(mystack.peek().left!=null) //going left
 			mystack.push(mystack.peek().left);
 		while(!mystack.isEmpty())
 		{	
 			
-			treeNode node=mystack.pop();
+			treeeNode node=mystack.pop();
 			System.out.println(node.data);
 			
 			if(node.right!=null)		//going right
@@ -33,12 +33,12 @@ public class InOrderIterative {
 		
 public static void main(String[] args) {
 	
-	treeNode node1=new treeNode(4,null,null);
-	treeNode node2=new treeNode(5,null,null);
-	treeNode node3=new treeNode(2,null,null);
-	treeNode node4=new treeNode(1,null,null);
-	treeNode node5=new treeNode(3,null,null);
-	treeNode node6=new treeNode(3,null,null);
+	treeeNode node1=new treeeNode(4,null,null);
+	treeeNode node2=new treeeNode(5,null,null);
+	treeeNode node3=new treeeNode(2,null,null);
+	treeeNode node4=new treeeNode(1,null,null);
+	treeeNode node5=new treeeNode(3,null,null);
+	treeeNode node6=new treeeNode(3,null,null);
 
 	binaryTree mytree=new binaryTree();
 	mytree.add(node1);
