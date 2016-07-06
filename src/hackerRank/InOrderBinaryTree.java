@@ -63,7 +63,7 @@ public class InOrderBinaryTree {
 				
 			}
 
-	public List<Integer> inorderTraversal1(TreeNode root) {
+	public List<Integer> inorderTraversal2(TreeNode root) { // Recursive solution. Most efficient and clear.
 		List<Integer> result = new ArrayList<>();
 		helper(root, result);
 		return result;
