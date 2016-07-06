@@ -3,6 +3,7 @@
  */
 package hackerRank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +21,30 @@ Given n = 3, your program should return all 5 unique BST's shown below.
  */
 public class UniqueBinarySearchTrees_II {
 	public List<TreeNode> generateTrees(int n) {
-        
-    }
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		if (n < 1)
+			return new ArrayList<TreeNode>();
+		return Recursion(1, n);
 	}
 
+	private List<TreeNode> Recursion(int start, int end) { //Good one. Takes you into deep thinking !
+		List<TreeNode> result = new ArrayList<>();
+		if (start > end)
+			result.add(null);
+
+		for (int idx = start; idx <= end; idx++) {
+			List<TreeNode> left = Recursion(start, idx - 1); //Take a deep breadth of recursion !
+			List<TreeNode> right = Recursion(idx + 1, end);
+
+			for (TreeNode leftNode : left) // Generate every combination.
+				for (TreeNode rightNode : right) {
+					TreeNode node = new TreeNode(idx);
+					node.left = leftNode;
+					node.right = rightNode;
+					result.add(node);
+				}
+
+		}
+
+		return result;
+	}
 }
