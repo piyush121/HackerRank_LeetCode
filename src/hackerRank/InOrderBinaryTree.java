@@ -40,6 +40,28 @@ public class InOrderBinaryTree {
 		return result;
 
 	}
+	
+	public List<Integer> inorderTraversal1(TreeNode root) { // Semi-concise solution.
+	     Stack<TreeNode> stack = new Stack<>();
+			List<Integer> result = new ArrayList<>();
+			TreeNode curr = root;
+			while (curr != null || !stack.isEmpty()) {
+			    if(curr!= null)
+	                stack.add(curr);
+				while (curr != null) {
+					curr = curr.left;
+					if(curr != null)
+					stack.push(curr);
+				}
+				curr = stack.pop();
+				result.add(curr.val);
+				curr = curr.right;
+
+			}
+			return result;
+
+				
+			}
 
 	public List<Integer> inorderTraversal1(TreeNode root) {
 		List<Integer> result = new ArrayList<>();
