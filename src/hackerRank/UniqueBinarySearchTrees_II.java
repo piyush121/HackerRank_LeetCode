@@ -32,7 +32,7 @@ public class UniqueBinarySearchTrees_II {
 			result.add(null);
 
 		for (int idx = start; idx <= end; idx++) {
-			List<TreeNode> left = Recursion(start, idx - 1); //Take a deep breadth of recursion !
+			List<TreeNode> left = Recursion(start, idx - 1); //Take a deep breathe of recursion !
 			List<TreeNode> right = Recursion(idx + 1, end);
 
 			for (TreeNode leftNode : left) // Generate every combination.

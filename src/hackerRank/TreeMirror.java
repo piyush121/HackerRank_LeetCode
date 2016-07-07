@@ -2,11 +2,11 @@ package hackerRank;
 
 public class TreeMirror {
 
-	public static void treeMirror(treeNode root) {
+	public static void treeMirror(treeeNode root) {
 
 		if (root == null) // base case
 			return;
-		treeNode temp = root.left; // swapping left node with right node.
+		treeeNode temp = root.left; // swapping left node with right node.
 		root.left = root.right;
 		root.right = temp;
 		treeMirror(root.left);
@@ -14,8 +14,8 @@ public class TreeMirror {
 
 	}
 
-	public static void inOrder(treeNode root) {
-		treeNode ptr = root;
+	public static void inOrder(treeeNode root) {
+		treeeNode ptr = root;
 		if (root == null)
 			return;
 		inOrder(ptr.left);
@@ -24,12 +24,12 @@ public class TreeMirror {
 	}
 
 	public static void main(String[] args) {
-		treeNode node1 = new treeNode(4, null, null);
-		treeNode node2 = new treeNode(5, null, null);
-		treeNode node3 = new treeNode(2, null, null);
-		treeNode node4 = new treeNode(1, null, null);
-		treeNode node5 = new treeNode(3, null, null);
-		treeNode node6 = new treeNode(3, null, null);
+		treeeNode node1 = new treeeNode(4, null, null);
+		treeeNode node2 = new treeeNode(5, null, null);
+		treeeNode node3 = new treeeNode(2, null, null);
+		treeeNode node4 = new treeeNode(1, null, null);
+		treeeNode node5 = new treeeNode(3, null, null);
+		treeeNode node6 = new treeeNode(3, null, null);
 
 		binaryTree mytree = new binaryTree();
 		mytree.add(node1);
