@@ -39,7 +39,7 @@ Given n = 3, there are a total of 5 unique BST's.
  * G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)
  * 
  */
-public class UniqueBinarySearchTrees {
+public class UniqueBinarySearchTrees { //Although it can be solved by Catalan numbers but DP solution is way more sweet.
 
 	public static int numTrees(int n) {
 		int[] DP = new int[n + 1];
