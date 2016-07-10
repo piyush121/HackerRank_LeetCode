@@ -24,19 +24,36 @@ Binary tree [1,2,3], return false.
  *
  */
 public class ValidateBinarySearchTree {
-	public static boolean isValidBST(TreeNode root) { // Cool solution with no integer overflow error.
-		if(root == null)
+	public static TreeNode prev = null;
+	public static boolean isValidBST(TreeNode root) { // In order recursive solution. NEAT !
+		return helper(root);
+	}
+	private static boolean helper(TreeNode node) {
+		if(node == null)
 			return true;
-		return helper(root.left, root.val, Long.MIN_VALUE) && helper(root.right, Long.MAX_VALUE, root.val);
+		if(!helper(node.left ))
+			return false;
+		if(prev!=null && prev.val >= node.val)
+			return false;
+		prev = node;
+		return helper(node.right);
 	}
 	
-	private static boolean helper(TreeNode node, long max, long min) {	
+	
+	
+	public static boolean isValidBST1(TreeNode root) { // Cool solution with no integer overflow error.
+		if(root == null)
+			return true;
+		return helper1(root.left, root.val, Long.MIN_VALUE) && helper1(root.right, Long.MAX_VALUE, root.val);
+	}
+	
+	private static boolean helper1(TreeNode node, long max, long min) {	
 		if(node == null)
 			return true;
 		if(node.val >= max || node.val <= min)
 			return false;
 		
-		return helper(node.left, node.val, min) && helper(node.right, max, node.val);
+		return helper1(node.left, node.val, min) && helper1(node.right, max, node.val);
 	}
 
 	public static void main(String[] args) {
