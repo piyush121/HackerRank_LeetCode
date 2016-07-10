@@ -23,21 +23,21 @@ public class InterleavingString {
 		int m = s1.length();
 		int n = s2.length();
 		boolean[][] DP = new boolean[m + 1][n + 1];
-		
+
 		DP[0][0] = true;
 		for (int i = 0; i <= m; i++) {
-			for(int j = 0; j <= n; j++) {
-				if(i == 0 && j == 0)
+			for (int j = 0; j <= n; j++) {
+				if (i == 0 && j == 0)
 					continue;
 				int k = i + j; // Important step !
-				
-				if(i > 0 && DP[i - 1][j] && s3.charAt(k - 1) == s1.charAt(i - 1) ||
-						j > 0 && DP[i][j - 1] && s2.charAt(j - 1) == s3.charAt(k - 1))
+
+				if (i > 0 && DP[i - 1][j] && s3.charAt(k - 1) == s1.charAt(i - 1)
+						|| j > 0 && DP[i][j - 1] && s2.charAt(j - 1) == s3.charAt(k - 1))
 					DP[i][j] = true;
 			}
-			
+
 		}
-		
+
 		return DP[m][n];
 	}
 
