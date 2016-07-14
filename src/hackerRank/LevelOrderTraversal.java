@@ -27,7 +27,45 @@ return its level order traversal as:
  *
  */
 public class LevelOrderTraversal {
-	public List<List<Integer>> levelOrder(TreeNode root) { // Works but not very efficient.
+	public List<List<Integer>> levelOrder2(TreeNode root) { // Works even more efficiently. DFS based recursive solution.
+		List<List<Integer>> result = new ArrayList<>();
+		if (root == null)
+			return result;
+
+		}
+	private void helper(List<List<Integer>> res, TreeNode root, int level) {
+		
+		
+	}
+	
+	
+	public List<List<Integer>> levelOrder1(TreeNode root) { // Works efficiently. BFS solution.
+		List<List<Integer>> result = new ArrayList<>();
+		if (root == null)
+			return result;
+
+		Queue<TreeNode> curr = new LinkedList<>();
+		List<Integer> list = new ArrayList<>();
+		curr.add(root);
+		while (!curr.isEmpty()) {
+			int size = curr.size();
+			for (int i = 0; i < size; i++) {
+				TreeNode temp = curr.poll();
+				list.add(temp.val);
+				if (temp.left != null)
+					curr.add(temp.left);
+				if (temp.right != null)
+					curr.add(temp.right);
+			}
+			result.add(list);
+			list = new ArrayList<Integer>();
+		}
+
+		return result;
+
+	}
+	
+	public List<List<Integer>> levelOrder2(TreeNode root) { // Works but not very efficient. Can use only 1 queue instead of two..
 		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
 			return result;
