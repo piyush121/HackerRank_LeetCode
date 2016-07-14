@@ -27,6 +27,10 @@ public class SymmetricTree {
 	public boolean isSymmetric(TreeNode root) {
 		
 	}
+	
+	private boolean helper(TreeNode n1, Treenode n2) {
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
