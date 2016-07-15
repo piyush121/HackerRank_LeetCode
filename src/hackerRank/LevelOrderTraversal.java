@@ -31,13 +31,15 @@ public class LevelOrderTraversal {
 		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
 			return result;
-
+		helper (result, root, 0);
+		return result;
 		}
 	private void helper(List<List<Integer>> res, TreeNode root, int level) {
 		if(root == null)
 			return;
-		if(level <= res.size()) {
-			List<Integer> list = new ArrayList<Integer>(root.val);
+		if(level == res.size()) {
+			List<Integer> list = new ArrayList<Integer>();
+			list.add(root.val);
 			res.add(list);
 		}
 		else {
