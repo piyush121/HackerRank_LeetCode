@@ -34,8 +34,20 @@ public class LevelOrderTraversal {
 
 		}
 	private void helper(List<List<Integer>> res, TreeNode root, int level) {
+		if(root == null)
+			return;
+		if(level <= res.size()) {
+			List<Integer> list = new ArrayList<Integer>(root.val);
+			res.add(list);
+		}
+		else {
+			List<Integer> list = res.get(level);
+			list.add(root.val);
+		}
 		
-		
+		helper(res, root.left, level + 1);
+		helper(res, root.right, level + 1);
+			
 	}
 	
 	
