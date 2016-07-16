@@ -11,12 +11,35 @@ package hackerRank;
  */
 public class ConstructBinaryTreeFromPreOrderAndInOrderTraversal {
 
-	public TreeNode buildTree(int[] preorder, int[] inorder) {
-
+	public static TreeNode buildTree(int[] preorder, int[] inorder) { // Really good recursive solution. Not very efficient though.
+		
+		TreeNode root = helper(0, 0, inorder.length - 1, preorder, inorder);
+		
+		return root;
+	}
+	
+	private static TreeNode helper(int preStart, int inStart, int inEnd, int[] preOrder, int[] inOrder) {
+		if(inStart > inEnd || preStart >= preOrder.length)
+			return null;
+		TreeNode node = new TreeNode(preOrder[preStart]);
+		int index = 0;
+			for(int j = inStart; j <= inEnd; j++ ) {
+				if(preOrder[preStart] == inOrder[j]) {
+					index = j;
+					
+			}
+		}
+		
+		node.left = helper(preStart + 1, inStart, index - 1, preOrder, inOrder );
+		node.right = helper(index +preStart - inStart + 1, index + 1, inEnd, preOrder, inOrder);
+		
+		return node;
+		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		buildTree(new int[]{1,2,3}, new int[]{2,3,1});
 
 	}
 
