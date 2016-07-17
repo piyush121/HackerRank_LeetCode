@@ -12,13 +12,33 @@ package hackerRank;
  *
  */
 public class BalancedBinaryTree {
-	public boolean isBalanced(TreeNode root) { // Not so efficient because it will search a lot of useless nodes.
+	public boolean isBalanced(TreeNode root) { //Slickest recursive code you'll ever see.
+		if (root == null)
+			return true;
+		return depth(root) != -1;
+	}
+
+	private int depth(TreeNode node) {
+		if (node == null)
+			return 0;
+		int left = depth(node.left);
+		int right = -1;
+		if(left != -1) //Trying to avoid useless search. Why go to right when left is unbalanced. Right ?
+			right = depth (node.right);
+		if(right != -1 && Math.abs(left - right) <=1 )
+			return 1 + Math.max(left, right);
+		else
+			return -1;
+	}
+	
+	
+	public boolean isBalanced1(TreeNode root) { // Not so efficient because it will search a lot of useless nodes.
 		if (root == null)
 			return true;
 		int left = height(root.left);
 		int right = height(root.right);
 		if (Math.abs(right - left) < 2)
-			return isBalanced(root.left) && isBalanced(root.right);
+			return isBalanced1(root.left) && isBalanced1(root.right);
 		else
 			return false;
 	}
