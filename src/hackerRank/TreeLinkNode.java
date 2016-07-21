@@ -1,9 +1,10 @@
 package hackerRank;
 
 public class TreeLinkNode {
+	int val;
+	TreeLinkNode left, right, next;
 
-	TreeLinkNode left;
-	TreeLinkNode right;
-	TreeLinkNode next;
-
+	TreeLinkNode(int x) {
+		val = x;
+	}
 }

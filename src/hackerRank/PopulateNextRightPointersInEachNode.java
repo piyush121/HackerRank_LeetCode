@@ -35,7 +35,41 @@ After calling your function, the tree should look like:
  *
  */
 public class PopulateNextRightPointersInEachNode {
-	public void connect(TreeLinkNode root) { //Recursive inefficient code.
+	public void connect(TreeLinkNode root) { //Most efficient recursive code.
+	    if(root == null)
+	        return;
+	        
+	    if(root.left != null){
+	        root.left.next = root.right; //Connect left and right,
+	        if(root.next != null) // go to next.
+	            root.right.next = root.next.left; // connect right and next subtree.
+	    }
+	    
+	    connect(root.left); // recurse on both child.
+	    connect(root.right);
+	}
+	
+	
+	public void connect2(TreeLinkNode root) { //Highly efficient Iterative solution. O(n) time and O(1) space.
+		if (root == null)
+			return;
+		TreeLinkNode last = root;
+		TreeLinkNode curr = null;
+
+		while (last.left != null) {
+			curr = last;
+			while (curr != null) {
+				curr.left.next = curr.right;
+				if (curr.next != null)
+					curr.right.next = curr.next.left;
+				curr = curr.next;
+			}
+			last = last.left;
+		}
+	}
+	
+	
+	public void connect1(TreeLinkNode root) { //Recursive inefficient code.
 		if (root == null)
 			return;
 		helper(root.left, root.right);
