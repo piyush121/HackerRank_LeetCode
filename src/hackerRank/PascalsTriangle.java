@@ -23,7 +23,19 @@ Return
  */
 public class PascalsTriangle {
 	public static List<List<Integer>> generate(int numRows) {
+		List<List<Integer>> res = new ArrayList<>();
+		List<Integer> list = new ArrayList<>(); // use same list again and keep adding it to the result.
 		
+		for (int i = 0; i < numRows; i++) {
+			list.add(0,1);
+			for (int j = 1; j < i; j++) {
+				list.set(j, list.get(j) + list.get(j + 1));
+				
+			}
+			res.add(new ArrayList<>(list));
+		}
+		
+		return res;
 	}
 	
 	
