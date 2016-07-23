@@ -15,33 +15,43 @@ package hackerRank;
  */
 public class BestTimeToBuyAndSellStock_II {
 	public static int maxProfit(int[] prices) {
-			if(prices.length == 0)
-				return 0;
-			int low = prices[0];
-			int minSoFar = prices[0];
-			int profit = 0;
+		if (prices.length == 0)
+			return 0;
+		int profit = 0;
+		
+		for (int i = 0; i < prices.length; i++) {
+			if(i != 0 && prices[i] > prices[i-1])
+				profit += prices[i] - prices[i-1];
 			
-			for(int i = 1; i < prices.length; i++) {
-				if(prices[i] >= prices[i - 1]) {
-					profit += prices[i - 1] - low;
-					low = prices[i];
-				}
-				else if (prices[i] < prices[i - 1] && i != prices.length - 1) {
-					continue;
-				}
-				else {
-					profit += prices[i] - low
-					}
-				}
-					
-				return profit;
-				
+		}
+		
+		return profit;
+	}
+	
+	
+	public static int maxProfit1(int[] prices) { // Good one. O(N) solution. But can be further optimized.
+		if (prices.length == 0)
+			return 0;
+		int low = prices[0];
+		int profit = 0;
+
+		for (int i = 1; i < prices.length; i++) {
+			if (prices[i] >= prices[i - 1] && i != prices.length - 1) {
+				continue;
+			} else if (prices[i] < prices[i - 1]) {
+				profit += prices[i - 1] - low;
+				low = prices[i];
+			} else {
+				profit += prices[i] - low;
 			}
+		}
+
+		return profit;
+
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println(maxProfit(new int[] { 1, 4, 2 }));
 	}
 
 }
