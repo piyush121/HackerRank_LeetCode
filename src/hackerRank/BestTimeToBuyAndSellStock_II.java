@@ -18,18 +18,18 @@ public class BestTimeToBuyAndSellStock_II {
 		if (prices.length == 0)
 			return 0;
 		int profit = 0;
-		
+
 		for (int i = 0; i < prices.length; i++) {
-			if(i != 0 && prices[i] > prices[i-1])
-				profit += prices[i] - prices[i-1];
-			
+			if (i != 0 && prices[i] > prices[i - 1])
+				profit += prices[i] - prices[i - 1];
+
 		}
-		
+
 		return profit;
 	}
-	
-	
-	public static int maxProfit1(int[] prices) { // Good one. O(N) solution. But can be further optimized.
+
+	public static int maxProfit1(int[] prices) { // Good one. O(N) solution. But
+													// can be further optimized.
 		if (prices.length == 0)
 			return 0;
 		int low = prices[0];
