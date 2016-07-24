@@ -46,7 +46,6 @@ public class LongestConsecutiveSequence {
 
 			if (count > max)
 				max = count;
-			count = 0;
 		}
 		return max;
 	}
