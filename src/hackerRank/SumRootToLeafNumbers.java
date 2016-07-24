@@ -40,7 +40,7 @@ public class SumRootToLeafNumbers {
 			sum += val * 10 + root.val;
 			return;
 		}
-		if (root.left != null)
+		if (root.left != null) // go left only if its not null
 			DFS(root.left, val * 10 + root.val);
 		if (root.right != null)
 			DFS(root.right, val * 10 + root.val);
