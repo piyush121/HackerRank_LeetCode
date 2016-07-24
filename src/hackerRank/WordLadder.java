@@ -2,14 +2,11 @@
  * @author Piyush Chaudhary
  */
 package hackerRank;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-import javax.management.Query;
 
 /**
  * Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
