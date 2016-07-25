@@ -19,7 +19,23 @@ package hackerRank;
  */
 public class GasStation {
 	public int canCompleteCircuit(int[] gas, int[] cost) {
-		
+		int gasSum = 0;
+		int costSum = 0;
+		int gasLeft = 0;
+		int start = 0;
+		for (int i = 0; i < gas.length; i++) {
+			gasSum += gas[i];
+			costSum += cost[i];
+			gasLeft += gas[i] - cost[i];
+			if (gasLeft < 0) { // greedy way to solve. If A cannot reach C via B then it also cannot reach to C from B.
+				gasLeft = 0;
+				start = i + 1;
+			}
+		}
+
+		if (gasSum < costSum) // Obviously.
+			return -1;
+		return start;
 	}
 
 	public static void main(String[] args) {
