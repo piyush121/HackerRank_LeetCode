@@ -4,6 +4,7 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -23,6 +24,27 @@ Note: Recursive solution is trivial, could you do it iteratively?
  *
  */
 public class BinaryTreePostOrderTraversal {
+	public List<Integer> postorderTraversal(TreeNode root) { // A clever hack to store post order result by using reverse of pre-order.
+		LinkedList<Integer> res = new LinkedList<>();
+		if (root == null)
+			return res;
+		Stack<TreeNode> s1 = new Stack<>();
+		s1.push(root);
+		while (!s1.isEmpty()) {
+			TreeNode node = s1.pop();
+			res.addFirst(node.val);
+			if (node.left != null){ 
+				s1.add(node.left);
+			}
+			if (node.right != null)
+				s1.add(node.right);
+		}
+		
+		return res;
+
+	}
+	
+	
 	public List<Integer> postorderTraversal(TreeNode root) { // standard iterative way.
 		List<Integer> res = new ArrayList<>();
 		if (root == null)
