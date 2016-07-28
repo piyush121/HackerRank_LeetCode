@@ -23,9 +23,9 @@ Note: Recursive solution is trivial, could you do it iteratively?
  *
  */
 public class BinaryPreOrderTraversal {
-    public List<Integer> preorderTraversal(TreeNode root) {
+	public List<Integer> preorderTraversal(TreeNode root) {
 		List<Integer> res = new ArrayList<>();
-		if(root == null)
+		if (root == null)
 			return res;
 		Stack<TreeNode> stack = new Stack<>();
 		stack.add(root);
@@ -36,9 +36,9 @@ public class BinaryPreOrderTraversal {
 				stack.add(node.right);
 			if (node.left != null)
 				stack.add(node.left);
-        
-        }
-        
+
+		}
+
         return res;
     }
 	public static void main(String[] args) {
