@@ -14,7 +14,7 @@ Given {1,2,3,4}, reorder it to {1,4,2,3}.
  *
  */
 public class ReOrderList {
-	public void reorderList(ListNode head) { //works well but crazy though.
+	public void reorderList(ListNode head) { //works close to in O(N)
 		if (head == null || head.next == null)
 			return;
 		ListNode dummy = new ListNode(0);
@@ -27,13 +27,13 @@ public class ReOrderList {
 			fast = fast.next.next;
 		}
 		fast = slow;
-		while (fast.next != null)
+		while (fast.next != null) 
 			fast = fast.next;
-		reverse(slow.next);
-		slow.next = null;
+		reverse(slow.next); // Reverse the second half
+		slow.next = null;//cut the list in half.
 		slow = head;
 
-		while (slow != null && fast != null) {
+		while (slow != null && fast != null) { // set next of current node to last and so on.
 			ListNode Snext = slow.next;
 			ListNode Fnext = fast.next;
 			slow.next = fast;
@@ -45,7 +45,7 @@ public class ReOrderList {
 
 	}
 
-	private void reverse(ListNode head) { // fancy way to reverse a linked list.
+	private void reverse(ListNode head) { // Fancy way to reverse a linked list.
 											// O(N) space though.
 		if (head == null || head.next == null)
 			return;
