@@ -33,13 +33,13 @@ public class BinaryTreePostOrderTraversal {
 		while (!s1.isEmpty()) {
 			TreeNode node = s1.pop();
 			res.addFirst(node.val);
-			if (node.left != null){ 
+			if (node.left != null) {
 				s1.add(node.left);
 			}
 			if (node.right != null)
 				s1.add(node.right);
 		}
-		
+
 		return res;
 
 	}
