@@ -11,7 +11,26 @@ the contiguous subarray [2,3] has the largest product = 6.
  *
  */
 public class MaxProductSubArray {
-	public int maxProduct(int[] nums) {
+	public int maxProduct1(int[] nums) { // Basically a DP based solution. NOt verry efficient though.
+		if (nums.length == 0)
+			return 0;
+		int maxProd = 1;
+		int minProd = 1;
+		int res = Integer.MIN_VALUE;
+		for (int i = 0; i < nums.length; i++) {
+            int temp = maxProd; //Since two -ves can also make a bigger positive so we need to store min. product also.
+			maxProd = Math.max(Math.max(maxProd * nums[i], minProd * nums[i]), nums[i]);
+			minProd = Math.min(Math.min(minProd * nums[i], temp * nums[i]), nums[i]); 
+
+			if (maxProd > res)
+				res = maxProd;
+		}
+
+		return res;
+	
+	}
+	
+	public int maxProduct(int[] nums) { // Most Efficient by far. O(N) time and O(1) space.
 		if (nums.length == 0)
 			return 0;
 		int maxProd = Integer.MIN_VALUE;
