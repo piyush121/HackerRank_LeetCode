@@ -14,34 +14,45 @@ package hackerRank;
  *
  */
 public class FindMinimumInRotatedSortedArray {
-	public int findMin(int[] nums) { // Easy one. But if you get stuck
+	public int findMin(int[] nums) { // Iterative one. Concept is the same.
+		int start = 0;
+		int end = nums.length - 1;
+
+		while (start != end) {
+			int mid = start + (end - start) / 2;
+			if (nums[start] < nums[end])
+				return nums[start];
+			if (nums[mid] >= nums[start])
+				start = mid + 1;
+			else
+				end = mid;
+		}
+
+		return nums[start];
+	}
+
+	public int findMin1(int[] nums) { // Easy one. But if you get stuck
 										// somewhere, then its hard to come back
 										// without a refreshing drink :D
 		return (helper(nums, 0, nums.length - 1));
 	}
 
-	private int helper(int[] nums, int start, int end) {
-		if (start >= end)
+	private int helper(int[] nums, int start, int end) { // Recursive solution.
+		if (start == end)
 			return nums[start];
+		if (nums[start] < nums[end]) // check if array is already sorted.
+			return nums[start];
+
 		int mid = (start + end) / 2;
-		int min = Integer.MAX_VALUE;
 
 		if (nums[mid] >= nums[start]) {
-			int left = nums[start];
-			int right = helper(nums, mid + 1, end); // mid can never be the
-													// least element in this
-													// case.
-			min = Math.min(left, right);
-
+			return helper(nums, mid + 1, end);
 		}
 
 		else {
-			int left = helper(nums, start, mid - 1);
-			int right = nums[mid];
-			min = Math.min(left, right);
-		}
+			return helper(nums, start, mid);
 
-		return min;
+		}
 	}
 
 	public static void main(String[] args) {
