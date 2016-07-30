@@ -14,7 +14,25 @@ package hackerRank;
  *
  */
 public class FindMinimumInRotatedSortedArray {
-	public int findMin(int[] nums) { // Iterative one. Concept is the same.
+	public int findMin(int[] nums) { // The most efficient way.
+		int start = 0;
+		int end = nums.length - 1;
+		if (nums[start] < nums[end]) // Check if already sorted.
+			return nums[start]; 
+		while (end - start > 1) { // helps in having the least element next to right/left. Really useful technique.
+			int mid = start + (end - start) / 2; //save you some trouble dealing with corner cases.
+			if (nums[mid] >= nums[start])
+				start = mid;
+			else
+				end = mid;
+		}
+
+		if (nums[start] < nums[end])
+			return nums[start];
+		return nums[end];
+	}
+
+	public int findMin2(int[] nums) { // Iterative one. Concept is the same.
 		int start = 0;
 		int end = nums.length - 1;
 
