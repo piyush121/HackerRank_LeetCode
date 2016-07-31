@@ -35,7 +35,7 @@ minStack.getMin();   --> Returns -2.
 
 public class MinStack {
 	 /** initialize your data structure here. */
-	Stack<Integer> stack;
+	Stack<Integer> stack; // To avoid two stack you can also store the difference of incoming element and min. element and return the top + min when pop() is called.
 	Stack<Integer> helper;
     public MinStack() {
     	stack = new Stack<>();
