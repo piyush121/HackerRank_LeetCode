@@ -20,7 +20,7 @@ package hackerRank;
  * 
  */
 public class FindPeakElement {
-	public int findPeakElement(int[] nums) {
+	public int findPeakElement(int[] nums) { // O(logN) time and O(1) space.
 		int low = 0;
 		int high = nums.length - 1;
 
