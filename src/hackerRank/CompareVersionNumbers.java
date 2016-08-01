@@ -26,7 +26,7 @@ public class CompareVersionNumbers {
 		String[] str2 = version2.split("\\.");
 
 		for (int i = 0; i < str1.length || i < str2.length; i++) {
-			int num1 = i < str1.length ? Integer.parseInt(str1[i]) : 0;
+			int num1 = i < str1.length ? Integer.parseInt(str1[i]) : 0; // cool nice trick to avoid so many if conditions.
 			int num2 = i < str2.length ? Integer.parseInt(str2[i]) : 0;
 			if (num1 > num2)
 				return 1;
