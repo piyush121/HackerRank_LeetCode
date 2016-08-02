@@ -15,7 +15,7 @@ public class FactorialTrailingZeros {
 		int i = 5;
 		while (n / i != 0) {
 			answer += n / i;
-			if(i > Integer.MAX_VALUE / 5) // Extra check. Or you could also keep on dividing by 5.
+			if(i > Integer.MAX_VALUE / 5) // Extra overflow check. Or you could also keep on dividing by 5.
 				break;
 			i *= 5;
 		}
