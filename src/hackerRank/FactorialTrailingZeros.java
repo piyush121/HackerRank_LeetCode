@@ -10,11 +10,14 @@ package hackerRank;
  *
  */
 public class FactorialTrailingZeros {
-	public int trailingZeroes(int n) { // Don't multiply with 5 or you will overflow Integer.
+	public int trailingZeroes(int n) { 
 		int answer = 0;
-		while (n > 0) {
-			answer += n / 5;
-			n /= 5;
+		int i = 5;
+		while (n / i != 0) {
+			answer += n / i;
+			if(i > Integer.MAX_VALUE / 5) // Extra check. Or you could also keep on dividing by 5.
+				break;
+			i *= 5;
 		}
 		return answer;
 	}
