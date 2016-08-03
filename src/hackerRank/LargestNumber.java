@@ -30,7 +30,7 @@ public class LargestNumber {
 
 			@Override
 			public int compare(String s1, String s2) {
-				return -1 * (s1 + s2).compareTo(s2 + s1); // to get descending order sort.
+				return -1 * (s1 + s2).compareTo(s2 + s1); // to get descending order sort. The only tricky part.
 			}
 
 		});
