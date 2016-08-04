@@ -22,7 +22,7 @@ public class ReverseBits {
 		for(int i = 0 ; i < 32; i++) {
 		res += n & 1;
 		n >>>= 1; // Shift fill zero operator.
-		if( i < 31) // Don't shift left the last bit otherwise it may become negative.
+		if( i < 31) // Don't shift left the last bit otherwise it may overflow.
 			res <<= 1;
 		}
 		return res;
