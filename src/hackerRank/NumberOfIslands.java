@@ -30,10 +30,10 @@ public class NumberOfIslands {
 		int res = 0;
 		for (int i = 0; i < grid.length; i++)
 			for (int j = 0; j < grid[0].length; j++) {
-				if (grid[i][j] == 'x' || grid[i][j] == '0')
-					continue;
-				dfs(grid, i, j);
-				res++;
+				if (grid[i][j] == '1') {
+					dfs(grid, i, j);
+					res++;
+				}
 			}
 		return res;
 	}
