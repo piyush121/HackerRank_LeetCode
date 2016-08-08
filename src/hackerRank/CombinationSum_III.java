@@ -45,7 +45,14 @@ public class CombinationSum_III {
 			return;
 		}
 
-		for (int i = start; i <= 9; i++) {
+		for (int i = start; i <= 9 && i <= n; i++) { // quit early because there
+														// is no point going
+														// forward if the sum
+														// already is beyond
+														// expected value and
+														// and adding more
+														// number will only
+														// increase the sum.
 			list.add(i);
 			helper(res, list, i + 1, n - i, k);
 			list.remove(i); // remove because we want next combination. Think
