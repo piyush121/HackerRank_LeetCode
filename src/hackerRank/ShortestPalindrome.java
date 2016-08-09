@@ -19,17 +19,16 @@ public class ShortestPalindrome {
 		int[] LPS = new int[str.length()];
 		int j = 0;
 		for (int i = 1; i < str.length(); i++) {
-			if (str.charAt(i) == str.charAt(j)) {
-				LPS[j]++;
-				j++;
-			} else {
-				while (str.charAt(j) != str.charAt(i) || j != 0) {
-					j = LPS[j - 1];
+			while (str.charAt(j) != str.charAt(i) && j > 0)
+				j = LPS[j - 1];
 
-				}
+			if (str.charAt(i) == str.charAt(j)) {
+				LPS[i] = j + 1;
+				j = LPS[i - 1];
 			}
+
 		}
-		return s.substring(LPS[LPS.length - 1]) + s;
+		return new StringBuilder(s.substring(LPS[LPS.length - 1])).reverse().toString() + s;
 
 	}
 
