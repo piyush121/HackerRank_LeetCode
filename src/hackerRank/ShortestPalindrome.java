@@ -12,25 +12,24 @@ Given "aacecaaa", return "aaacecaaa".
 Given "abcd", return "dcbabcd".
  */
 public class ShortestPalindrome {
-	public String shortestPalindrome(String s) {
+	public static String shortestPalindrome(String s) { // KMP prefix array method.
 		if (s.length() == 0)
 			return "";
-		String str = s + new StringBuilder(s).reverse().toString();
+		String str = s +"#" + new StringBuilder(s).reverse().toString();
 		int[] LPS = new int[str.length()];
 		int j = 0;
 		for (int i = 1; i < str.length(); i++) {
-			while (str.charAt(j) != str.charAt(i) && j > 0)
-				j = LPS[j - 1];
-
-			if (str.charAt(i) == str.charAt(j)) {
-				LPS[i] = j + 1;
-				j = LPS[i - 1];
-			}
-
-		}
-		return new StringBuilder(s.substring(LPS[LPS.length - 1])).reverse().toString() + s;
-
-	}
+		    
+	    while (str.charAt(j) != str.charAt(i) && j > 0) 
+			j = LPS[j - 1];
+				
+	    if (str.charAt(i) == str.charAt(j)) {
+			LPS[i] = j + 1;
+			j++;
+	    	}
+    	}
+	  return new StringBuilder(s.substring(LPS[LPS.length-1])).reverse().toString()+s;
+    }
 
 	public String shortestPalindrome1(String s) { // Brute force solution.
 													// O(n^2).
@@ -57,5 +56,9 @@ public class ShortestPalindrome {
 				return false;
 		}
 		return true;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(shortestPalindrome("aaaaa"));
 	}
 }
