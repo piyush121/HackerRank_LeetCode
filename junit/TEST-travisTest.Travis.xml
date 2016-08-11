@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="enforcer" name="travisTest.Travis" skipped="0" tests="1" time="0.121" timestamp="2016-08-11T01:52:11">
+<testsuite errors="0" failures="0" hostname="enforcer" name="travisTest.Travis" skipped="0" tests="1" time="5.204" timestamp="2016-08-11T02:35:22">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.SESSION_MANAGER" value="local/enforcer:@/tmp/.ICE-unix/727,unix/enforcer:/tmp/.ICE-unix/727" />
@@ -76,8 +76,8 @@
     <property name="env.XDG_SEAT" value="seat0" />
     <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.7 compiled on April 24 2016" />
-    <property name="java.class.path" value="/home/piyush/workspace/HackerRank_LeetCode/bin:/home/piyush/workspace/HackerRank_LeetCode/lib/junit.jar:/usr/share/java/apache-ant/ant-launcher.jar:/usr/share/apache-ant/lib/ant.jar:/usr/share/apache-ant/lib/ant-junit.jar:/usr/share/apache-ant/lib/ant-junit4.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner travisTest.Travis skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/piyush/workspace/HackerRank_LeetCode/junit/TEST-travisTest.Travis.xml crashfile=/home/piyush/workspace/HackerRank_LeetCode/junitvmwatcher1509623898071638958.properties propsfile=/home/piyush/workspace/HackerRank_LeetCode/junit5855167257331084510.properties" />
+    <property name="java.class.path" value="/home/piyush/workspace/HackerRank_LeetCode/bin:/home/piyush/workspace/HackerRank_LeetCode/lib/junit.jar:/home/piyush/workspace/HackerRank_LeetCode/lib/org.hamcrest.core_1.3.0.v201303031735.jar:/usr/share/java/apache-ant/ant-launcher.jar:/usr/share/apache-ant/lib/ant.jar:/usr/share/apache-ant/lib/ant-junit.jar:/usr/share/apache-ant/lib/ant-junit4.jar" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner travisTest.Travis skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/piyush/workspace/HackerRank_LeetCode/junit/TEST-travisTest.Travis.xml crashfile=/home/piyush/workspace/HackerRank_LeetCode/junitvmwatcher3653047622808312920.properties propsfile=/home/piyush/workspace/HackerRank_LeetCode/junit5011500197987684498.properties" />
     <property name="env.XDG_SESSION_ID" value="c2" />
     <property name="env.XFILESEARCHPATH" value="/usr/dt/app-defaults/%L/Dt" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
@@ -110,28 +110,7 @@
     <property name="java.specification.version" value="1.8" />
     <property name="ant.project.invoked-targets" value="test" />
   </properties>
-  <testcase classname="travisTest.Travis" name="initializationError" time="0.008">
-    <error message="org/hamcrest/SelfDescribing" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/hamcrest/SelfDescribing
-	at java.lang.ClassLoader.defineClass1(Native Method)
-	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
-	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
-	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467)
-	at java.net.URLClassLoader.access$100(URLClassLoader.java:73)
-	at java.net.URLClassLoader$1.run(URLClassLoader.java:368)
-	at java.net.URLClassLoader$1.run(URLClassLoader.java:362)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:361)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-Caused by: java.lang.ClassNotFoundException: org.hamcrest.SelfDescribing
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-</error>
-  </testcase>
+  <testcase classname="travisTest.Travis" name="testHellowWorld" time="0.002" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
