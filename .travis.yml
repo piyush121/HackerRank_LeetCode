@@ -1,4 +1,6 @@
 language: java
+-install: 
+ -  ant init build
 jdk:
   - oraclejdk8
   - oraclejdk7
