@@ -121,7 +121,7 @@ private  void swap (int[] arr, int i, int j) {
 
 As we can see, the subset of the above four cases are still sorted. Amazing! Recursion continues.
 
-On the other hand, if we use pass-by-reference, the set are ALWAYS sorted AFTER the extra swap, as below. The above amazing trick doesn’t work and duplicates won’t be avoided. So, the result of pass-by-reference algorithm is not correct.
+On the other hand, if we use pass-by-reference, the set are ALWAYS sorted AFTER the extra swap, as below. The above amazing trick doesn't work and duplicates won't be avoided. So, the result of pass-by-reference algorithm is not correct.
 
 (1,2,2,3) (pos = 0, i = 0)
 

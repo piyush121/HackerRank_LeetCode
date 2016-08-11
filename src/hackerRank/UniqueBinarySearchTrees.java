@@ -18,7 +18,7 @@ Given n = 3, there are a total of 5 unique BST's.
 
 /*
  * Explanation by some holy soul : 
- * Given a sequence 1…n, we pick a number i out
+ * Given a sequence 1...n, we pick a number i out
  * of the sequence as the root, then the number of unique BST with the specified
  * root F(i), is the cartesian product of the number of BST for its left and
  * right subtrees. For example, F(3, 7): the number of unique BST tree with
@@ -36,7 +36,7 @@ Given n = 3, there are a total of 5 unique BST's.
  * F(i, n) = G(i-1) * G(n-i) 1 <= i <= n Combining the above two formulas, we
  * obtain the recursive formula for G(n). i.e.
  * 
- * G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)
+ * G(n) = G(0) * G(n-1) + G(1) * G(n-2)  + G(n-1) * G(0)
  * 
  */
 public class UniqueBinarySearchTrees { //Although it can be solved by Catalan numbers but DP solution is way more sweet.
