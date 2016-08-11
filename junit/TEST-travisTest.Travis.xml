@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="enforcer" name="travisTest.Travis" skipped="0" tests="1" time="0.492" timestamp="2016-08-11T01:28:19">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.SESSION_MANAGER" value="local/enforcer:@/tmp/.ICE-unix/727,unix/enforcer:/tmp/.ICE-unix/727" />
+    <property name="env.MOZ_PLUGIN_PATH" value="/usr/lib/mozilla/plugins" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.name" value="Linux" />
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk/jre/classes" />
+    <property name="env.PWD" value="/home/piyush/workspace/HackerRank_LeetCode" />
+    <property name="sun.desktop" value="gnome" />
+    <property name="env.LANG" value="en_US.UTF-8" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="env.XDG_MENU_PREFIX" value="gnome-" />
+    <property name="ant.home" value="/usr/share/apache-ant" />
+    <property name="java.runtime.version" value="1.8.0_102-b14" />
+    <property name="ant.file.type.HackerRank_LeetCode" value="file" />
+    <property name="env.XDG_VTNR" value="2" />
+    <property name="env.DISPLAY" value=":0" />
+    <property name="env.GJS_DEBUG_TOPICS" value="JS ERROR;JS LOG" />
+    <property name="user.name" value="piyush" />
+    <property name="env.USER" value="piyush" />
+    <property name="env.SHELL" value="/bin/bash" />
+    <property name="env.DESKTOP_SESSION" value="gnome" />
+    <property name="env.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat" />
+    <property name="env.GJS_DEBUG_OUTPUT" value="stderr" />
+    <property name="env.PATH" value="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl" />
+    <property name="ant.file.HackerRank_LeetCode" value="/home/piyush/workspace/HackerRank_LeetCode/build.xml" />
+    <property name="env.XDG_CURRENT_DESKTOP" value="GNOME" />
+    <property name="user.language" value="en" />
+    <property name="env.XDG_SESSION_DESKTOP" value="gnome" />
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/amd64" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="ant.project.name" value="HackerRank_LeetCode" />
+    <property name="java.version" value="1.8.0_102" />
+    <property name="user.timezone" value="" />
+    <property name="env.DBUS_SESSION_BUS_ADDRESS" value="unix:path=/run/user/1000/bus" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk/jre/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="env.SHLVL" value="2" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="env.GNOME_DESKTOP_SESSION_ID" value="this-is-deprecated" />
+    <property name="java.class.version" value="52.0" />
+    <property name="env.GDMSESSION" value="gnome" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk/jre" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.LOGNAME" value="piyush" />
+    <property name="ant.file" value="/home/piyush/workspace/HackerRank_LeetCode/build.xml" />
+    <property name="os.version" value="4.6.4-1-ARCH" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="25.102-b14" />
+    <property name="ant.library.dir" value="/usr/share/apache-ant/lib" />
+    <property name="junit.output.dir" value="junit" />
+    <property name="env.QT_QPA_PLATFORMTHEME" value="qgnomeplatform" />
+    <property name="env.XDG_SESSION_TYPE" value="x11" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="env.TERM" value="xterm-256color" />
+    <property name="env.WINDOWPATH" value="2" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
+    <property name="env.GDM_LANG" value="en_US.UTF-8" />
+    <property name="user.home" value="/home/piyush" />
+    <property name="target" value="1.8" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="env.VTE_VERSION" value="4402" />
+    <property name="env.WINDOWID" value="48234502" />
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="env.XDG_SEAT" value="seat0" />
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.7 compiled on April 24 2016" />
+    <property name="java.class.path" value="/home/piyush/workspace/HackerRank_LeetCode/bin:/usr/lib/eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar:/usr/lib/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar:/usr/share/java/apache-ant/ant-launcher.jar:/usr/share/apache-ant/lib/ant.jar:/usr/share/apache-ant/lib/ant-junit.jar:/usr/share/apache-ant/lib/ant-junit4.jar" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner travisTest.Travis skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/piyush/workspace/HackerRank_LeetCode/junit/TEST-travisTest.Travis.xml crashfile=/home/piyush/workspace/HackerRank_LeetCode/junitvmwatcher1425124674758291758.properties propsfile=/home/piyush/workspace/HackerRank_LeetCode/junit4759771988733201589.properties" />
+    <property name="env.XDG_SESSION_ID" value="c2" />
+    <property name="env.XFILESEARCHPATH" value="/usr/dt/app-defaults/%L/Dt" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="env.HOME" value="/home/piyush" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.SSH_AUTH_SOCK" value="/run/user/1000/keyring/ssh" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="env.XDG_RUNTIME_DIR" value="/run/user/1000" />
+    <property name="user.dir" value="/home/piyush/workspace/HackerRank_LeetCode" />
+    <property name="env.XAUTHORITY" value="/run/user/1000/gdm/Xauthority" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+    <property name="env.COLORTERM" value="truecolor" />
+    <property name="basedir" value="/home/piyush/workspace/HackerRank_LeetCode" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="ant.core.lib" value="/usr/share/apache-ant/lib/ant.jar" />
+    <property name="env.LOCALCLASSPATH" value="/usr/share/apache-ant/lib/ant-launcher.jar:/usr/share/java/junit.jar" />
+    <property name="env.USERNAME" value="piyush" />
+    <property name="source" value="1.8" />
+    <property name="env.MAIL" value="/var/spool/mail/piyush" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="ant.project.invoked-targets" value="test" />
+  </properties>
+  <testcase classname="travisTest.Travis" name="testHellowWorld" time="0.001" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
