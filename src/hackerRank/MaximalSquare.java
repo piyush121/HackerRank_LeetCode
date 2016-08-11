@@ -32,25 +32,49 @@ public class MaximalSquare {
 		return res * res;
 	}
 
-	public int maximalSquare1(char[][] matrix) { // In progress ! O(N) space solution. Very hard to solve.
-		int[] DP = new int[matrix[0].length + 1];
-		int temp = 0;
-		int pre = 0;
-		int result = 0;
-		for (int i = 1; i < matrix.length; i++)
-			for (int j = 1; j < matrix[0].length; j++) {
-				temp = DP[j];
-				if (matrix[i - 1][j - 1] == 1 ) {
-					DP[j] = Math.min(Math.min(DP[j - 1], DP[j]), pre) + 1;
-					result = Math.max(result, DP[j]);
-				} else
-					DP[j] = matrix[i - 1][j - 1];
-				pre = temp;
+	public int maximalSquare1(char[][] matrix) {// Lightning fast O(1) space solution.
+	       int[] DP = new int[matrix[0].length + 1];
+			int temp = 0;
+			int pre = 0;
+			int result = 0;
+			for (int i = 1; i <= matrix.length; i++)
+				for (int j = 1; j <= matrix[0].length; j++) {
+					temp = DP[j];
+					if (matrix[i - 1][j - 1] == '1' ) {
+						DP[j] = Math.min(Math.min(DP[j - 1], DP[j]), pre) + 1;
+						result = Math.max(result, DP[j]);
+					} else
+						DP[j] = matrix[i - 1][j - 1];
+					if(j < DP.length - 1)
+					    pre = temp;
+					else
+					    pre = 0;
 
-			}
-		return result * result;
-	}
+				}
+			return result * result;
+		}
 
+	public int maximalSquare2(char[][] matrix) { // O(N) space solution. Pretty fast.
+        if(matrix.length == 0)
+            return 0;
+        int[] prev = new int[matrix[0].length + 1];
+        int[] curr = new int[matrix[0].length + 1];
+        int res = 0;
+        for(int i = 1 ;i <= matrix.length; i++){
+            for(int j = 1; j <= matrix[0].length; j++) {
+                if(matrix[i-1][j-1] == '1') {
+                    curr[j] = Math.min(Math.min(curr[j-1],prev[j - 1]), prev[j]) + 1;
+                    res = Math.max(res,curr[j]);
+                }
+                else
+                    curr[j] = 0;
+            }
+            prev = Arrays.copyOf(curr, curr.length);
+            Arrays.fill(curr,0);
+        }
+        return res*res;
+    }
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
