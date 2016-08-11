@@ -4,16 +4,16 @@ import java.util.Stack;
 
 public class PreOrderIterative {
 	
-	public static void preOrder(treeNode root)
+	public static void preOrder(treeeNode root)
 	{
-		Stack <treeNode> mystack=new Stack<>();
+		Stack <treeeNode> mystack=new Stack<>();
 		mystack.push(root);
 		
 
 		
 		while(!mystack.isEmpty())
 		{
-			treeNode mynode=mystack.pop();
+			treeeNode mynode=mystack.pop();
 			System.out.println(mynode.data);
 
 			if(mynode.right!=null)
@@ -28,12 +28,12 @@ public class PreOrderIterative {
 	}
 	public static void main(String[] args) {
 		
-		treeNode node1=new treeNode(4,null,null);
-		treeNode node2=new treeNode(5,null,null);
-		treeNode node3=new treeNode(2,null,null);
-		treeNode node4=new treeNode(1,null,null);
-		treeNode node5=new treeNode(3,null,null);
-		treeNode node6=new treeNode(6,null,null);
+		treeeNode node1=new treeeNode(4,null,null);
+		treeeNode node2=new treeeNode(5,null,null);
+		treeeNode node3=new treeeNode(2,null,null);
+		treeeNode node4=new treeeNode(1,null,null);
+		treeeNode node5=new treeeNode(3,null,null);
+		treeeNode node6=new treeeNode(6,null,null);
 
 		binaryTree mytree=new binaryTree();
 		mytree.add(node1);

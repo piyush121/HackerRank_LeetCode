@@ -34,7 +34,7 @@ public class WordBreak {
 		return DP[s.length()];
 	}
 
-	public boolean wordBreak(String s, Set<String> wordDict) { // Inefficient
+	public boolean wordBreak1(String s, Set<String> wordDict) { // Inefficient
 																// recursive
 																// code.
 		if (s.length() == 0)

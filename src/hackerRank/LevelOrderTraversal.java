@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
@@ -27,7 +28,7 @@ return its level order traversal as:
  *
  */
 public class LevelOrderTraversal {
-	public List<List<Integer>> levelOrder2(TreeNode root) { // Works even more efficiently. DFS based recursive solution.
+	public List<List<Integer>> levelOrder3(TreeNode root) { // Works even more efficiently. DFS based recursive solution.
 		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
 			return result;

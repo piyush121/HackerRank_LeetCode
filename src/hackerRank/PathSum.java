@@ -13,17 +13,17 @@ public class PathSum {
 	 */
 	    
 	public class Solution {
-	    public boolean hasPathSum(treeNode root, int sum) {
+	    public boolean hasPathSum(TreeNode root, int sum) {
 	        if(root==null)
 	        	return false;
 	        else if(root.left==null && root.right==null)
-	            {if(root.data==sum)
+	            {if(root.val==sum)
 	                return true;
 	             else
 	                return false;
 	            }
 	    
-	        return hasPathSum(root.left,sum-root.data) || hasPathSum(root.right,sum-root.data); // Sending the reduced value to the child.
+	        return hasPathSum(root.left,sum-root.val) || hasPathSum(root.right,sum-root.val); // Sending the reduced value to the child.
 	            
 	        
 	    }

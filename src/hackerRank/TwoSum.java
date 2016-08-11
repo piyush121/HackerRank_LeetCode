@@ -3,8 +3,6 @@ package hackerRank;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javafx.util.Pair;
-
 public class TwoSum {
 	static HashMap<Integer,Integer> hash=new HashMap<>();
 	

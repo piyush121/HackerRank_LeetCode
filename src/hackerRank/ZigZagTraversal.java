@@ -3,9 +3,9 @@ package hackerRank;
 import java.util.Stack;
 
 public class ZigZagTraversal {
-	static Stack<treeNode> st1=new Stack<>();
-	static Stack<treeNode> st2=new Stack<>();
-	public static void zigZag(treeNode root)
+	static Stack<treeeNode> st1=new Stack<>();
+	static Stack<treeeNode> st2=new Stack<>();
+	public static void zigZag(treeeNode root)
 	{
 		if(root==null)
 			return;
@@ -13,7 +13,7 @@ public class ZigZagTraversal {
 		st1.push(root);
 		while(!st1.isEmpty())
 		{
-			treeNode node=st1.pop();
+			treeeNode node=st1.pop();
 			if(node.left!=null)
 				st2.push(node.left);
 			if(node.right!=null)
@@ -25,7 +25,7 @@ public class ZigZagTraversal {
 
 		while(!st2.isEmpty())
 		{
-			treeNode node=st2.pop();
+			treeeNode node=st2.pop();
 			if(node.right!=null)
 				st1.push(node.right);
 			if(node.left!=null)
@@ -39,15 +39,15 @@ public class ZigZagTraversal {
  		
 	}
 	
-	public static void zigZagEfficient(treeNode root) //O(n)
+	public static void zigZagEfficient(treeeNode root) //O(n)
 	{	
-		 Stack<treeNode> st1=new Stack<>();
-		 Stack<treeNode> st2=new Stack<>();
+		 Stack<treeeNode> st1=new Stack<>();
+		 Stack<treeeNode> st2=new Stack<>();
 		boolean leftToRight=true;
 		st1.push(root);
 		while(!st1.isEmpty())
 		{	
-			treeNode node=st1.pop();
+			treeeNode node=st1.pop();
  			System.out.print(node.data+" ");
 
 			if(leftToRight)
@@ -66,7 +66,7 @@ public class ZigZagTraversal {
 			}
 			if(st1.isEmpty())
 			{
-				Stack<treeNode> temp=st1;
+				Stack<treeeNode> temp=st1;
 				st1=st2;
 				st2=temp;
 		 		System.out.println("");
@@ -80,12 +80,12 @@ public class ZigZagTraversal {
 	}
 
 	 public static void main(String[] args) {
- 		treeNode node1=new treeNode(4,null,null);
- 		treeNode node2=new treeNode(5,null,null);
- 		treeNode node3=new treeNode(2,null,null);
- 		treeNode node4=new treeNode(1,null,null);
- 		treeNode node5=new treeNode(3,null,null);
- 		treeNode node6=new treeNode(0,null,null);
+ 		treeeNode node1=new treeeNode(4,null,null);
+ 		treeeNode node2=new treeeNode(5,null,null);
+ 		treeeNode node3=new treeeNode(2,null,null);
+ 		treeeNode node4=new treeeNode(1,null,null);
+ 		treeeNode node5=new treeeNode(3,null,null);
+ 		treeeNode node6=new treeeNode(0,null,null);
  		
  		binaryTree mytree=new binaryTree();
  		mytree.add(node1);

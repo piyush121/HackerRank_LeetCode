@@ -45,7 +45,7 @@ public class BinaryTreePostOrderTraversal {
 	}
 	
 	
-	public List<Integer> postorderTraversal(TreeNode root) { // standard iterative way.
+	public List<Integer> postorderTraversal1(TreeNode root) { // standard iterative way.
 		List<Integer> res = new ArrayList<>();
 		if (root == null)
 			return res;

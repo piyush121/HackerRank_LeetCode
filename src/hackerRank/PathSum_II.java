@@ -28,7 +28,7 @@ return
  *
  */
 public class PathSum_II {
-	public  List<List<Integer>> pathSum(TreeNode root, int sum) { // List based recursive solution. Good one.
+	public static List<List<Integer>> pathSum(TreeNode root, int sum) { // List based recursive solution. Good one.
 		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
 			return result;
@@ -36,7 +36,7 @@ public class PathSum_II {
 		return result;
 	}
 
-	private  void helper(List<List<Integer>> res, List<Integer> list, TreeNode node, int sum) {
+	private static void helper(List<List<Integer>> res, List<Integer> list, TreeNode node, int sum) {
 		if (node == null)
 			return;
 		if (node.left == null && node.right == null && node.val == sum) {
@@ -105,7 +105,7 @@ public class PathSum_II {
 		mytree.add(node5);
 		mytree.add(node6);
 
-		pathSum(mytree.root, 9);
+		pathSum1(mytree.root, 9);
 		System.out.println(res);
 	}
 

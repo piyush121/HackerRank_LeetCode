@@ -3,7 +3,6 @@ package hackerRank;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import javafx.util.Pair;
 
 public class PairJump {
 	static LinkedList<HashMap<Integer,Integer>> pairs = new LinkedList<HashMap<Integer, Integer>>();
