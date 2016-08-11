@@ -164,7 +164,16 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="TravisTest.Travis" todir="${junit.output.dir}"/>
+            <test name="travisTest.Travis" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </junit>
+    </target>
+    <target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="travisTest.Travis" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="HackerRank_LeetCode.classpath"/>
         </junit>
