@@ -19,7 +19,7 @@ package hackerRank;
  *
  */
 public class CompareVersionNumbers {
-	public int compareVersion(String version1, String version2) {
+	public static int compareVersion(String version1, String version2) {
 		if (version1.equals(version2))
 			return 0;
 		String[] str1 = version1.split("\\.");

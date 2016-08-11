@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 
  */
 public class CountPrimes {
-	public int countPrimes(int n) { // O(nloglogn) using sieve of erastosthenes theoreum. 
+	public static int countPrimes(int n) { // O(nloglogn) using sieve of erastosthenes theoreum. 
 		boolean[] nums = new boolean[n];
 		Arrays.fill(nums, true);
 		int count = 0;
