@@ -1,10 +1,9 @@
 package travisTest;
+import hackerRank.*;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-import hackerRank.CompareVersionNumbers;
 
 public class Travis {
 
