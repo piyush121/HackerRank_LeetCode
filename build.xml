@@ -9,13 +9,9 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <path id="JUnit 4.libraryclasspath">
-        <pathelement location="../../../../usr/lib/eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="../../../../usr/lib/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
-    </path>
     <path id="HackerRank_LeetCode.classpath">
         <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/junit.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -59,6 +55,15 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="HackerRank_LeetCode">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="travisTest.Travis" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </junit>
     </target>
     <target name="ReverseWordsInAString">
         <java classname="hackerRank.ReverseWordsInAString" failonerror="true" fork="yes">
@@ -140,6 +145,15 @@
             <classpath refid="HackerRank_LeetCode.classpath"/>
         </java>
     </target>
+    <target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="travisTest.Travis" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </junit>
+    </target>
     <target name="SameTree">
         <java classname="hackerRank.SameTree" failonerror="true" fork="yes">
             <classpath refid="HackerRank_LeetCode.classpath"/>
@@ -159,24 +173,6 @@
         <java classname="hackerRank.PalindromePartitioning" failonerror="true" fork="yes">
             <classpath refid="HackerRank_LeetCode.classpath"/>
         </java>
-    </target>
-    <target name="HackerRank_LeetCode">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="travisTest.Travis" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="HackerRank_LeetCode.classpath"/>
-        </junit>
-    </target>
-    <target name="test">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="travisTest.Travis" todir="${junit.output.dir}"/>
-            <jvmarg line="-ea"/>
-            <classpath refid="HackerRank_LeetCode.classpath"/>
-        </junit>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
