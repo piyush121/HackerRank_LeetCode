@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="HackerRank_LeetCode">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="HackerRank_LeetCode.classpath">
+        <pathelement location="bin"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="ReverseWordsInAString">
+        <java classname="hackerRank.ReverseWordsInAString" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="ConstructBinaryTreeFromPreOrderAndInOrderTraversal">
+        <java classname="hackerRank.ConstructBinaryTreeFromPreOrderAndInOrderTraversal" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="BestTimeToBuyAndSellStock_II">
+        <java classname="hackerRank.BestTimeToBuyAndSellStock_II" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="BinaryTreeMaximumPathSum">
+        <java classname="hackerRank.BinaryTreeMaximumPathSum" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="java 8">
+        <java classname="hackerRank.AddBinary" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="WordLadder">
+        <java classname="hackerRank.WordLadder" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="PascalsTriangle_II">
+        <java classname="hackerRank.PascalsTriangle_II" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="PathSum_II">
+        <java classname="hackerRank.PathSum_II" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="PascalsTriangle">
+        <java classname="hackerRank.PascalsTriangle" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="ExcelSheetColumnNumber">
+        <java classname="hackerRank.ExcelSheetColumnNumber" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="CompareVersionNumbers">
+        <java classname="hackerRank.CompareVersionNumbers" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="MaximumGap">
+        <java classname="hackerRank.MaximumGap" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="ShortestPalindrome">
+        <java classname="hackerRank.ShortestPalindrome" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="FindMinimumInSortedArray_II">
+        <java classname="hackerRank.FindMinimumInSortedArray_II" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="ReverseBits">
+        <java classname="hackerRank.ReverseBits" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="HouseRobber">
+        <java classname="hackerRank.HouseRobber" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="SameTree">
+        <java classname="hackerRank.SameTree" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="ValidPalindrome">
+        <java classname="hackerRank.ValidPalindrome" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="CountPrimes">
+        <java classname="hackerRank.CountPrimes" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+    <target name="PalindromePartitioning">
+        <java classname="hackerRank.PalindromePartitioning" failonerror="true" fork="yes">
+            <classpath refid="HackerRank_LeetCode.classpath"/>
+        </java>
+    </target>
+</project>

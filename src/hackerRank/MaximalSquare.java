@@ -17,8 +17,7 @@ Return 4.
  *
  */
 public class MaximalSquare {
-	public int maximalSquare(char[][] matrix) { // O(mn) space and time. Easy
-												// one !
+	public int maximalSquare(char[][] matrix) { // O(mn) space and time. Easy.
 		if (matrix.length == 0)
 			return 0;
 		int[][] DP = new int[matrix.length + 1][matrix[0].length + 1];
@@ -33,19 +32,19 @@ public class MaximalSquare {
 		return res * res;
 	}
 
-	public int maximalSquare1(char[][] matrix) { // In progress !
-		int[] DP = new int[matrix[0].length];
+	public int maximalSquare1(char[][] matrix) { // In progress ! O(N) space solution. Very hard to solve.
+		int[] DP = new int[matrix[0].length + 1];
 		int temp = 0;
 		int pre = 0;
 		int result = 0;
 		for (int i = 1; i < matrix.length; i++)
 			for (int j = 1; j < matrix[0].length; j++) {
 				temp = DP[j];
-				if (j > 0 && i > 0 && matrix[i - 1][j - 1] == 1 && matrix[i][j - 1] == 1 && matrix[i - 1][j] == 1) {
+				if (matrix[i - 1][j - 1] == 1 ) {
 					DP[j] = Math.min(Math.min(DP[j - 1], DP[j]), pre) + 1;
 					result = Math.max(result, DP[j]);
 				} else
-					DP[j] = matrix[i][j];
+					DP[j] = matrix[i - 1][j - 1];
 				pre = temp;
 
 			}
