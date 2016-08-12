@@ -29,13 +29,23 @@ public class CountCompleteTreeNodes {
 	private int leftHeight(TreeNode node) {
 		if (node == null)
 			return 0;
-		return 1 + leftHeight(node.left);
+		int height = 0;
+		while (node != null) {
+			height++;
+			node = node.left;
+		}
+		return height;
 	}
 
 	private int rightHeight(TreeNode node) {
 		if (node == null)
 			return 0;
-		return 1 + rightHeight(node.right);
+		int height = 0;
+		while (node != null) {
+			height++;
+			node = node.right;
+		}
+		return height;
 
 	}
 
