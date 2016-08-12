@@ -13,13 +13,29 @@ package hackerRank;
  *
  */
 public class CountCompleteTreeNodes {
-	public int countNodes(TreeNode root) {
-		return 0;
+	public int countNodes(TreeNode root) { // O(logN^2) solution.
+		if (root == null)
+			return 0;
+		int leftCount = 1 + leftHeight(root.left);
+		int rightCount = 1 + rightHeight(root.right);
+
+		if (leftCount == rightCount)
+			return (1 << leftCount) - 1;
+		else
+			return 1 + countNodes(root.left) + countNodes(root.right);
 
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	private int leftHeight(TreeNode node) {
+		if (node == null)
+			return 0;
+		return 1 + leftHeight(node.left);
+	}
+
+	private int rightHeight(TreeNode node) {
+		if (node == null)
+			return 0;
+		return 1 + rightHeight(node.right);
 
 	}
 
