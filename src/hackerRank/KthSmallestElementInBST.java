@@ -20,21 +20,23 @@ package hackerRank;
  *
  */
 public class KthSmallestElementInBST {
-	int rank = 1;
+	int rank = 0;
 	Integer res = null;
 
 	public int kthSmallest(TreeNode root, int k) {
-		if (root == null)
-			return Integer.MIN_VALUE;
-		int left = kthSmallest(root.left, k);
-		if (left != Integer.MIN_VALUE)
-			return left;
-		if (k == 1)
-			return root.val;
-		int right = kthSmallest(root.right, k - 1);
-		if (right != Integer.MIN_VALUE)
-			return right;
-		return Integer.MIN_VALUE;
+		helper(root, k);
+		return res;
+
+	}
+
+	private void helper(TreeNode node, int k) {
+		if (rank == k || node == null)
+			return;
+		helper(node.left, k);
+		rank++;
+		if (rank == k)
+			res = node.val;
+		helper(node.right, k);
 
 	}
 }
