@@ -23,7 +23,7 @@ public class KthSmallestElementInBST {
 	int rank = 0;
 	Integer res = null;
 
-	public int kthSmallest(TreeNode root, int k) {
+	public int kthSmallest(TreeNode root, int k) { // Easy recursive way. Inorder traversal basically.
 		helper(root, k);
 		return res;
 
