@@ -3,7 +3,6 @@
  */
 package hackerRank;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -40,7 +39,7 @@ public class MyStack { // push is O(N) rest is O(1).
 
     // Get the top element.
     public int top() {
-        que.peek();
+        return que.peek();
         }
 
     // Return whether the stack is empty.
