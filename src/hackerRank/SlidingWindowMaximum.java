@@ -3,6 +3,7 @@
  */
 package hackerRank;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -61,6 +62,28 @@ public class SlidingWindowMaximum {
 		}
 		return res;
 	}
+	
+	public int[] maxSlidingWindow1(int[] nums, int k) { // Another solution storing the elements itself instead of their indexes. Easy to understand!!
+        if(nums.length == 0){
+            return new int[0];
+        }
+        Deque<Integer> q = new ArrayDeque<Integer>();
+        int[] res = new int[nums.length - k + 1];
+        int t = 0;
+        for(int i = 0; i < nums.length; i++){
+        	while(!q.isEmpty() && q.peekLast() < nums[i]){
+        		q.pollLast();
+        	}
+        	q.addLast(nums[i]);
+        	if(i > k - 1 && q.peekFirst() == nums[i - k]){
+        		q.pollFirst();
+        	}
+        	if(i >= k - 1){
+        		res[t++] = q.peekFirst();
+        	}	
+        }
+        return res;
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
