@@ -22,7 +22,6 @@ public class ValidAnagram { // Easy peezy!
         if(s.length() != t.length())
             return false;
         int[] counts = new int[256];
-        
         for(int i = 0; i < s.length(); i++) 
             counts[s.charAt(i)]++;
         
