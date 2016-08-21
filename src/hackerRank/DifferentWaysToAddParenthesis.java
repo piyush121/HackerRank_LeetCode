@@ -32,41 +32,32 @@ Output: [-34, -14, -10, -10, 10]
  */
 public class DifferentWaysToAddParenthesis {
 	public List<Integer> diffWaysToCompute(String input) {
-		List<Integer> res = new ArrayList<>();
-		diffWaysToCompute(input, res);
-		return res;
-	}
-
-	private void diffWaysToCompute(String input, List<Integer> res) {
-		if (input.length() == 1) {
-			res.add(Integer.parseInt(input));
-			return;
-		}
-
+		List<Integer> res = new ArrayList<>();	
 		for (int i = 0; i < input.length(); i++) {
 			char ch = input.charAt(i);
 			if (Character.isDigit(ch))
 				continue;
-			int left = input.charAt(i - 1) - '0';
-			int right = input.charAt(i + 1) - '0';
-
-			if (ch == '+') {
-				String str = String.valueOf(left + right);
-				diffWaysToCompute(input.substring(0, i - 1) + str + input.substring(i + 2), res);
-			}
-			else if (ch == '-') {
-				String str = String.valueOf(left - right);
-				diffWaysToCompute(input.substring(0, i - 1) + str + input.substring(i + 2), res);
-			}
-			else if (ch == '*') {
-				String str = String.valueOf(left * right);
-				diffWaysToCompute(input.substring(0, i - 1) + str + input.substring(i + 2), res);
+			List<Integer> left = diffWaysToCompute(input.substring(0, i));
+			List<Integer> right = diffWaysToCompute(input.substring(i + 1));
+			for(int x : left) { // add all possible cobinations of left and right values.
+				for(int y : right) {
+					if(ch == '+')
+						res.add(x + y);
+					else if (ch == '-')
+						res.add(x - y);
+					else
+						res.add(x * y);
+				}
 			}
 		}
+		if(res.size() == 0) // base case actually.
+			res.add(Integer.valueOf(input));
+		return res;
 	}
-	
+
+		
 	public static void main(String[] args) {
 		DifferentWaysToAddParenthesis obj = new DifferentWaysToAddParenthesis();
-		System.out.println(obj.diffWaysToCompute("2-1-1"));
+		System.out.println(obj.diffWaysToCompute("2-1*6*4-1"));
 	}
 }
