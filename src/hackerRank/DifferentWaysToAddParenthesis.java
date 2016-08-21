@@ -39,7 +39,7 @@ public class DifferentWaysToAddParenthesis {
 				continue;
 			List<Integer> left = diffWaysToCompute(input.substring(0, i));
 			List<Integer> right = diffWaysToCompute(input.substring(i + 1));
-			for(int x : left) { // add all possible cobinations of left and right values.
+			for(int x : left) { // add all possible combinations of left and right values.
 				for(int y : right) {
 					if(ch == '+')
 						res.add(x + y);
