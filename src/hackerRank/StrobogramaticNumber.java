@@ -34,6 +34,6 @@ public class StrobogramaticNumber {
 	}
 	public static void main(String[] args) {
 		StrobogramaticNumber obj = new StrobogramaticNumber();
-		System.out.println(obj.isStrobogrammatic("69"));
+		System.out.println(obj.isStrobogrammatic("696"));
 	}
 }
