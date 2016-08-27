@@ -15,7 +15,28 @@ import java.util.Stack;
  *
  */
 public class VerifyPreorderSequenceOfBST {
-	public boolean verifyPreorder(int[] preorder) {
+	public boolean verifyPreorder(int[] preorder) {// Recursive solution.
+		if (preorder.length == 0)
+			return true;
+		return verify(preorder, 0, preorder.length - 1, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+
+	private boolean verify(int[] preorder, int start, int end, int min, int max) {
+		if (start > end)
+			return true;
+		int root = preorder[start];
+		int i = start;
+		if (preorder[i] < min || preorder[i] > max)
+			return false;
+		for (; i <= end; i++) {
+
+			if (preorder[i] > root)
+				break;
+		}
+		return verify(preorder, start + 1, i - 1, min, root) && verify(preorder, i, end, root, max);
+	}
+
+	public boolean verifyPreorder1(int[] preorder) { // O(n) space and time.
 		if (preorder.length == 0)
 			return true;
 		Stack<Integer> temp = new Stack<>();
@@ -27,8 +48,15 @@ public class VerifyPreorderSequenceOfBST {
 			if (preorder[i] < temp.peek())
 				temp.push(preorder[i]);
 			else {
-				while (!temp.isEmpty() && temp.peek() < preorder[i]) // pop elements until you find the parent.
-					low = temp.pop();// parent will be the one which is just bigger than it.
+				while (!temp.isEmpty() && temp.peek() < preorder[i]) // pop
+																		// elements
+																		// until
+																		// you
+																		// find
+																		// the
+																		// parent.
+					low = temp.pop();// parent will be the one which is just
+										// bigger than it.
 				temp.push(preorder[i]);
 			}
 		}
