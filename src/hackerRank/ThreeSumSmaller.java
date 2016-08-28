@@ -18,8 +18,8 @@ import java.util.Arrays;
  *
  */
 public class ThreeSumSmaller {
-	public int threeSumSmaller(int[] nums, int target) {
-		if (nums.length == 0)
+	public int threeSumSmaller(int[] nums, int target) { // O(n^2)
+		if (nums.length == 0) // Got confused between the actual 3 sum problem and this one. Very similar yet so dissimilar !
 			return 0;
 		int res = 0;
 		Arrays.sort(nums);
@@ -29,8 +29,8 @@ public class ThreeSumSmaller {
 			int end = nums.length - 1;
 			while (curr < end) {
 				if (nums[curr] + nums[start] + nums[end] < target) {
-					res += end - curr;
-					curr++;
+					res += end - curr; // Since we know that all the elements from curr to end will be a valid triplet.
+					curr++;				// Doesnt matter if ther are duplicate elements.
 				} else
 					end--;
 			}
