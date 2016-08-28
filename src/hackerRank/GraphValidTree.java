@@ -4,6 +4,7 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,7 +33,34 @@ import java.util.List;
 public class GraphValidTree {
 	int count;
 
-	public boolean validTree(int n, int[][] edges) {
+	public boolean validTree(int n, int[][] edges) {// Union find based
+													// solution. Interesting...
+		if (edges.length == 0 && n == 0)
+			return true;
+		int[] parent = new int[n];
+		Arrays.fill(parent, -1);
+
+		for (int i = 0; i < edges.length; i++) {
+			int u = edges[i][0];
+			int v = edges[i][1];
+			int p1 = find(u, parent);
+			int p2 = find(v, parent);
+			if (p1 == p2)
+				return false;
+			parent[p1] = p2; // union.
+		}
+
+		return edges.length == n - 1;
+	}
+
+	private int find(int num, int[] parent) {
+		if (parent[num] == -1)
+			return num;
+		return find(parent[num], parent);
+	}
+
+	public boolean validTree1(int n, int[][] edges) {// Adjancency list based
+														// solution.
 		if (edges.length == 0 && n == 0)
 			return true;
 		count = 0;
