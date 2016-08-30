@@ -13,8 +13,6 @@ package hackerRank;
  */
 public class ClosestBSTValue {
 	public int closestValue(TreeNode root, double target) {
-		if (root.val == target)
-			return root.val;
 		int temp = 0;
 		if (root.val > target && root.left != null) {
 			temp = closestValue(root.left, target);
@@ -24,6 +22,21 @@ public class ClosestBSTValue {
 			return Math.abs(temp - target) > Math.abs(root.val - target) ? root.val : temp;
 		} else
 			return root.val;
+
+	}
+
+	public int closestValue1(TreeNode root, double target) { // Just another way
+																// of doing same
+																// thing.
+		TreeNode child = null;
+		if (root.val > target)
+			child = root.left;
+		else
+			child = root.right;
+		if (child == null)
+			return root.val;
+		int val = closestValue(child, target);
+		return Math.abs(val - target) > Math.abs(root.val - target) ? root.val : val;
 
 	}
 }
