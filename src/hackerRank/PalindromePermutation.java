@@ -16,7 +16,7 @@ import java.util.Set;
  *
  */
 public class PalindromePermutation {
-	public boolean canPermutePalindrome(String s) { // Easy hashmap based
+	public boolean canPermutePalindrome(String s) { // Easy Hashset based
 													// solution.
 		if (s.length() == 0)
 			return true;
