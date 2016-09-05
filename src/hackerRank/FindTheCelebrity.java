@@ -24,14 +24,29 @@ package hackerRank;
  *
  */
 public class FindTheCelebrity {
-	public int findCelebrity(int n) { // Recursive implementation.
+	
+	public int findCelebrity(int n) { // Efficient 2 pass solution.
+        if(n < 2)
+            return -1;
+        int candidate = 0;
+        for(int i = 1 ; i < n; i++)
+            if(knows(candidate, i)) // If A knows B then A cannot be celebrity.
+                candidate = i; // And if B knows A then B cannot be celebrity.
+        for(int i = 0 ; i < n; i++)
+            if(i != candidate && !knows(i,candidate) || i != candidate && knows(candidate, i))
+                return -1;
+        return candidate;
+        
+    }
+	
+	public int findCelebrity1(int n) { // Almost bruteforce implementation.
 		for (int i = 0; i < n; i++)
 			if (helper(i, n) && celeb(i, n))
 				return i;
 		return -1;
 	}
 
-	private boolean helper(int k, int n) { // whether everybidy know this
+	private boolean helper(int k, int n) { // whether everybody know this
 											// person.
 
 		for (int i = 0; i < n; i++) {
