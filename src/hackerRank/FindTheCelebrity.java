@@ -24,7 +24,34 @@ package hackerRank;
  *
  */
 public class FindTheCelebrity {
-	public int findCelebrity(int n) {
+	public int findCelebrity(int n) { // Recursive implementation.
+		for (int i = 0; i < n; i++)
+			if (helper(i, n) && celeb(i, n))
+				return i;
+		return -1;
+	}
 
+	private boolean helper(int k, int n) { // whether everybidy know this
+											// person.
+
+		for (int i = 0; i < n; i++) {
+
+			if (i != k && !knows(i, k))
+				return false;
+		}
+		return true;
+	}
+
+	private boolean celeb(int k, int n) { // Whether this person knows anybody.
+		for (int i = 0; i < n; i++) {
+
+			if (i != k && knows(k, i))
+				return false;
+		}
+		return true;
+	}
+
+	private boolean knows(int a, int b) { // dummy method.
+		return true;
 	}
 }
