@@ -31,7 +31,7 @@ public class FindTheCelebrity {
         int candidate = 0;
         for(int i = 1 ; i < n; i++)
             if(knows(candidate, i)) // If A knows B then A cannot be celebrity.
-                candidate = i; // And if B knows A then B cannot be celebrity.
+                candidate = i; // And if A doesn't know B then B cannot be celebrity.
         for(int i = 0 ; i < n; i++)
             if(i != candidate && !knows(i,candidate) || i != candidate && knows(candidate, i))
                 return -1;
