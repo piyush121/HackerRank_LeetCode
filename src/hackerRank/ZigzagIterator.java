@@ -76,6 +76,27 @@ public class ZigzagIterator {
         else
             return true;
     }
+    /* Implementation for k 1d vectors.
+    List<Iterator> list;
+    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+        list = new ArrayList<>();
+        if(!v1.isEmpty()) list.add(v1.iterator());
+       if(!v2.isEmpty()) list.add(v2.iterator());
+        
+    }
+
+    public int next() {
+        Iterator itr = list.remove(0);
+        int val = (Integer)itr.next();
+        if(itr.hasNext())
+            list.add(itr);
+        return val;
+    }
+
+    public boolean hasNext() {
+        return !list.isEmpty();
+    }
+    
 }
 
 /**
