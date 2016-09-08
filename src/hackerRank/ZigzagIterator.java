@@ -76,6 +76,7 @@ public class ZigzagIterator {
         else
             return true;
     }
+}
     /* Implementation for k 1d vectors.
     List<Iterator> list;
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
