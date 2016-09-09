@@ -29,7 +29,7 @@ public class ExpressionAddOperators {
 	}
 
 	private void dfs(String nums, int target, int start, String path, List<String> res, Long prev, Long val) {
-		if (start == nums.length()) {
+		if (start == nums.length()) { // base case.
 			if (val == target)
 				res.add(path);
 			return;
@@ -38,17 +38,17 @@ public class ExpressionAddOperators {
 		for (int i = start; i < nums.length(); i++) {
 			if (i != start && nums.charAt(start) == '0')
 				break;
-			Long curr = Long.parseLong(nums.substring(start, i + 1));
+			Long curr = Long.parseLong(nums.substring(start, i + 1)); // current number. Can be more than 1 digit.
 
 			if (start == 0) {
 				dfs(nums, target, i + 1, path + curr, res, curr, curr);
-				continue;
+				continue; // if this i the very first call. skip totally.
 			}
 
 			dfs(nums, target, i + 1, path + "+" + curr, res, curr, val + curr);
 			dfs(nums, target, i + 1, path + "-" + curr, res, -curr, val - curr);
-			dfs(nums, target, i + 1, path + "*" + curr, res, prev * curr, val - prev + curr * prev);
-
+			dfs(nums, target, i + 1, path + "*" + curr, res, prev * curr, val - prev + curr * prev); // here we are separating previous added value and multiplying prev with current value,
+																									 // because the rule says multiply first than add/subtract it.
 		}
 	}
 }
