@@ -11,18 +11,35 @@ package hackerRank;
  *
  */
 public class InOrderSuccessorBST {
-	public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+	public TreeNode inorderSuccessor(TreeNode root, TreeNode p) { // RECURSIVE VERSION. O(n) space and time.
+		if(root == null)
+            return root;
+		if (root.val > p.val) { // `p` is on the left.
+			TreeNode left = inorderSuccessor(root.left, p);//find that node's successor.
+			if (left == null) // successor not found. Means root itself is the successor.
+				return root;
+			else
+				return left; // Successor found.
+		} else {
+			TreeNode right = inorderSuccessor(root.right, p);
+			if (right != null)
+				return right;
+			else
+				return null;
+		}		
+	}
+	
+	
+	public TreeNode inorderSuccessor1(TreeNode root, TreeNode p) { // Iterative version. O(1) space. O(n) time.
 		TreeNode succ = null;
 		while (root != null) {
 			if (root.val > p.val) {
 				succ = root;
 				root = root.left;
 			}
-
 			else
 				root = root.right;
 		}
-
 		return succ;
 	}
 	/*
