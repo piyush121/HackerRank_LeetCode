@@ -3,6 +3,9 @@
  */
 package hackerRank;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * You are given a m x n 2D grid initialized with these three possible values.
 
@@ -24,7 +27,7 @@ After running your function, the 2D grid should be:
  *
  */
 public class WallsAndGates {
-	public void wallsAndGates(int[][] rooms) {
+	public void wallsAndGates(int[][] rooms) { // Recursive BFS.
 		if (rooms.length == 0)
 			return;
 		for (int i = 0; i < rooms.length; i++)
@@ -45,5 +48,36 @@ public class WallsAndGates {
 		bfs(rooms, row, col - 1, level + 1);
 		bfs(rooms, row - 1, col, level + 1);
 	}
-    
+	
+	public void wallsAndGates1(int[][] rooms) { // Iterative BFS.
+		if (rooms.length == 0)
+			return;
+		Queue<int[]> que = new LinkedList<>();
+		for (int i = 0; i < rooms.length; i++)
+			for (int j = 0; j < rooms[0].length; j++)
+				if (rooms[i][j] == 0)
+					que.add(new int[] { i, j });
+
+		while (!que.isEmpty()) {
+			int[] location = que.poll();
+			int x = location[0];
+			int y = location[1];
+			if (x < rooms.length - 1 && rooms[x + 1][y] != -1 && rooms[x + 1][y] > rooms[x][y]) {
+				rooms[x + 1][y] = rooms[x][y] + 1;
+				que.add(new int[] { x + 1, y });
+			}
+			if (y < rooms[0].length - 1 && rooms[x][y + 1] != -1 && rooms[x][y + 1] > rooms[x][y]) {
+				rooms[x][y + 1] = rooms[x][y] + 1;
+				que.add(new int[] { x, y + 1 });
+			}
+			if (x > 0 && rooms[x - 1][y] != -1 && rooms[x - 1][y] > rooms[x][y]) {
+				rooms[x - 1][y] = rooms[x][y] + 1;
+				que.add(new int[] { x - 1, y });
+			}
+			if (y > 0 && rooms[x][y - 1] != -1 && rooms[x][y - 1] > rooms[x][y]) {
+				rooms[x][y - 1] = rooms[x][y] + 1;
+				que.add(new int[] { x, y - 1 });
+			}
+		}
+	}
 }
