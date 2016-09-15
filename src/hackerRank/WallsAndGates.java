@@ -27,26 +27,26 @@ After running your function, the 2D grid should be:
  *
  */
 public class WallsAndGates {
-	public void wallsAndGates(int[][] rooms) { // Recursive BFS.
+	public void wallsAndGates(int[][] rooms) { // Recursive DFS.
 		if (rooms.length == 0)
 			return;
 		for (int i = 0; i < rooms.length; i++)
 			for (int j = 0; j < rooms[0].length; j++)
 				if (rooms[i][j] == 0) // from the gate start flooding.
-					bfs(rooms, i, j, 0);
+					dfs(rooms, i, j, 0);
 
 	}
 
-	private void bfs(int[][] rooms, int row, int col, int level) {
+	private void dfs(int[][] rooms, int row, int col, int level) {
 		if (row >= rooms.length || row < 0 || col >= rooms[0].length || col < 0)
 			return;
 		if (rooms[row][col] < level) // no need to go further as path will not get any shorter from here.
 			return;
 		rooms[row][col] = level;
-		bfs(rooms, row, col + 1, level + 1);
-		bfs(rooms, row + 1, col, level + 1);
-		bfs(rooms, row, col - 1, level + 1);
-		bfs(rooms, row - 1, col, level + 1);
+		dfs(rooms, row, col + 1, level + 1);
+		dfs(rooms, row + 1, col, level + 1);
+		dfs(rooms, row, col - 1, level + 1);
+		dfs(rooms, row - 1, col, level + 1);
 	}
 	
 	public void wallsAndGates1(int[][] rooms) { // Iterative BFS.
