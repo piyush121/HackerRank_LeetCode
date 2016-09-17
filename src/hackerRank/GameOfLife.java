@@ -27,7 +27,22 @@ these problems?
  */
 public class GameOfLife {
 	 public void gameOfLife(int[][] board) {
-	        
+		 int rows = board.length;
+		 int cols = board[0].length;
+	        for(int i = 0; i < rows; i++)
+	        	for(int j = 0 ; j < cols; j++) {
+	        		
+	        	}
 		 
 	    }
+	 
+	 private int getLiveNeighbors(int[][] board, int x , int y) {
+		 int lives = 0;
+		 for(int i = x - 1; i <= x + 1; i++)
+			 for(int j = y - 1; j <= y + 1; j++) {
+				 if((board[i][j] & 1) == 1)
+					 lives++;
+			 }
+		 return lives;
+	 }
 }
