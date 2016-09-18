@@ -35,42 +35,58 @@ There exist two distinct solutions to the 4-queens puzzle:
  *
  */
 public class N_Queens {
-	public List<List<String>> solveNQueens(int n) {
+	public List<List<String>> solveNQueens(int n) { // DFS based hard question !
 		List<List<String>> res = new ArrayList<List<String>>();
-		Set<List<Integer>> board = new HashSet<>();
-		dfs(res, new ArrayList<String>(), board, 0, n);
+		char[][] board = new char[n][n];
+		for(int i = 0 ; i < n; i++)
+			Arrays.fill(board[i], '.');
+		dfs(res, board, 0, n);
 		return res;
 
 	}
 
-	private void dfs(List<List<String>> res, List<String> curr, Set<List<Integer>> board, int col, int n) {
+	private void dfs(List<List<String>> res, char[][] board, int col, int n) {
 		if (col == n) {
-			List<String> temp = new ArrayList<>(curr);
+			List<String> temp = charToList(board, n);
 			res.add(temp);
 			return;
 		}
 
 		for (int i = 0; i < n; i++) {
 			if (isSafe(board, i, col))  {
-				curr.add("Q");
-				board.add(Arrays.asList(new Integer[] { i, col }));
-				dfs(res, curr, board, col + 1, n);
-				board.remove(Arrays.asList(new Integer[] { i, col }));
-				curr.remove(curr.size() - 1);
+				board[i][col] = 'Q'; // Easy recursion.
+				dfs(res, board, col + 1, n);
+				board[i][col] = '.'; // Put back '.' after the solution is found or not after recursion.
 			}
-			else
-			    curr.add(".");
 					
 		}
 
 	}
+	private List<String> charToList (char[][] board, int n) { // convert char board to List as required.
+		List<String>  res = new ArrayList<>();
+		
+		for(int i = 0; i < n; i++) {
+			String str = "";
+			for(int j = 0 ; j < n; j++) {
+				str += board[i][j];
+			}
+			res.add(str);
+		}
+				
+		
+		return res;
+	}
 
-	private boolean isSafe(Set<List<Integer>> board, int i, int j) {
-		int ldiag = i - 1, rdiag = i + 1;
+	private boolean isSafe(char[][] board, int i, int j) {
+		int ldiag = i - 1, rdiag = i + 1; // Two diagnols check.
 		for (int col = j - 1; col >= 0; col--, ldiag--, rdiag++) {
-			List<Integer> left = Arrays.asList(new Integer[] { ldiag, col });
-			List<Integer> right = Arrays.asList(new Integer[] { rdiag, col });
-			if (board.contains(left) || board.contains(right))
+			if (ldiag >= 0 && board[ldiag][col] == 'Q' || rdiag  < board[0].length && board[rdiag][col] == 'Q')
+				return false;
+		}
+		for (int x = 0, y = 0; x < i || y < j; x++, y++) { // same row and column check.
+			if (x < i && board[x][j] == 'Q')
+				return false;
+			if (y < j && board[i][y] == 'Q')
 				return false;
 		}
 		return true;
