@@ -41,7 +41,7 @@ public class WordPattern_II {
 			Character ch = pattern[curr];
 			String sub = str.substring(start, i + 1);
 			if (!map.containsKey(ch)) {
-				if (mapped.contains(sub))
+				if (mapped.contains(sub)) // It is possible that this value is already mapped by a different key
 					continue;
 				map.put(ch, sub);
 				mapped.add(sub);
@@ -49,7 +49,7 @@ public class WordPattern_II {
 				if (res)
 					return true;
 				else {
-					map.remove(ch);
+					map.remove(ch); // Remove what you put before. usual in Recursion.
 					mapped.remove(sub);
 				}
 			} else {
