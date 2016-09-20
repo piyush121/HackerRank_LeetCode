@@ -29,7 +29,7 @@ public class WordPattern_II {
     }
 	
 	private boolean dfs(int curr, int start, String pattern, String str, Map<Character, String> map) {
-		if(start == str.length())
+		if(curr == pattern.length())
 			return true;
 		for(int i = start ; i < str.length(); i++) {
 			Character ch = pattern.charAt(curr);
@@ -40,6 +40,8 @@ public class WordPattern_II {
 				boolean res = dfs(curr + 1, i + 1, pattern, str, map);
 				if(res)
 					return true;
+				else
+					map.remove(ch);
 			}
 			else {
 				String st = map.get(ch);
@@ -48,8 +50,6 @@ public class WordPattern_II {
 					if(res)
 						return true;
 				}
-				else
-				    return false;
 			}
 			
 		}
@@ -69,6 +69,6 @@ public class WordPattern_II {
 	
 	public static void main(String[] args) {
 		WordPattern_II obj = new WordPattern_II();
-		System.out.println(obj.wordPatternMatch("ab", "aa"));
+		System.out.println(obj.wordPatternMatch("abba", "dogcatcatdog"));
 	}
 }
