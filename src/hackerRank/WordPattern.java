@@ -23,7 +23,30 @@ by a single space.
  *
  */
 public class WordPattern {
-	public boolean wordPattern(String pattern, String str) { // O(n) time and space. But kind of Inefficient.
+	public boolean wordPattern(String pattern, String str) { // Using 1 HashMap.
+		String[] strArray = str.split(" ");
+		if (pattern.length() != strArray.length)
+			return false;
+		Map<Character, String> strMap = new HashMap<>();
+
+		for (int i = 0; i < strArray.length; i++) {
+			Character pat = pattern.charAt(i);
+			String st = strArray[i];
+			if (strMap.containsKey(pat)) {
+				String st1 = strMap.get(pat);
+				if (!st1.equals(st))
+					return false;
+			} else {
+				if (strMap.values().contains(st))
+					return false;
+				strMap.put(pat, st);
+			}
+
+		}
+		return true;
+	}
+	
+	public boolean wordPattern1(String pattern, String str) { // O(n) time and space. But kind of Inefficient.
 		String[] strArray = str.split(" ");
 		if (pattern.length() != strArray.length)
 			return false;
