@@ -21,7 +21,7 @@ You may assume both pattern and str contains only lowercase letters.
  *
  */
 public class WordPattern_II {
-	public boolean wordPatternMatch(String pattern, String str) {
+	public boolean wordPatternMatch(String pattern, String str) { // Totally works. but very slow.
         if(pattern.length() == 0 && str.length() != 0)
             return false;
 		Map<Character, String> map = new HashMap<>();
@@ -29,12 +29,13 @@ public class WordPattern_II {
     }
 	
 	private boolean dfs(int curr, int start, String pattern, String str, Map<Character, String> map) {
-		if(curr == pattern.length())
+		if(curr == pattern.length() && start == str.length()) 
 			return true;
-		for(int i = start ; i < str.length(); i++) {
+		
+		for(int i = start ; i < str.length() && curr < pattern.length(); i++) {
 			Character ch = pattern.charAt(curr);
 			if(!map.containsKey(ch)) {
-			    if(map.values().contains(str.substring(start, i + 1)))
+			    if(map.values().contains(str.substring(start, i + 1))) 
 			        continue;
 				map.put(ch, str.substring(start, i + 1));
 				boolean res = dfs(curr + 1, i + 1, pattern, str, map);
@@ -46,17 +47,18 @@ public class WordPattern_II {
 			else {
 				String st = map.get(ch);
 				if(find(st, str.substring(start))) {
-					boolean res = dfs(curr + 1, i + st.length(), pattern, str, map);
+					boolean res = dfs(curr + 1, start + st.length(), pattern, str, map);
 					if(res)
 						return true;
 				}
+				else
+				    return false;
 			}
 			
 		}
 		return false;
 	}
 	private boolean find(String needle, String hay) {
-	    //System.out.println(hay);
 		if(hay.length() < needle.length())
 			return false;
 		for(int i = 0 ; i < needle.length(); i++) {
@@ -66,9 +68,10 @@ public class WordPattern_II {
 		
 		return true;
 	}
+
 	
 	public static void main(String[] args) {
 		WordPattern_II obj = new WordPattern_II();
-		System.out.println(obj.wordPatternMatch("abba", "dogcatcatdog"));
+		System.out.println(obj.wordPatternMatch("itwastimes","ittwaastthhebesttoofttimesss"));
 	}
 }
