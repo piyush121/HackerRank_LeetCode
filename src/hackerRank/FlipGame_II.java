@@ -4,7 +4,9 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * You are playing the following Flip Game with your friend: Given a string that
@@ -21,11 +23,16 @@ import java.util.List;
  *
  */
 public class FlipGame_II {
+	Set<String> seen = new HashSet<>(); // contains winning moves.
 	public boolean canWin(String s) {
+		if(seen.contains(s))
+			return true;
 		List<String> moves = generatePossibleNextMoves(s);
 		for(String move : moves) {
-			if(!canWin(move)) // If any of the next move lead to the sure shot loss of next player then
-				return true; // take it and win.
+			if(!canWin(move)) { // If any of the next move lead to the sure shot loss of next player then
+				seen.add(s); // take it and win.
+				return true; 
+			}
 		}		
 		return false;
 	}
