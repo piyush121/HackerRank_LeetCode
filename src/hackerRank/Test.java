@@ -8,11 +8,34 @@ import java.util.*;
  *
  */
 public class Test {
+	static List<List<Integer>> l =new ArrayList<>();
+	public static void arraypermute(int arr[], int visited[], List<Integer> a, Set<List<Integer>> set)
+	{
+		if(a.size()==arr.length)
+		{	if(!set.contains(a)) {
+			l.add(a);
+			set.add(a);
+		}
+			return;
+		}
+		for(int i=0;i<arr.length;i++)
+		{
+			if(visited[i]==0)
+			{
+				visited[i]=1;
+				a.add(arr[i]);
+				arraypermute(arr, visited, new ArrayList<>(a), set);
+				a.remove(a.size()-1);
+				visited[i]=0;
+			}
+		}
+	}
 	public static void main(String[] args) {
-		
-		String str1 = "hello";
-		String str2 = "hello1";
-		System.out.println(str1.compareTo(str2));
+		// TODO Auto-generated method stub
+		int arr[]=new int[]{1,2,2};
+		int visited[]=new int[arr.length];
+		arraypermute(arr, visited, new ArrayList<>(), new HashSet<List<Integer>>());
+		System.out.println(l);
 	}
 
 }
