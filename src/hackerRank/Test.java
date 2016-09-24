@@ -30,6 +30,21 @@ public class Test {
 			}
 		}
 	}
+	int[] minimum;
+	public int mini(int arr[], int l, int r)
+	{
+		minimum=new int[arr.length];
+		minimum[0]=arr[0];
+		for(int i=1;i<arr.length;i++)
+		{
+			if(minimum[i-1]>arr[i])
+				minimum[i]=arr[i];
+			else
+				minimum[i]=minimum[i-1];
+		}
+		return minimum[r];
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int arr[]=new int[]{1,2,2};

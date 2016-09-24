@@ -27,12 +27,12 @@ public class OneEditDistance {
 		int diff = 0;
 		for (i = 0; i < s.length() && j < t.length(); i++) {
 			if (s.charAt(i) != t.charAt(j)) {
-				diff++;
-				if (diff > 1)
+				diff++; // Obvious thing.
+				if (diff > 1) // Different obvious thing.
 					return false;
-				if (m == n)
-					j++;
-			} else
+				if (m == n) // Trickiest part. You wanna move smaller pointer only when you know that there
+					j++;   // are equal number of steps both pointer has left.
+			} else // equal char value.
 				j++;
 		}
 		if (diff != 1)
