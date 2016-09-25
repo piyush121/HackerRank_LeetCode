@@ -36,8 +36,8 @@ public class HouseRobber_III {
 		int[] left = dfs(root.left); // Tricky part.
 		int[] right = dfs(root.right);
 
-		res[0] = root.val + left[1] + right[1];
-		res[1] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+		res[0] = root.val + left[1] + right[1]; // By robbing current house.
+		res[1] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]); // Without robbing current house.
 		return res;
 	}
 
