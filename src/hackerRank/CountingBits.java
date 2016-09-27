@@ -39,4 +39,21 @@ public class CountingBits {
         }
         return res;
     }
+	
+	public int[] countBits1(int num) { // yet another method.
+        if(num == 0)
+        	return new int[]{0};
+        int[] res = new int[num + 1];
+        int pow = 1;
+        int prev = 0;
+        for(int i = 1; i <=num; i++) {
+        	if(pow == i) {
+        	    prev = 0;    
+        	    pow *= 2;
+        	}
+        	res[i] = 1 + res[prev];
+        	prev++;
+        }
+        return res;
+    }
 }
