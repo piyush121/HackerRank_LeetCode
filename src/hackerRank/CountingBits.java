@@ -27,6 +27,16 @@ Or does the odd/even status of the number help you in calculating the number of 
  */
 public class CountingBits {
 	public int[] countBits(int num) {
-        
+        if(num == 0)
+        	return new int[]{0};
+        int[] res = new int[num + 1];
+        int offset = 1;
+ // Pattern goes like : 0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4...       
+        for(int i = 1; i <=num; i++) {
+        	if(offset * 2 == i)
+        		offset *= 2; // This part makes you think really hard, how to code !
+        	res[i] = 1 + res[i - offset]; // Tricky part !
+        }
+        return res;
     }
 }
