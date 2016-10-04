@@ -39,45 +39,60 @@ randomSet.insert(2);
 randomSet.getRandom();
  */
 public class InsertDeleteGetRandom_ConstantTime {
-	
+
 }
 
 class RandomizedSet {
 	ArrayList<Integer> cache;
 	HashMap<Integer, Integer> map;
-	 /** Initialize your data structure here. */
-    public RandomizedSet() {
-    	cache = new ArrayList<>();
-    	map = new HashMap<>();
-    }
-    
-    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
-    public boolean insert(int val) {
-    	map.put(val, cache.size());
-    	cache.add(val);
-        
-    }
-    
-    /** Removes a value from the set. Returns true if the set contained the specified element. */
-    public boolean remove(int val) {
-        int idx = map.get(val);
-        cache.set(idx, cache.get(cache.size() - 1)); // replace this element with the last one.
-        cache.remove(cache.size() - 1); // remove last.
-        map.remove(val); // Finally remove the given value from map.
-    }
-    
-    /** Get a random element from the set. */
-    public int getRandom() {
-        int idx = new Random().nextInt(cache.size());
-        return cache.get(idx);
-    }
+
+	/** Initialize your data structure here. */
+	public RandomizedSet() {
+		cache = new ArrayList<>();
+		map = new HashMap<>();
+	}
+
+	/**
+	 * Inserts a value to the set. Returns true if the set did not already
+	 * contain the specified element.
+	 */
+	public boolean insert(int val) {
+		if (map.containsKey(val))
+			return false;
+		map.put(val, cache.size());
+		cache.add(val);
+		return true;
+	}
+
+	/**
+	 * Removes a value from the set. Returns true if the set contained the
+	 * specified element.
+	 */
+	public boolean remove(int val) {
+		if (!map.containsKey(val))
+			return false;
+		int idx = map.get(val);
+		if (cache.size() > 1) {
+			cache.set(idx, cache.get(cache.size() - 1)); // replace this element
+															// with the last
+															// one.
+			map.put(cache.get(idx), idx);
+		}
+		cache.remove(cache.size() - 1); // remove last.
+		map.remove(val); // Finally remove the given value from map.
+
+		return true;
+	}
+
+	/** Get a random element from the set. */
+	public int getRandom() {
+		int idx = new Random().nextInt(cache.size());
+		return cache.get(idx);
+	}
 }
 
 /**
  * Your RandomizedSet object will be instantiated and called as such:
- * RandomizedSet obj = new RandomizedSet();
- * boolean param_1 = obj.insert(val);
- * boolean param_2 = obj.remove(val);
- * int param_3 = obj.getRandom();
+ * RandomizedSet obj = new RandomizedSet(); boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val); int param_3 = obj.getRandom();
  */
-
