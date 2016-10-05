@@ -4,7 +4,9 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -21,24 +23,32 @@ import java.util.Set;
 public class WordBreak_II {
 	public List<String> wordBreak(String s, Set<String> wordDict) {
 		List<String> res = new ArrayList<>();
-		helper(s, wordDict, res, new ArrayList<>());
+		helper(s, wordDict, res, new HashMap<String, List<String>>());
 		return res;
 	}
 
-	private void helper(String s, Set<String> dict, List<String> res, List<String> temp) {
+	private List<String> helper(String s, Set<String> dict, List<String> res, Map<String, List<String>> seen) {
 		if (s.length() == 0) {
-			res.add(String.join(" ", temp));
-			return;
+			return null;
+			
+		}
+		if(seen.containsKey(s)) {
+			return seen.get(s);
 		}
 
 		for (int i = 0; i <= s.length(); i++) {
 			String str = s.substring(0, i);
 			if (dict.contains(str)) {
 				temp.add(str);
-				helper(s.substring(i), dict, res, temp);
+				List<String> right = helper(s.substring(i), dict, res);
 				temp.remove(temp.size() - 1);
 
 			}
 		}
+	}
+	
+	private void mai() {
+		// TODO Auto-generated method stub
+
 	}
 }
