@@ -15,39 +15,41 @@ import java.util.Set;
  * 
  * Return all such possible sentences.
  * 
- * For example, given s = "catsanddog", dict = ["cat", "cats", "and", "sand", "dog"].
+ * For example, given s = "catsanddog", dict = ["cat", "cats", "and", "sand",
+ * "dog"].
  * 
  * A solution is ["cats and dog", "cat sand dog"].
  *
  */
 public class WordBreak_II {
+	Map<String, List<String>> seen = new HashMap<>();
+
 	public List<String> wordBreak(String s, Set<String> wordDict) {
 		List<String> res = new ArrayList<>();
-		helper(s, wordDict, res, new HashMap<String, List<String>>());
-		return res;
-	}
-
-	private List<String> helper(String s, Set<String> dict, List<String> res, Map<String, List<String>> seen) {
 		if (s.length() == 0) {
-			return null;
-			
+			return res;
 		}
-		if(seen.containsKey(s)) {
+		if (seen.containsKey(s)) {
 			return seen.get(s);
 		}
 
 		for (int i = 0; i <= s.length(); i++) {
-			String str = s.substring(0, i);
-			if (dict.contains(str)) {
-				temp.add(str);
-				List<String> right = helper(s.substring(i), dict, res);
-				temp.remove(temp.size() - 1);
-
+			String left = s.substring(0, i);
+			if (wordDict.contains(left)) {
+				List<String> right = wordBreak(s.substring(i), wordDict);
+				for (String str : right) {
+					res.add(left + " " + str);
+				}
+				if (i == s.length())
+					res.add(left);
 			}
 		}
+		seen.put(s, res); // Memoize.
+		return res;
+
 	}
-	
-	private void mai() {
+
+	private void main() {
 		// TODO Auto-generated method stub
 
 	}
