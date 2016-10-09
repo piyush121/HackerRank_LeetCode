@@ -3,7 +3,6 @@
  */
 package hackerRank;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -13,26 +12,17 @@ import java.util.Scanner;
 
 class Trie1 {
 	boolean isWord;
-	HashMap<Character, Trie1> map;
+	int count;
+	Trie1[] map;
 
 	public Trie1() {
 		isWord = false;
-		map = new HashMap<>();
+		count = 0;
+		map = new Trie1[26];
 	}
 }
 
 class Solution1 {
-	public static int dfs(Trie1 node) {
-		int count = 0;
-		if (node.isWord)
-			count++;
-		for (char ch : node.map.keySet()) {
-			Trie1 curr = node.map.get(ch);
-			count += dfs(curr);
-		}
-		return count;
-	}
-
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
@@ -45,20 +35,22 @@ class Solution1 {
 				char[] name = contact.toCharArray();
 				for (int i = 0; i < name.length; i++) {
 					char ch = name[i];
-					if (!node.map.containsKey(ch)) {
-						node.map.put(ch, new Trie1());
+					if (node.map[ch - 'a'] == null) {
+						node.map[ch - 'a'] = new Trie1();
 					}
-					node = node.map.get(ch);
-					if (i == name.length - 1)
+					node = node.map[ch - 'a'];
+					if (i == name.length - 1) {
 						node.isWord = true;
+					}
+					node.count++;
 				}
 
 			}
 			if (op.equals("find")) {
 				boolean flag = true;
 				for (char ch : contact.toCharArray()) {
-					if (node.map.containsKey(ch))
-						node = node.map.get(ch);
+					if (node.map[ch - 'a'] != null)
+						node = node.map[ch - 'a'];
 					else {
 						System.out.println(0);
 						flag = false;
@@ -66,8 +58,7 @@ class Solution1 {
 					}
 				}
 				if (flag) {
-					int count = dfs(node);
-					System.out.println(count);
+					System.out.println(node.count);
 				}
 			}
 		}
