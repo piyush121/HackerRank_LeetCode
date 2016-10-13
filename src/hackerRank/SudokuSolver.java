@@ -18,16 +18,16 @@ public class SudokuSolver {
 	}
 
 	public boolean dfs(char[][] board, int row, int col) {
-		if (row == board.length)
+		if (row == board.length) // Slution found.
 			return true;
-		if (col == board[0].length) {
+		if (col == board[0].length) { // Time to move to new row.
 			return dfs(board, row + 1, 0);
 		}
-		if (board[row][col] != '.') {
+		if (board[row][col] != '.') { // Pre allocated immutable value.
 			return dfs(board, row, col + 1);
 		}
 
-		for (int val = 1; val < 10; val++) {// O(1)
+		for (int val = 1; val < 10; val++) {// O(1). Try all possible values i.e only 9 values.
 			char ch = (char) ('0' + val);
 			if (isValid(board, row, col, ch)) {
 				board[row][col] = ch;
