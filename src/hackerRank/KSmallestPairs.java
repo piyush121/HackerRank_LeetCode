@@ -39,7 +39,52 @@ All possible pairs are returned from the sequence:
 [1,3],[2,3]
  *
  */
+
+class Solution {
+	class Pairs {
+		int sum;
+		int jIdx;
+		int[] pair;
+
+		public Pairs(int[] pair, int idx) {
+			this.sum = pair[0] + pair[1];
+			this.pair = pair;
+			this.jIdx = idx;
+		}
+
+		public String toString() {
+			return sum + "";
+		}
+	}
+
+	public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) { // O(klogk) solution!.
+		List<int[]> res = new ArrayList<>();
+		if (nums1.length == 0 || nums2.length == 0)
+			return res;
+		PriorityQueue<Pairs> que = new PriorityQueue<>(new Comparator<Pairs>() {
+			public int compare(Pairs obj1, Pairs obj2) {
+				return obj1.sum - obj2.sum;
+			}
+
+		});
+		for (int i = 0; i < nums1.length; i++)
+			que.add(new Pairs(new int[] { nums1[i], nums2[0] }, 0));
+		// System.out.println(que);
+
+		for (int i = 0; i < k && !que.isEmpty(); i++) {
+			Pairs temp = que.poll();
+			res.add(temp.pair);
+			int idx = temp.jIdx;
+			if (idx + 1 != nums2.length) {
+				que.offer(new Pairs(new int[] { temp.pair[0], nums2[idx + 1] }, idx + 1));
+			}
+		}
+		return res;
+	}
+}
+
 public class KSmallestPairs {
+
 	class Pairs {
 		int sum;
 		int[] pair;
@@ -50,7 +95,8 @@ public class KSmallestPairs {
 		}
 	}
 
-	public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+	public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) { // O(n^2)
+																			// solution.
 
 		PriorityQueue<Pairs> que = new PriorityQueue<>(new Comparator<Pairs>() {
 			public int compare(Pairs obj1, Pairs obj2) {
