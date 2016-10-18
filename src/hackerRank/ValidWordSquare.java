@@ -3,6 +3,8 @@
  */
 package hackerRank;
 
+import java.util.List;
+
 /**
  * Given a sequence of words, check whether it forms a valid word square.
 
@@ -55,7 +57,7 @@ Therefore, it is a valid word square.
  *
  */
 public class ValidWordSquare {
-	public boolean validWordSquare(List<String> words) {
+	public boolean validWordSquare(List<String> words) { // Easy but tricky.O(n*m) run time.
 
 		for (int i = 0; i < words.size(); i++) {
 			String str = words.get(i);
