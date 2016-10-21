@@ -41,7 +41,7 @@ class Point {
 }
 
 public class ShortestDistanceFromAllBuildings {
-	int[] dx = { 1, 0, -1, 0 };
+	int[] dx = { 1, 0, -1, 0 }; // Simple trick to go in all 4 directions.
 	int[] dy = { 0, 1, 0, -1 };
 
 	public int shortestDistance(int[][] grid) {
@@ -49,8 +49,8 @@ public class ShortestDistanceFromAllBuildings {
 			return -1;
 		int m = grid.length;
 		int n = grid[0].length;
-		int[][] dist = new int[m][n];
-		List<Point> buildings = new ArrayList<>();
+		int[][] dist = new int[m][n]; // Store distances from all the buildings for every land.
+		List<Point> buildings = new ArrayList<>(); // Get location of all buildings.
 		for (int i = 0; i < m; i++) {
 			for (int j = 0; j < n; j++) {
 				dist[i][j] = grid[i][j];
