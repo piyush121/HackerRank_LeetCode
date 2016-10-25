@@ -31,7 +31,7 @@ public class LongestSubstringWithKDistonctCharacters {
 					count++;
 				} else {
 					while (count >= k) {
-						if (map.get(s.charAt(j)) == j) {// Is this last occurence of this character.
+						if (map.get(s.charAt(j)) == j) {// Is this last occurence of this character.?
 							map.remove(s.charAt(j));
 							count--;
 						}
