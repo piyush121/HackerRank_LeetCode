@@ -48,7 +48,7 @@ public class HitCounter {
     /** Initialize your data structure here. */
     public HitCounter() {
         hits = new int[300];
-        times = new int[300];
+        times = new int[300]; // timestamps of all hits.
         prevStamp = 0;
         
     }
@@ -57,7 +57,7 @@ public class HitCounter {
         @param timestamp - The current timestamp (in seconds granularity). */
     public void hit(int timestamp) {
         
-        if( times[timestamp % 300] == timestamp) {
+        if( times[timestamp % 300] == timestamp) { // check if this timestamp is same as previous one.
             hits[timestamp % 300]++;
         }
         else {
@@ -73,7 +73,7 @@ public class HitCounter {
     public int getHits(int timestamp) {
         
         int res = 0;
-        for(int i = 0 ; i < 300; i++) {
+        for(int i = 0 ; i < 300; i++) { //O(1).
             if(times[i] > timestamp - 300)
             res += hits[i];
         }
