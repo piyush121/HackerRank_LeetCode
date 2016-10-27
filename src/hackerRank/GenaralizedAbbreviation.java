@@ -4,7 +4,9 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Write a function to generate the generalized abbreviations of a word.
@@ -16,23 +18,27 @@ import java.util.List;
  */
 public class GenaralizedAbbreviation {
 	public static List<String> generateAbbreviations(String word) { // Elegant Question asked at Google!
-        List<String> res = new ArrayList<>();
-        if(word.length() == 0 ) {
-        	res.add("");
-            return res;
-        }
-        res.add(String.valueOf(word.length()));    
-        for(int i = 0; i < word.length(); i++) {
-            String s = word.substring(i + 1);
-            String left = i == 0 ? "" : "" + i;
-            String ch = "" + word.charAt(i);
-            for(String right : generateAbbreviations(s)) { // similar to string permutation.
-                res.add(left + ch + right);
-            }
-        }
-        
-        return res;
-    }
+		Map<String, List<String>> map = new HashMap<>();
+		if (map.containsKey(word))
+			return map.get(word);
+		List<String> res = new ArrayList<>();
+		if (word.length() == 0) {
+			res.add("");
+			return res;
+		}
+
+		res.add(String.valueOf(word.length()));
+		for (int i = 0; i < word.length(); i++) {
+			String s = word.substring(i + 1);
+			String left = i == 0 ? "" : "" + i;
+			String ch = "" + word.charAt(i);
+			for (String str : generateAbbreviations(s)) {
+				res.add(left + ch + str);
+			}
+		}
+		map.put(word, res);
+		return res;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
