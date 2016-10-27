@@ -39,6 +39,23 @@ public class GenaralizedAbbreviation {
 		map.put(word, res);
 		return res;
 	}
+	
+	public List<String> generateAbbreviations1(String word) { // A better  solution.
+	       List<String> res = new ArrayList<>();
+	       dfs(res, word, "", 0, 0);
+	       return res;
+ }
+ public void dfs(List<String> res, String word, String curr, int pos, int count) {
+     if(pos == word.length()) {
+         if(count > 0)
+             curr += String.valueOf(count);
+         res.add(curr);
+         return;
+     }
+     
+     dfs(res, word, curr, pos + 1, count + 1); // Abbreviate this char.
+     dfs(res, word, curr + (count > 0 ? count : "") + word.charAt(pos), pos + 1, 0); // Don't abbreviate this char.
+ }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
