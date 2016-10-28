@@ -28,7 +28,7 @@ s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
  *
  */
 public class DecodeString {
-	public static String decodeString(String s) {
+	public static String decodeString(String s) { // O(n) space and time.
 		if (s.length() == 0)
 			return "";
 
@@ -37,7 +37,7 @@ public class DecodeString {
 		int num = 0;
 		for (int i = 0; i < s.length(); i++) {
 			char ch = s.charAt(i);
-			if (ch >= '0' && ch <= '9') {
+			if (ch >= '0' && ch <= '9') { // is digit ?
 				num = num * 10 + ch - '0';
 				continue;
 			}
@@ -50,12 +50,12 @@ public class DecodeString {
 				int times = count.pop();
 				StringBuilder strb = new StringBuilder();
 				String ch1 = chars.pop();
-				while (!ch1.equals("[")) {
-					strb.insert(0, ch1);
+				while (!ch1.equals("[")) { // pop until this bracket string is fetched.
+					strb.insert(0, ch1); // last in first out.
 					ch1 = chars.pop();
 				}
 				String str = strb.toString();
-				while (times-- > 1)
+				while (times-- > 1) // append that string appropriate times.
 					strb.append(str);
 				chars.push(strb.toString());
 
