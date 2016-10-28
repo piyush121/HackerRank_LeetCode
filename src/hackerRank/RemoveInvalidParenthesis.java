@@ -40,13 +40,10 @@ public class RemoveInvalidParenthesis {
 				if (isValid(str)) {
 					res.add(str);
 					found = true;
-					// System.out.println(true);
-
 				} else if (!isValid(str) && !found) {
 					que.addAll(addAll(new ArrayList<String>(), str, seen));
 				}
-				len--;
-				// System.out.println(que);
+				len--; // decrease size of current level.
 			}
 			len = que.size();
 			if (res.size() > 0)
@@ -55,7 +52,7 @@ public class RemoveInvalidParenthesis {
 		return res;
 	}
 
-	public boolean isValid(String str) {
+	public boolean isValid(String str) { // Usual check valid parenthesis method.
 		if (str.length() == 0)
 			return true;
 		int count = 0;
