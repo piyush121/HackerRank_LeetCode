@@ -76,9 +76,26 @@ public class SentenceScreenFitting { // Hard ques. asked at Google. Took a long 
 		}
 		return start / len;
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	
+	public int wordsTyping1(String[] sentence, int rows, int cols) { // O(m + n) DP based solution.
+		if (sentence.length == 0)
+			return 0;
+		String str = String.join(" ", sentence) + " ";
+		int len = str.length();
+		int[] DP = new int[len];
+		int count = 0;
+		for (int i = 1; i < len; i++) {
+			if (str.charAt(i) == ' ') // store the length to go backwards to fit as many words on screen.
+				DP[i] = -1;
+			else
+				DP[i] = DP[i - 1] + 1; // add tp previous char count.
+		}
 
+		for (int i = 0; i < rows; i++) {
+			count += cols;
+			count -= DP[count % len]; // remove extra characters.
+		}
+		return count / len; // count number of times this sentence appeared.
 	}
 	
 	/*
