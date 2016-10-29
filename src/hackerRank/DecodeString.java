@@ -52,7 +52,7 @@ public class DecodeString {
 				String ch1 = chars.pop();
 				while (!ch1.equals("[")) { // pop until this bracket string is fetched.
 					strb.insert(0, ch1); // last in first out.
-					ch1 = chars.pop();
+					ch1 = chars.pop(); // will eventually pop '[' as well.
 				}
 				String str = strb.toString();
 				while (times-- > 1) // append that string appropriate times.
