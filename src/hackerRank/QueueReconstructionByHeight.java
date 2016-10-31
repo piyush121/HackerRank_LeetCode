@@ -29,7 +29,7 @@ Output:
 public class QueueReconstructionByHeight {
 	public int[][] reconstructQueue(int[][] people) {
 		Arrays.sort(people, new Comparator<int[]>() {
-			public int compare(int[] o1, int[] o2) {
+			public int compare(int[] o1, int[] o2) { // sort from tallest to smallest person keeping the 'k' value in ascending order for same height people.
 				if (o1[0] == o2[0])
 					return o1[1] - o2[1];
 				else
@@ -39,7 +39,7 @@ public class QueueReconstructionByHeight {
 		List<int[]> res = new LinkedList<>();
 
 		for (int[] person : people) {
-			res.add(person[1], person);
+			res.add(person[1], person); // add according to the 'k' value of all people.
 		}
 		return res.toArray(new int[people.length][]);
 	}
