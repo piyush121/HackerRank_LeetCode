@@ -29,34 +29,36 @@ Return 167
  *
  */
 public class BurstBalloons {
-	public int maxCoins(int[] nums) {
+	public int maxCoins(int[] nums) { // Divide and conquer approach. O(N^3) runtime.
 		if (nums.length == 0)
 			return 0;
-		int[] iNums = new int[nums.length + 2];
+		int n = nums.length;
+		int[] iNums = new int[n + 2];
 		iNums[0] = 1;
 		for (int i = 0; i < nums.length; i++)
 			iNums[i + 1] = nums[i];
 		iNums[iNums.length - 1] = 1;
-		int n = nums.length;
 		int[][] memo = new int[n + 2][n + 2];
 
 		return maxCoin(memo, iNums, 1, n);
 	}
 
 	public int maxCoin(int[][] memo, int[] iNums, int start, int end) {
-		if (start > end)
+		if (start > end) // usual base case.
 			return 0;
-		if (memo[start][end] > 0)
+		if (memo[start][end] > 0) // check memory.
 			return memo[start][end];
 		int max = 0;
 		for (int i = start; i <= end; i++) {
 			int res = iNums[start - 1] * iNums[i] * iNums[end + 1] + maxCoin(memo, iNums, i + 1, end)
-					+ maxCoin(memo, iNums, start, i - 1);
+					+ maxCoin(memo, iNums, start, i - 1); // find total value if
+															// this balloon was
+															// the last one to
+															// burst.
 			if (res > max)
 				max = res;
 		}
 		memo[start][end] = max;
-
 		return max;
 	}
 
