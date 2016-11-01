@@ -32,45 +32,37 @@ public class BurstBalloons {
 	public int maxCoins(int[] nums) {
 		if (nums.length == 0)
 			return 0;
-		if (nums.length == 1)
-			return nums[0];
-		Map<Integer, int[]> map = new HashMap<Integer, int[]>();
-		for (int i = 0; i < nums.length; i++) {
-			if (i == 0)
-				map.put(nums[i], new int[] { 1, nums[i + 1] });
-			else if (i == nums.length - 1)
-				map.put(nums[i], new int[] { nums[i - 1], 1 });
-			else
-				map.put(nums[i], new int[] { nums[i - 1], nums[i + 1] });
-		}
-		return maxCoin(map, nums, 0, nums.length - 1);
+		int[] iNums = new int[nums.length + 2];
+		iNums[0] = 1;
+		for (int i = 0; i < nums.length; i++)
+			iNums[i + 1] = nums[i];
+		iNums[iNums.length - 1] = 1;
+		int n = nums.length;
+		int[][] memo = new int[n + 2][n + 2];
 
+		return maxCoin(memo, iNums, 1, n);
 	}
 
-	public int maxCoin(Map<Integer, int[]> map, int[] nums, int start, int end) {
+	public int maxCoin(int[][] memo, int[] iNums, int start, int end) {
 		if (start > end)
 			return 0;
+		if (memo[start][end] > 0)
+			return memo[start][end];
 		int max = 0;
 		for (int i = start; i <= end; i++) {
-			int res = 0;
-			int left = map.get(nums[i])[0];
-			int right = map.get(nums[i])[1];
-			res += left * nums[i] * right;
-			map.get(left)[1] = right;
-			map.get(right)[0] = left;
-			res += maxCoin(map, nums, start + 1, end);
-			res += maxCoin(map, nums, start, i - 1);
-			map.get(left)[1] = nums[i];
-			map.get(right)[0] = nums[i];
+			int res = iNums[start - 1] * iNums[i] * iNums[end + 1] + maxCoin(memo, iNums, i + 1, end)
+					+ maxCoin(memo, iNums, start, i - 1);
 			if (res > max)
 				max = res;
 		}
+		memo[start][end] = max;
+
 		return max;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		//System.out.println(maxCoins(new int[]{3,1}));
 	}
 
 }
