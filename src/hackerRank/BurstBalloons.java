@@ -29,7 +29,34 @@ Return 167
  *
  */
 public class BurstBalloons {
-	public int maxCoins(int[] nums) { // Divide and conquer approach. O(N^3) runtime.
+	
+	public int maxCoins(int[] nums) {// DP based solution. O(N^2) space and
+										// O(N^3) run time.
+		if (nums.length == 0)
+			return 0;
+		int n = nums.length;
+		int[] iNums = new int[n + 2];
+		iNums[0] = 1;
+		for (int i = 0; i < n; i++)
+			iNums[i + 1] = nums[i];
+		iNums[iNums.length - 1] = 1;
+
+		int[][] memo = new int[n + 2][n + 2];
+
+		for (int len = 1; len <= n; len++) {
+			for (int i = 1; i + len < n + 2; i++) {
+				for (int j = i; j < i + len; j++) {
+					int val = iNums[i - 1] * iNums[j] * iNums[i + len];
+					memo[i][i + len - 1] = Math.max(memo[i][i + len - 1],
+							val + memo[i][j - 1] + memo[j + 1][i + len - 1]);
+
+				}
+			}
+		}
+		return memo[1][n];
+	}
+	
+	public int maxCoins1(int[] nums) { // Divide and conquer approach. O(N^3) runtime.
 		if (nums.length == 0)
 			return 0;
 		int n = nums.length;
