@@ -24,45 +24,30 @@ isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
  *
  */
-public class RegularExpressionStringMatching { // TOugh as hell !
-	public static boolean isMatch(String s, String p) {
+public class RegularExpressionStringMatching { // Tough as hell !
+	public boolean isMatch(String s, String p) {
+	    int m = s.length();
+	    int n = p.length();
+	    boolean[][] DP = new boolean[m + 1][n + 1];
+	    DP[0][0] = true;
+	    for(int i = 1; i < n;i += 2)
+	        if(p.charAt(i) == '*')
+	            DP[0][i + 1] = DP[0][i - 1];
 
-		return (isMatch(s, p, '#', 0));
-
-	}
-
-	public static boolean isMatch(String s, String p, char prev, int start) {
-		if (s.length() == 0 && start == p.length() || s.length() == 0 && p.charAt(start) == '*' )
-			return true;
-		if (s.length() != 0 && start >= p.length() || s.length() == 0 && p.charAt(start) != '*' || s.length() == 0 && start < p.length() - 1)
-			return false;
-		char chs = s.charAt(0);
-
-		int i = start;
-		boolean res = false;
-		char chp = p.charAt(i);
-
-		if (chp == '.')
-			res = isMatch(s.substring(1), p, chp, i + 1);
-		
-		else if((chp == '*' && (prev == chs || prev == '.'))) {
-			while(s.length() > 0 && (s.charAt(0) == prev || prev == '.') )
-				s = s.substring(1);
-			res = isMatch(s, p, chp, i + 1);
-		}
-		else if (i < p.length() - 1 && chp != chs && p.charAt(i + 1) == '*')
-			res = isMatch(s, p, '*', i + 2);
-
-		else if (chs == chp )
-			res = isMatch(s.substring(1), p, chp, i + 1);
-
-		if (res)
-			return true;
-
-		return false;
+	    for(int i = 0; i < m; i++) {
+	        for(int j = 0; j < n; j++) {
+	            if(s.charAt(i) == p.charAt(j) || p.charAt(j) == '.')
+	                DP[i+1][j+1] = DP[i][j];
+	            else if(p.charAt(j) == '*') {
+	                if(DP[i + 1][j - 1] || DP[i][j + 1] && (p.charAt(j - 1) == '.' || p.charAt(j - 1) == s.charAt(i)))
+	                    DP[i+1][j+1] = true;
+	            }
+	        }
+	    }
+	    return DP[m][n];
 	}
 
 	public static void main(String[] args) {
-		System.out.println(isMatch("aa", ".*"));
+		//System.out.println(isMatch("aab", "c*a*b"));
 	}
 }
