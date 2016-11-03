@@ -36,20 +36,19 @@ public class BurstBalloons {
 			return 0;
 		int n = nums.length;
 		int[] iNums = new int[n + 2];
-		iNums[0] = 1;
+		iNums[0] = 1; // add 1 in the beginning.
 		for (int i = 0; i < n; i++)
 			iNums[i + 1] = nums[i];
-		iNums[iNums.length - 1] = 1;
+		iNums[iNums.length - 1] = 1; // add trailing 1.
 
 		int[][] memo = new int[n + 2][n + 2];
 
 		for (int len = 1; len <= n; len++) {
 			for (int i = 1; i + len < n + 2; i++) {
 				for (int j = i; j < i + len; j++) {
-					int val = iNums[i - 1] * iNums[j] * iNums[i + len];
-					memo[i][i + len - 1] = Math.max(memo[i][i + len - 1],
+					int val = iNums[i - 1] * iNums[j] * iNums[i + len]; // easy calculation.
+					memo[i][i + len - 1] = Math.max(memo[i][i + len - 1], // previous subrange + current val + next subrange.
 							val + memo[i][j - 1] + memo[j + 1][i + len - 1]);
-
 				}
 			}
 		}
