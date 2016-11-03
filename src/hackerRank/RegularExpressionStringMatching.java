@@ -24,14 +24,14 @@ isMatch("ab", ".*") → true
 isMatch("aab", "c*a*b") → true
  *
  */
-public class RegularExpressionStringMatching { // Tough as hell !
+public class RegularExpressionStringMatching { // O(m * n) runtime and space. So many cases !
 	public boolean isMatch(String s, String p) {
 	    int m = s.length();
 	    int n = p.length();
 	    boolean[][] DP = new boolean[m + 1][n + 1];
 	    DP[0][0] = true;
 	    for(int i = 1; i < n;i += 2)
-	        if(p.charAt(i) == '*')
+	        if(p.charAt(i) == '*') // for cases like a*b*c*.
 	            DP[0][i + 1] = DP[0][i - 1];
 
 	    for(int i = 0; i < m; i++) {
@@ -40,7 +40,7 @@ public class RegularExpressionStringMatching { // Tough as hell !
 	                DP[i+1][j+1] = DP[i][j];
 	            else if(p.charAt(j) == '*') {
 	                if(DP[i + 1][j - 1] || DP[i][j + 1] && (p.charAt(j - 1) == '.' || p.charAt(j - 1) == s.charAt(i)))
-	                    DP[i+1][j+1] = true;
+	                    DP[i+1][j+1] = true; // think of 'ac*b' and 'accb' to understand this scenario. its important.
 	            }
 	        }
 	    }
