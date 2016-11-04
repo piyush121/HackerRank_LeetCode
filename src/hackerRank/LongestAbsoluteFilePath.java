@@ -46,7 +46,7 @@ aaaaaaaaaaaaaaaaaaaaa/sth.png.
  *
  */
 public class LongestAbsoluteFilePath {
-	public int lengthLongestPath(String input) { // Tedious ques.
-        
+	public int lengthLongestPath(String input) { // Tedious ques. will come back here soon.
+        return 0;
     }
 }

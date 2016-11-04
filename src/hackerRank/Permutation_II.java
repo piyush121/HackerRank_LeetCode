@@ -69,7 +69,7 @@ public class Permutation_II {
 
 
 
-class Solution { // Slow solution but still works
+class Solution2 { // Slow solution but still works
     public  List<List<Integer>> permuteUnique(int[] nums) {
     LinkedList<List<Integer>> result = new LinkedList<List<Integer>>();
 	permute(nums, 0, result);

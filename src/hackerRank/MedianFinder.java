@@ -33,7 +33,7 @@ public class MedianFinder {
 
     // Returns the median of current data stream
     public double findMedian() {
-        
+        return 0;
     }
 }
 
