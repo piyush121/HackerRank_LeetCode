@@ -68,4 +68,28 @@ public class SerializeDeserializeBinaryTree {
 		}
 		return list.get(0);
 	}
+	
+	public TreeNode deserialize1(String data) { // Slightly faster 1 pass approach.
+        if(data.equals("null"))
+            return null;
+        String[] str = data.split(",");
+        TreeNode root = new TreeNode(Integer.valueOf(str[0]));
+        Queue<TreeNode> que = new LinkedList<>();
+        que.add(root);
+        for(int i = 1 ; i < str.length;i++) {
+            TreeNode parent = que.poll();
+            if(!str[i].equals("null")) {
+                parent.left = new TreeNode(Integer.valueOf(str[i]));
+                que.add(parent.left);
+            }
+
+            if(!str[++i].equals("null")) {
+                parent.right = new TreeNode(Integer.valueOf(str[i]));
+                que.add(parent.right);
+            }
+
+            
+        }
+        return root;
+    }
 }
