@@ -4,7 +4,9 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
@@ -28,21 +30,20 @@ public class SerializeDeserializeBinaryTree {
 	// Encodes a tree to a single string.
 	public String serialize(TreeNode root) {
 		List<String> list = new ArrayList<>();
-		add(root, list);
-		System.out.println(list);
-		return list.toString();
-	}
-
-	public void add(TreeNode root, List<String> list) {
-		if (root == null) {
-			list.add("null");
-			return;
+		Queue<TreeNode> que = new LinkedList<>();
+		que.add(root);
+		while (!que.isEmpty()) {
+			TreeNode node = que.poll();
+			if (node == null) {
+				list.add("null");
+				continue;
+			} else
+				list.add(String.valueOf(node.val));
+			que.offer(node.left);
+			que.offer(node.right);
 		}
-
-		list.add(String.valueOf(root.val));
-		add(root.left, list);
-		add(root.right, list);
-
+		// System.out.println(list);
+		return list.toString();
 	}
 
 	// Decodes your encoded data to tree.
@@ -57,12 +58,12 @@ public class SerializeDeserializeBinaryTree {
 			else
 				list.add(new TreeNode(Integer.valueOf(str[i])));
 		}
-
+		int j = 1;
 		for (int i = 0; i < list.size(); i++) {
 			TreeNode node = list.get(i);
 			if (node != null) {
-				node.left = (2 * i + 1 < list.size()) ? list.get(2 * i + 1) : null;
-				node.right = (2 * i + 2 < list.size()) ? list.get(2 * i + 2) : null;
+				node.left = list.get(j++);
+				node.right = list.get(j++);
 			}
 		}
 		return list.get(0);
