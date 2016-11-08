@@ -14,7 +14,7 @@ Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
  *
  */
 public class TrappingRainWater {
-	public int trap(int[] height) {
+	public int trap(int[] height) { // O(N) space and runtime. Faster solution coming soon.
 		Stack<Integer> bars = new Stack<>();
 		int i = 0;
 		int ans = 0;
@@ -23,8 +23,8 @@ public class TrappingRainWater {
 				bars.push(i++);
 			else {
 				while (!bars.isEmpty() && height[bars.peek()] < height[i]) {
-					int bar = height[bars.pop()];
-					ans += bars.isEmpty() ? 0
+					int bar = height[bars.pop()]; // basically find left bar of current index and the current bar.
+					ans += bars.isEmpty() ? 0 // Then compare for the smaller one and fin the rectangle between them.
 							: (Math.min(height[bars.peek()], height[i]) - bar) * (i - bars.peek() - 1);
 
 				}
