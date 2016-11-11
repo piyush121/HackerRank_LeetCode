@@ -34,28 +34,27 @@ public class TrappingRainWater {
 	}
 	
 	public int trap(int[] height) { // O(n) runtime and O(1) space elegant solution !
-        if(height.length == 0)
-            return 0;
-        int ans = 0;
-        int left = 0;
-        int leftLarge = 0;
-        int rightLarge = height.length - 1;
-        int right = height.length - 1;
-        
-        while(left < right) {
-            if(height[left] > height[leftLarge])
-                leftLarge = left;
-            if(height[right] > height[rightLarge])
-                rightLarge = right;
-                
-            if(height[left] <= height[right]) {
-                ans += height[leftLarge] - height[left++];
-            }
-            else {
-                ans += height[rightLarge] - height[right--];
-            }
-        }
-        
-        return ans;
-    }
+		if (height.length == 0)
+			return 0;
+		int ans = 0;
+		int left = 0;
+		int leftLarge = 0;
+		int rightLarge = height.length - 1;
+		int right = height.length - 1;
+
+		while (left < right) {
+			if (height[left] > height[leftLarge])
+				leftLarge = left;
+			if (height[right] > height[rightLarge])
+				rightLarge = right;
+
+			if (height[left] <= height[right]) {
+				ans += height[leftLarge] - height[left++];
+			} else {
+				ans += height[rightLarge] - height[right--];
+			}
+		}
+
+		return ans;
+	}
 }
