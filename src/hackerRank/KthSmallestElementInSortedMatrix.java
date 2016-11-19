@@ -37,46 +37,48 @@ class Tuple {
 	}
 }
 public class KthSmallestElementInSortedMatrix {
-	 public int kthSmallest(int[][] matrix, int k) { // 
-		 if(matrix.length == 0)
-			 return -1;
-	        PriorityQueue<Tuple> que = new PriorityQueue<>(new Comparator<Tuple>() {
-	        	public int compare(Tuple t1, Tuple t2) {
-	        		return t1.val - t2.val;
-	        	}
-			});
-	        for(int i = 0 ; i < matrix[0].length; i++) // put 1st row in the que.
-	        	que.offer(new Tuple(matrix[0][i], 0, i));
-	        Tuple curr = null;
-	        while(k > 0) { // extract row and col of the lowest val and put the next item in the same row. 
-	        	curr = que.poll();
-	        	if(curr.row < matrix[0].length - 1)
-	        		que.offer(new Tuple(matrix[curr.row + 1][curr.col], curr.row + 1, curr.col));
-	        	k--;
-	        }
-	        
-	        return curr.val;
-	    }
-	 
-	 public int kthSmallest1(int[][] matrix, int k) { // Wild Binary Search solution !
-		 int low = matrix[0][0];
-		 int high = matrix[matrix.length - 1][matrix.length - 1];
-		 
-		 while(low < high) {
-		     int mid = (low + high) / 2;
-		     int count = 0;
-		     int j = matrix[0].length - 1;
-		     for(int i = 0 ; i < matrix.length; i++) {
-		         while(j >= 0 && matrix[i][j] > mid)
-		            j--;
-		        count += (j + 1);
-		        
-		        }
-		     if(count < k)
-		      low = mid + 1;
-		     else
-		      high = mid;
-		 }
-		 return low;
-    }
+	public int kthSmallest(int[][] matrix, int k) { //
+		if (matrix.length == 0)
+			return -1;
+		PriorityQueue<Tuple> que = new PriorityQueue<>(new Comparator<Tuple>() {
+			public int compare(Tuple t1, Tuple t2) {
+				return t1.val - t2.val;
+			}
+		});
+		for (int i = 0; i < matrix[0].length; i++) // put 1st row in the que.
+			que.offer(new Tuple(matrix[0][i], 0, i));
+		Tuple curr = null;
+		while (k > 0) { // extract row and col of the lowest val and put the
+						// next item in the same row.
+			curr = que.poll();
+			if (curr.row < matrix[0].length - 1)
+				que.offer(new Tuple(matrix[curr.row + 1][curr.col], curr.row + 1, curr.col));
+			k--;
+		}
+
+		return curr.val;
+	}
+
+	public int kthSmallest1(int[][] matrix, int k) { // Wild Binary Search
+														// solution !
+		int low = matrix[0][0];
+		int high = matrix[matrix.length - 1][matrix.length - 1];
+
+		while (low < high) {
+			int mid = (low + high) / 2;
+			int count = 0;
+			int j = matrix[0].length - 1;
+			for (int i = 0; i < matrix.length; i++) {
+				while (j >= 0 && matrix[i][j] > mid)
+					j--;
+				count += (j + 1);
+
+			}
+			if (count < k)
+				low = mid + 1;
+			else
+				high = mid;
+		}
+		return low;
+	}
 }
