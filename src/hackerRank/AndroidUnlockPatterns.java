@@ -38,28 +38,41 @@ Given m = 1, n = 1, return 9.
  *
  */
 public class AndroidUnlockPatterns {
-	public int numberOfPatterns(int m, int n) {
+	public int numberOfPatterns(int m, int n) { // tough one. DFS approach.
 		int[][] jump = new int[10][10];
 
-		jump[1][3] = jump[3][1] = 2;
-		jump[1][7] = jump[7][1] = 4;
+		jump[1][3] = jump[3][1] = 2; // find which numbers should be visited if you
+		jump[1][7] = jump[7][1] = 4; // want to jump from i -> j.
 		jump[1][9] = jump[9][1] = jump[3][7] = jump[7][3] = 5;
 		jump[2][8] = jump[8][2] = 5;
 		jump[4][6] = jump[6][4] = 5;
+		jump[7][9] = jump[9][7] = 8;
+		jump[3][9] = jump[9][3] = 6;
 
 		boolean[] visited = new boolean[10];
 		int res = 0;
-		for (int i = 1; i <= n; i++) {
-			res += dfs(visited, m, n, jumps) * 4;
-		}
+
+		res += dfs(visited, m, n, 1, 1, 0, jump) * 4; // 1, 3, 7, 9
+		res += dfs(visited, m, n, 1, 2, 0, jump) * 4; // 2, 4, 6, 8
+		res += dfs(visited, m, n, 1, 5, 0, jump); // 5
+		return res;
 	}
 
-	public int dfs(boolean[] visited, int m, int n, int curr, int res, int[][] jumps) {
-		if (m == 0 && n == 0) {
-			return res;
-		}
-		if (m == 0 || n == 0)
+	public int dfs(boolean[] visited, int m, int n, int len, int curr, int res, int[][] jumps) {
+		if (len >= m)
 			res++;
+		if (len >= n)
+			return res;
 
-	    }
+		visited[curr] = true;
+		for (int i = 1; i < 10; i++) {
+			int num = jumps[curr][i];
+			if (!visited[i] && (num == 0 || visited[num])) {
+				res = dfs(visited, m, n, len + 1, i, res, jumps);
+			}
+		}
+		visited[curr] = false; // backtracking.
+
+		return res;
+	}
 }
