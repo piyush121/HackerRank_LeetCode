@@ -27,7 +27,28 @@ Explanation: The array cannot be partitioned into equal sum subsets.
  *
  */
 public class PartitionEqualSubsetSum {
-	public boolean canPartition(int[] nums) {
+	
+	public boolean canPartition(int[] nums) { // DP based solution. O(n) space and time.
+		if (nums.length == 0)
+			return false;
+		int sum = 0;
+		for (int num : nums)
+			sum += num;
+		if (sum % 2 != 0)
+			return false;
+		sum /= 2; // we need to make this exact sum from given values.
+		boolean[] DP = new boolean[sum + 1];
+		DP[0] = true;
+		for (int num : nums) {
+			for (int currSum = sum; currSum >= num; currSum--)
+				DP[currSum] = DP[currSum] || DP[currSum - num]; // currSum might already be true by some previous value because the array is not sorted. 
+				//If sum is 1- and we have seen 9 before and when we do currSum-- to make 9 on 7 then we haven't seen 3 before and it will set it to false which is wrong.
+				//So we can either use the currSum or  not.
+		}
+		return DP[sum];
+	}
+	
+	public boolean canPartition1(int[] nums) {
 		if (nums.length == 0)
 			return false;
 		int sum = 0;
