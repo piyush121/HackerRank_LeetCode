@@ -3,6 +3,9 @@
  */
 package hackerRank;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given an array nums and a target value k, find the maximum length of a subarray that sums to k. 
  * If there isn't one, return 0 instead.
@@ -23,7 +26,21 @@ Can you do it in O(n) time?
  *
  */
 public class MaxSizeSubarraySum {
-	 public int maxSubArrayLen(int[] nums, int k) {
-	        
-	    }
+	public int maxSubArrayLen(int[] nums, int k) {
+        if(nums.length == 0)
+            return 0;
+        int[] sums = new int[nums.length];
+        for(int i = 1 ; i < nums.length; i++) 
+            sums[i] += sums[i - 1];
+        Map<Integer, Integer> map = new HashMap<>();
+        int max = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(map.containsKey(sums[i] - k))
+                max = Math.max(max, i - map.get(sums[i] - k));
+            if(!map.containsKey(sums[i] - k))
+                map.put(sums[i], i);
+        }
+        
+        return max;
+    }
 }
