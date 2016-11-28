@@ -34,10 +34,11 @@ public class MaxSizeSubarraySum {
             sums[i] += sums[i - 1];
         Map<Integer, Integer> map = new HashMap<>();
         int max = 0;
+        map.put(0, -1); // to make map consistent.
         for(int i = 0; i < nums.length; i++) {
             if(map.containsKey(sums[i] - k))
                 max = Math.max(max, i - map.get(sums[i] - k));
-            if(!map.containsKey(sums[i] - k))
+            if(!map.containsKey(sums[i]))
                 map.put(sums[i], i);
         }
         
