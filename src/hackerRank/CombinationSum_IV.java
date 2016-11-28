@@ -3,6 +3,9 @@
  */
 package hackerRank;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Given an integer array with all positive numbers and no duplicates, find the number of possible 
  * combinations that add up to a positive integer target.
@@ -42,6 +45,27 @@ public class CombinationSum_IV {
         for(int i = 0 ; i < nums.length; i++) {
             count += combinationSum4(nums, k - nums[i]);
         }
+        return count;
+    }
+	
+	public int combinationSum4_1(int[] nums, int target) { // Memoized dfs based solution. Its fast !
+        if(nums.length == 0)
+            return 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        return dfs(nums, target, map);
+    }
+    public int dfs(int[] nums, int k, Map<Integer, Integer> map) {
+        if(k == 0)
+            return 1;
+        if(k < 0)
+            return 0;
+        if(map.containsKey(k))
+            return map.get(k);
+        int count = 0;
+        for(int i = 0 ; i < nums.length; i++) {
+            count += dfs(nums, k - nums[i], map);
+        }
+        map.put(k, count);
         return count;
     }
 }
