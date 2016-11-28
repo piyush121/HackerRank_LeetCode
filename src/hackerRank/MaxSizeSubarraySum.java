@@ -26,16 +26,15 @@ Can you do it in O(n) time?
  *
  */
 public class MaxSizeSubarraySum {
-	public int maxSubArrayLen(int[] nums, int k) {
-        if(nums.length == 0)
+	public int maxSubArrayLen(int[] sums, int k) { // O(N) time and space. Hard one though.
+        if(sums.length == 0)
             return 0;
-        int[] sums = new int[nums.length];
-        for(int i = 1 ; i < nums.length; i++) 
+        for(int i = 1 ; i < sums.length; i++) 
             sums[i] += sums[i - 1];
         Map<Integer, Integer> map = new HashMap<>();
         int max = 0;
-        map.put(0, -1); // to make map consistent.
-        for(int i = 0; i < nums.length; i++) {
+        map.put(0, -1); // keep things consistent. If sum becomes 0 again in between then its better to take the sum from the start.
+        for(int i = 0; i < sums.length; i++) {
             if(map.containsKey(sums[i] - k))
                 max = Math.max(max, i - map.get(sums[i] - k));
             if(!map.containsKey(sums[i]))
