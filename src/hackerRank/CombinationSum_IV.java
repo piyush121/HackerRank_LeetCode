@@ -68,4 +68,19 @@ public class CombinationSum_IV {
         map.put(k, count);
         return count;
     }
+    
+    public int combinationSum4_2(int[] nums, int target) { // Bottom up DP approach.
+        if(nums.length == 0)
+            return 0;
+        int[] DP = new int[target + 1];
+        DP[0] = 1;
+        for(int sum = 1 ; sum < DP.length; sum++) {
+            for(int j = 0; j < nums.length; j++ ) {
+                if(sum - nums[j] >= 0)
+                    DP[sum] += DP[sum - nums[j]];
+                    
+            }
+        }
+        return DP[target];
+    }
 }
