@@ -4,7 +4,9 @@
 package hackerRank;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Given a nested list of integers, return the sum of all integers in the list weighted by their depth.
@@ -46,4 +48,41 @@ public class NestedListWeightSum_II {
 		return sum;
         
     }
+	
+	public int depthSumInverse1(List<NestedInteger> nestedList) { // BFS based
+																	// solution.
+																	// Fast!
+		if (nestedList.size() == 0)
+			return 0;
+		int res = 0;
+		int levelSum = 0;
+		Queue<NestedInteger> que = new LinkedList<>(); // O(Depth) space.
+		List<NestedInteger> nextList = new ArrayList<>();
+
+		for (NestedInteger nInt : nestedList)
+			que.offer(nInt);
+
+		while (!que.isEmpty()) {
+			levelSum = 0;
+			int size = que.size();
+			nextList = new ArrayList<>();
+			for (int i = 0; i < size; i++) {
+				NestedInteger cInt = que.poll();
+				if (cInt.isInteger())
+					levelSum += cInt.getInteger();
+				else {
+					for (NestedInteger nextInt : cInt.getList())
+						nextList.add(nextInt);
+				}
+			}
+			if (nextList.size() != 0) {
+				for (NestedInteger nInt : nextList)
+					que.offer(nInt);
+				que.offer(new NestedInteger(levelSum)); // Take current sum to next level and add it there too.
+			}
+			res += levelSum;
+		}
+
+		return res;
+	}
 }
