@@ -25,7 +25,18 @@ Explanation: It's the substring "abc" four times. (And the substring "abcabc" tw
  *
  */
 public class RepeatedSubstringPattern {
-	 public boolean repeatedSubstringPattern(String str) {
-	        
-	    }
+	public boolean repeatedSubstringPattern(String str) {
+		int len = str.length();
+		for (int i = 1; i <= len / 2; i++) {
+			if (len % i == 0) { // substring should be a divisor of the length of actual string.
+				StringBuilder strb = new StringBuilder();
+				String substr = str.substring(0, i);
+				for (int j = 0; j < len / i; j++)
+					strb.append(substr); // append till length becomes equal to the str's length.
+				if (strb.toString().equals(str))
+					return true;
+			}
+		}
+		return false;
+	}
 }
