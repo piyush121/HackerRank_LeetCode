@@ -64,3 +64,14 @@ public class ArithmaticSlice_II {
 		return res;
 	}
 }
+/*
+ * The idea is based on each element to call the number of all possible differences cases.
+[2,4,6,8,10]
+Like based on 6, to calculate the difference value of 4,2,0,-2,-4, the map is
+4:1
+2:2
+so when we move to element 8, the map will be
+6:1
+4:1
+2:3
+*/
