@@ -56,22 +56,20 @@ public class MinimumHeightTrees {
 		for (int i = 0; i < n; i++)
 			adjList.add(new HashSet<Integer>()); 
 
-		for (int i = 0; i < n; i++) {
-			adjList.get(edges[i][0]).add(edges[i][1]);// create adjancency list.
-			adjList.get(edges[i][1]).add(edges[i][0]);
-
-		}
-		int count = 0;
+		for(int[] edge : edges) {
+            adjList.get(edge[0]).add(edge[1]);
+            adjList.get(edge[1]).add(edge[0]);
+            
+        }
 		List<Integer> leaves = new ArrayList<>(); // keep track of all leaves
 		for (int i = 0; i < n; i++)
 			if (adjList.get(i).size() == 1) {
 				leaves.add(i);
-				count++;
 			}
-		while (count > 2) { // In the end at most two leaves will be left.
+		while (n > 2) { // In the end at most two leaves will be left.
 			List<Integer> newLeaves = new ArrayList<>();
 			for (int leaf : leaves) {
-				count--;
+				n--;
 				int next = adjList.get(leaf).iterator().next();
 				;
 				adjList.get(next).remove(leaf);
