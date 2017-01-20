@@ -63,4 +63,18 @@ public class VerifyPreorderSerialization {
 
 		return next;
 	}
+	
+	public boolean isValidSerialization1(String preorder) { // Another sexy way to approach his porblem.
+		if (preorder.length() == 0)
+			return true;
+		String[] strArr = preorder.split(",");
+		int diff = 1;
+		for(int i = 0; i < strArr.length; i++) { // Every null has an indegree of 1 and out degree of 0.
+		    if(--diff < 0)
+		        return false;
+		    if(!strArr[i].equals("#"))diff += 2;// Every non-null node has an indegree of 1 and outdegree of 2
+		}
+		
+		return diff == 0;
+   }
 }
