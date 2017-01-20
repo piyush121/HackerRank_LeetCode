@@ -35,27 +35,27 @@ Return false
  *
  */
 public class VerifyPreorderSerialization {
-	public boolean isValidSerialization(String preorder) {
+	public boolean isValidSerialization(String preorder) { // Recursive.
 		if (preorder.length() == 0)
 			return true;
 		String[] strArr = preorder.split(",");
 		int val = dfs(strArr, 0);
-		if (val < strArr.length)
+		if (val < strArr.length) // 'Val' can also be -1. It should be strArr.length in ideal scenario.
 			return false;
 		return true;
 	}
 
 	public int dfs(String[] preorder, int idx) {
-		if (idx < 0)
+		if (idx < 0) // Some violation found.
 			return -1;
-		if (idx == preorder.length)
+		if (idx == preorder.length) // reached end. Base case.
 			return idx;
 		String str = preorder[idx];
 		int next = -1;
-		if (str.equals("#"))
+		if (str.equals("#")) // Time to go to next node.
 			return idx + 1;
 		else {
-			int right = dfs(preorder, idx + 1);
+			int right = dfs(preorder, idx + 1); // get pointer to right child.
 			if (right == preorder.length)
 				return -1;
 			next = dfs(preorder, right);
