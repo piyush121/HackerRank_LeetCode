@@ -42,6 +42,8 @@ Another valid answer is [5,2,6,null,4,null,7].
     4   7
  *
  */
+
+
 public class DeleteNodeInBST {
 	public TreeNode deleteNode(TreeNode root, int key) {
 		if (root == null)
