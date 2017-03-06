@@ -17,7 +17,7 @@ Note: You may assume that n is not less than 2 and not larger than 58.
  */
 public class IntegerBreak {
 	
-	public int integerBreak(int n) { // DP way.
+	public int integerBreak(int n) { // DP way. O(n^2) time and O(n) space.
         int[] DP = new int[n + 1];
         DP[1] = 1;
         for(int i = 2; i <= n; i++) {
