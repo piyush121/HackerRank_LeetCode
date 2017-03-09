@@ -29,7 +29,29 @@ Explanation: You could form "10", but then you'd have nothing left. Better form 
  *
  */
 public class OnesAndZeroes {
-	public int findMaxForm(String[] strs, int m, int n) {
+	
+	public int findMaxForm(String[] strs, int m, int n) { // DP technique based
+															// on `Rolling
+															// Array`.
+		int[][] DP = new int[m + 1][n + 1];
+		DP[0][0] = 0;
+		for (String str : strs) {
+			int ones = countOnes(str);
+			int zeros = Math.abs(str.length() - ones);
+			// We have to start from bottom right because if we take this  current string
+			// then we need to count ways from
+			// previous iteration rather than current iteration otherwise we'll
+			// end up over-counting.
+			for (int i = m; i >= zeros; i--) {
+				for (int j = n; j >= ones; j--) {
+					DP[i][j] = Math.max(DP[i][j], 1 + DP[i - zeros][j - ones]);
+				}
+			}
+		}
+		return DP[m][n];
+	}
+
+	public int findMaxForm1(String[] strs, int m, int n) {
 		return intfindMaxForm(strs, 0, m, n, new HashMap<String, Integer>());
 	}
 
