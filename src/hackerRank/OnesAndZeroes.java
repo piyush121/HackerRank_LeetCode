@@ -84,4 +84,8 @@ public class OnesAndZeroes {
 		}
 		return res;
 	}
+	
+	public static void main(String[] args) {
+		
+	}
 }
