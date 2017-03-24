@@ -30,13 +30,34 @@ public class DiameterOfBinaryTree {
 
 	public int dfs(TreeNode root) {
 		if (root == null)
-			return -1;
+			return 0;
 		int left = dfs(root.left); // get left height.
 		int right = dfs(root.right); // get right height.
 
-		max = Math.max(max, 2 + left + right); // Find max diameter.
+		max = Math.max(max, left + right); // Find max diameter.
 
 		return 1 + Math.max(left, right); // return max height of left and right sub-tree.
+
+	}
+	
+	public int diameterOfBinaryTree1(TreeNode root) { // Another way to return
+														// both diameter and
+														// height at the same
+														// time.
+		if (root == null)
+			return 0;
+		int[] res = dfs1(root);
+		return res[0];
+	}
+
+	public int[] dfs1(TreeNode root) {
+		if (root == null)
+			return new int[] { 0, -1 };
+		int[] left = dfs1(root.left);
+		int[] right = dfs1(root.right);
+
+		int[] res = { Math.max(Math.max(left[0], right[0]), 2 + left[1] + right[1]), 1 + Math.max(left[1], right[1]) };
+		return res;
 
 	}
 }
