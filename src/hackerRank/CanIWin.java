@@ -55,7 +55,7 @@ public class CanIWin {
 		}
 		boolean res = false;
 		for (int i = 1; i <= maxChoosableInteger; i++) {
-			if (((1 << i) & used) == 0) {
+			if (((1 << i) & used) == 0) { // Checking whether this bit(Actual number) has been used before or not.
 				res = res || !canIWin(desiredTotal - i, maxChoosableInteger, memo, used | (1 << i));
 			}
 		}
