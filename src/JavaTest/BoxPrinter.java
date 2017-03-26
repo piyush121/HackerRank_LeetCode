@@ -32,7 +32,7 @@ public class BoxPrinter<T> implements Comparable<BoxPrinter<T>> {
 		}
 		Integer a = 500;
 		Integer b = 500;
-		System.out.println(a == b);
+		//System.out.println(a == b);
 		Collections.sort(list, new Comparator<Integer>() {
 			@Override
 			public int compare(Integer i1, Integer i2) {
@@ -41,6 +41,11 @@ public class BoxPrinter<T> implements Comparable<BoxPrinter<T>> {
 			
 		});
 		//Map<String, String> map = new Hashtable<>();
+		String str = "abc";
+		String str2 = "abc";
+		String str1 = new String("abc");
+		System.out.println(str == str1);
+		//System.out.println();
 	}
 
 	@Override

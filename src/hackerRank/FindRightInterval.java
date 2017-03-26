@@ -6,6 +6,7 @@ package hackerRank;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Given a set of intervals, for each of the interval i, check if there exists an interval j whose start point is bigger than or equal to the end point of the interval i, which can be called that j is on the "right" of i.
@@ -38,7 +39,7 @@ Explanation: There is no satisfied "right" interval for [1,4] and [3,4].
 For [2,3], the interval [3,4] has minimum-"right" start point.
  */
 public class FindRightInterval {
-	public int[] findRightInterval(Interval[] intervals) {
+	public int[] findRightInterval(Interval[] intervals) { // O(nlogn) time and and O(n) space.
 		int[] res = new int[intervals.length];
 		Map<Integer, Integer> map = new HashMap<>();
 		int j = 0;
@@ -70,4 +71,19 @@ public class FindRightInterval {
 		}
 		return intervals[start].start;
 	}
+	
+	
+	 public int[] findRightInterval1(Interval[] intervals) { //Another nlogn solution using TreeMap methods.
+	        int[] res = new int[intervals.length];
+	        TreeMap<Integer, Integer> map = new TreeMap<>();
+	        int j = 0;
+	        for(Interval interval : intervals) {
+	            map.put(interval.start, j++);   
+	        }
+	        for(int i = 0 ; i < intervals.length ; i++) {
+	            Integer key = map.ceilingKey(intervals[i].end);
+	            res[i] = key == null ? -1 : map.get(key);
+	        }
+	        return res;
+	    }
 }
