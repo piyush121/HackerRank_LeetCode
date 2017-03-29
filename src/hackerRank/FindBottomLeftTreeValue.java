@@ -34,7 +34,28 @@ Output:
  *
  */
 public class FindBottomLeftTreeValue {
-	public int findBottomLeftValue(TreeNode root) { // BFS. O(N) time and space.
+	
+	int res = 0;
+	int depth = 0;
+
+	public int findBottomLeftValue(TreeNode root) { // DFS way. O(N) time and (H) space.
+		dfs(root, 0);
+		return res;
+	}
+
+	public void dfs(TreeNode root, int height) {
+		if (root == null)
+			return;
+		if (depth < height + 1) {
+			res = root.val;
+			depth = height + 1;
+		}
+		dfs(root.left, height + 1);
+		dfs(root.right, height + 1);
+
+	}
+	
+	public int findBottomLeftValue1(TreeNode root) { // BFS. O(N) time and space.
 		int res = 0;
 		Queue<TreeNode> nodes = new LinkedList<>();
 		nodes.offer(root);
