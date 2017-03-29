@@ -43,7 +43,7 @@ public class MostFrequentSubtreeSum {
 			res[i] = list.get(i);
 		return res;
 	}
-
+	// Basically get left sum and right sum add them and add its count in the map.
 	public int findFrequentTreeSum(TreeNode root, Map<Integer, Integer> map) {
 		if (root == null)
 			return 0;
