@@ -1,5 +1,5 @@
 package JavaTest;
-
+//Deadloack test
 public class Deadlock {
 	public static void main(String[] args) {
 		LambdaTesting lamb = new LambdaTesting();
