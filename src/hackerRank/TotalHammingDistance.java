@@ -22,16 +22,16 @@ Length of the array will not exceed 10^4.
  *
  */
 public class TotalHammingDistance {
-	public int totalHammingDistance(int[] nums) {
+	public int totalHammingDistance(int[] nums) { // O(N) time ans O(1) space.
 		int res = 0;
-		for (int j = 0; j < 32; j++) {
-			int mask = 1 << j;
+		for (int j = 0; j < 32; j++) { // O(1)
+			int mask = 1 << j; // O(1) basically.
 			int ones = 0;
-			for (int i = 0; i < nums.length; i++) {
+			for (int i = 0; i < nums.length; i++) { // O(N)
 				if ((mask & nums[i]) != 0)
 					ones++;
 			}
-			res += ones * (nums.length - ones);
+			res += ones * (nums.length - ones);// number of pairs of 0 and possible at this bit location.
 		}
 		return res;
 	}
