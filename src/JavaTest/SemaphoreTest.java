@@ -13,7 +13,6 @@ class Person extends Thread {
 			System.out.println(name + " Using machine now.");
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(name + " Machine used");
