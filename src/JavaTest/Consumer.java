@@ -7,7 +7,7 @@ package JavaTest;
  * @author Piyush Chaudhary
  *
  */
-public class Consumer extends Thread{
+public class Consumer extends Thread {
 	InterThreadCommunication food;
 
 	public Consumer(InterThreadCommunication shared) {
@@ -16,7 +16,7 @@ public class Consumer extends Thread{
 	}
 
 	public void run() {
-		while (true) {		
+		while (true) {
 			consume();
 		}
 	}
@@ -32,7 +32,7 @@ public class Consumer extends Thread{
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
-		}	
+			}
+		}
 	}
 }
