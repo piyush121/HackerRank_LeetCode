@@ -2,25 +2,32 @@ package JavaTest;
 
 import java.util.concurrent.Exchanger;
 
-public class RobinExchanger extends Thread{
-	Exchanger<String> exchangeMessage;
-	
+public class RobinExchanger extends Thread {
+	private Exchanger<String> sillyTalk;
+
 	public RobinExchanger(Exchanger<String> exchange) {
-		this.exchangeMessage = exchange;
-		this.start();
+		this.sillyTalk = exchange;
 	}
+
 	public void run() {
-		String msg;
+		String reply = null;
 		try {
-			msg = exchangeMessage.exchange("Knock knock");
-			System.out.println("Piyush: " + msg);
-			msg = exchangeMessage.exchange("How are you");
-			System.out.println("Piyush: " + msg);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// exchange the first messages
+			reply = sillyTalk.exchange("Who's there?");
+			// print what Duke said
+			System.out.println("Duke: " + reply);
+			// exchange second message
+			reply = sillyTalk.exchange("Duke who?");
+			// print what Duke said
+			System.out.println("Duke: " + reply);
+			// there is no message to send, but to get a message from Duke
+			// thread,
+			// both ends should send a message; so send a "dummy" string
+			reply = sillyTalk.exchange("");
+			System.out.println("Duke: " + reply);
+		} catch (InterruptedException ie) {
+			System.err.println("Got interrupted during my silly talk");
 		}
-		
-		
+
 	}
 }

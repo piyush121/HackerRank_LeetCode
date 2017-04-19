@@ -34,6 +34,7 @@ public class LambdaTesting implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		inc();		
+		
 	}
 	public static void main(String[] args) {
 		Consumer<Integer> consumer = p -> {
@@ -46,7 +47,9 @@ public class LambdaTesting implements Runnable{
 	Integer[] arr = {3,2,4,1,5};
 	List<Integer> list = Arrays.asList(arr);
 	int sum = list.stream().filter(a -> a > 1).reduce(0, (a, b) -> a + b);
-	System.out.println(LambdaTesting.class);
+	int i = 3;
+	System.out.println(++i);
+	
 	}
 
 	
