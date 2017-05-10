@@ -54,6 +54,5 @@ public class SubTreeOfAnotherTree {
 		if (s.val == t.val)
 			return checkTree(s.left, t.left) && checkTree(s.right, t.right);
 		return false;
-
 	}
 }
