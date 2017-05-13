@@ -12,10 +12,7 @@ import java.util.Map;
  */
 public class LongestSubstringWithAtmostKUniqueCharacter {
 
-	public static String longestKSubstring(String str, int k) { // O(N) time and
-																// O(# of unique
-																// characters)
-																// space.
+	public static String longestKSubstring(String str, int k) { // O(N) time and O(# of unique characters) space.
 		if (k == 0)
 			return "";
 		Map<Character, Integer> seen = new HashMap<>();
