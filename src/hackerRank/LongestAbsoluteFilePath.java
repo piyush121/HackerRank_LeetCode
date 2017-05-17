@@ -3,6 +3,8 @@
  */
 package hackerRank;
 
+import java.util.Stack;
+
 /**
  *Suppose we abstract our file system by a string in the following manner:
 
@@ -46,7 +48,29 @@ aaaaaaaaaaaaaaaaaaaaa/sth.png.
  *
  */
 public class LongestAbsoluteFilePath {
-	public int lengthLongestPath(String input) { // Tedious ques. will come back here soon.
-        return 0;
+	public int lengthLongestPath(String input) { 
+		Stack<String> stack = new Stack<>();
+		int max = 0;
+		int curr = 0;
+		for (String str : input.split("\n")) {
+			int level = str.lastIndexOf("\t");
+			String file = str.substring(level + 1);
+			if (level + 1 >= stack.size()) {
+				stack.push(file);
+				curr += file.length() + 1;
+			} else {
+				while (level + 1 < stack.size()) {
+					String last = stack.pop();
+					curr -= (last.length() + 1);
+				}
+				stack.push(file);
+				curr += file.length() + 1;
+			}
+			if (str.indexOf('.') >= 0) {
+				max = Math.max(max, curr - 1);
+				// System.out.println(stack + " " + curr);
+			}
+		}
+		return max;
     }
 }

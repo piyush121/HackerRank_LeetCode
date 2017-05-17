@@ -9,7 +9,7 @@ interface A {
 }
 
 class myclass {
-	public int num = 10;
+	protected int num = 10;
 
 	public myclass(int x) {
 		this.num = x;
@@ -20,17 +20,19 @@ class myclass {
 	}
 }
 
-public class InterfaceTest {
-	public static void foo(int i) {
-		i = 5;
+public class InterfaceTest extends myclass{
+	String Rewa = "Rewa";
+
+	public InterfaceTest(int x) {
+		super(x);
+		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		HashMap<Integer, Integer> map = new HashMap<>();
-		int i = 10;
-		foo(i);
-		System.out.println(i);
+		myclass obj = new myclass(2);
+		obj.num = 20;
 	}
 
 }
