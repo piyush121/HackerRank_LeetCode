@@ -48,12 +48,12 @@ aaaaaaaaaaaaaaaaaaaaa/sth.png.
  *
  */
 public class LongestAbsoluteFilePath {
-	public int lengthLongestPath(String input) { 
+	public int lengthLongestPath(String input) { // O(N) time and space.
 		Stack<String> stack = new Stack<>();
 		int max = 0;
 		int curr = 0;
 		for (String str : input.split("\n")) {
-			int level = str.lastIndexOf("\t");
+			int level = str.lastIndexOf("\t"); // count # of levels.
 			String file = str.substring(level + 1);
 			if (level + 1 >= stack.size()) {
 				stack.push(file);
