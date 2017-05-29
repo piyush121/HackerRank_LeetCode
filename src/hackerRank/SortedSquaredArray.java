@@ -32,7 +32,7 @@ A sorted array of integers composed of the squared integers from the input array
  *
  */
 public class SortedSquaredArray {
-	int[] sortedSquaredArray(int[] array) {
+	int[] sortedSquaredArray(int[] array) { // O(N) time and space.
 		int[] res = new int[array.length];
 		int i = 0, j = -1, k = array.length;
 
