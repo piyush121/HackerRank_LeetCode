@@ -15,6 +15,6 @@ class Book extends AbstractBook implements Sleepy {
 
 	public static void main(String[] args) {
 		AbstractBook philosophyBook = new Book("Principia Mathematica");
-		System.out.println("The name of the book is " + philosophyBook.name); // LINE B																				// B
+		System.out.println(2 * 7 % 4); // LINE B																				// B
 	}
 }
