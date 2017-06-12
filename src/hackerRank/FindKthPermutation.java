@@ -26,7 +26,7 @@ The 3rd permutation in the lexicographically ordered sequence is "213".
  *
  */
 public class FindKthPermutation {
-	String permutationSequence(int n, int k) {
+	String permutationSequence(int n, int k) { // Assuming n <= 12. O(n) time.
 		List<Integer> list = new ArrayList<>();
 		for (int i = 1; i <= n; i++)
 			list.add(i);
@@ -35,12 +35,38 @@ public class FindKthPermutation {
 		return strb.toString();
 	}
 
-	void permutationSequence(int k, StringBuilder strb, List<Integer> list) {
+	void permutationSequence(int k, StringBuilder strb, List<Integer> list) { // More
+																				// Efficient
+																				// for
+																				// larget
+																				// numbers.
 		if (list.size() == 1) {
 			strb.append(list.get(0));
 			return;
 		}
+		int m = list.size();
+		int n = m - 1;
+		int block = 0;
+		int x = k - 1;
+		while (n > 1) {
+			x /= n;
+			n--;
+			if (x == 0)
+				break;
+		}
+		block = x;
+		strb.append(list.get(block));
+		list.remove(block);
+		if (x != 0)
+			k = k - x * factorial(m - 1);
+		permutationSequence(k, strb, list);
+	}
 
+	void permutationSequence1(int k, StringBuilder strb, List<Integer> list) {
+		if (list.size() == 1) {
+			strb.append(list.get(0));
+			return;
+		}
 		int n = list.size();
 		int blockSize = factorial(n - 1);
 		int block = ((k - 1) / blockSize);
